@@ -2083,7 +2083,7 @@ ol {
   background-color: #101130;
   padding: 200px 0 150px 0;
   padding-bottom: 240px;
-  background-image: url("../images/hero/hero-bg.jpg");
+  background-image: url("../images/hero/Istanbul.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -2109,6 +2109,26 @@ ol {
   padding: 0 30px;
 }
 
+
+.hero-area .hero-content2{
+  display: inline-block;
+  padding: 2rem 3rem; /* full-size padding */
+  border-radius: 1rem;   
+  margin: 0px 0 18px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05); /* subtle lift if you like */
+
+  /* match your counter panel */
+  background: linear-gradient(     /* colored box behind all text */
+    135deg,
+    rgba(0, 112, 122, 0.85) 0%,
+    rgba(194, 21, 27, 0.85) 100%
+  );
+  color: #fff;                    
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
 @media (max-width: 767px) {
   .hero-area .hero-content {
     padding: 0;
@@ -2128,7 +2148,21 @@ ol {
   margin-bottom: 18px;
   font-size: 16px;
   display: inline-block;
-  background: #ffffff24;
+  background: #20191910;
+  padding: 13px 22px;
+  border-radius: 4px;
+  -webkit-box-shadow: 0px 0px 10px #00000005;
+          box-shadow: 0px 0px 10px #00000005;
+}
+
+.hero-area .hero-content2 h5 {
+  color: #fff;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 18px;
+  font-size: 16px;
+  display: inline-block;
+  background: #20191910;
   padding: 13px 22px;
   border-radius: 4px;
   -webkit-box-shadow: 0px 0px 10px #00000005;
@@ -2163,6 +2197,19 @@ ol {
   text-transform: capitalize;
   overflow: hidden;
 }
+
+.hero-area .hero-content2 h2 {
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 55px;
+  color: #fff;
+  margin: 0px 0 18px;
+  text-transform: capitalize;
+  overflow: hidden;
+}
+
+
+
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .hero-area .hero-content h2 {
