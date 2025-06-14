@@ -216,16 +216,16 @@ ul li, ol li {
 }
 
 .btn-common {
-  background-image: linear-gradient(65deg, #FF4D79 0, #FF809F 100%);
-  box-shadow: 0 8px 16px rgba(255, 77, 121, 0.25);
+  background-image: linear-gradient(30deg,  rgba(99, 216, 206, 0.5),  rgba(34, 69, 226, 0.5) 100%);
+  box-shadow: 0 8px 16px #12e6bcb0;
   position: relative;
   z-index: 1;
 }
 
 .btn-common:hover {
   color: #fff;
-  background-image: linear-gradient(65deg, #ff527d 0, #ff85a3 100%);
-  box-shadow: 0 8px 16px rgba(255, 77, 121, 0.4);
+  background-image: linear-gradient(30deg, rgba(34, 69, 226, 0.5) 0, rgba(99, 216, 206, 0.5) 100%);
+  box-shadow: 0 8px 16px #12e6bcb0;
   transition: all .2s ease-in-out;
   -moz-transition: all .2s ease-in-out;
   -webkit-transition: all .2s ease-in-out;
@@ -261,6 +261,37 @@ ul li, ol li {
 .btn-rm {
   padding: 7px 10px;
   text-transform: capitalize;
+}
+
+.btn2 {
+  font-size: 14px;
+  padding: 7px 30px;
+  line-height: 22px;
+  border-radius: 0;
+  font-family: 'Roboto', sans-serif;
+  cursor: pointer;
+  font-weight: 500;
+  color: #fff;
+  text-transform: uppercase;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+  display: inline-block;
+}
+
+.btn2-common {
+  background-image: linear-gradient(30deg,  rgba(99, 216, 206, 0.8),  rgba(34, 69, 226, 0.8) 100%);
+  position: relative;
+  z-index: 1;
+}
+
+.btn2-common:hover {
+  color: #fff;
+  background-image: linear-gradient(30deg, rgba(34, 69, 226, 0.8) 0, rgba(99, 216, 206, 0.8) 100%);
+  transition: all .2s ease-in-out;
+  -moz-transition: all .2s ease-in-out;
+  -webkit-transition: all .2s ease-in-out;
 }
 
 button:focus {
@@ -959,7 +990,7 @@ a.back-to-top:hover, a.back-to-top:focus {
 
 .ready-to-play:before {
   content: '';
-  background-image: linear-gradient(0deg, #FF4D79 0, #FF809F 100%);
+  background-image: linear-gradient(0deg, #4ec6d4 0, #4ec6d4 100%);
   position: absolute;
   display: block;
   left: 0px;
@@ -1089,7 +1120,7 @@ h1 {
 }
 
 .counter-section .counter .icon {
-  background-image: linear-gradient(0deg, #FF4D79 0, #FF809F 100%);
+  background-image: linear-gradient(0deg, #4ec6d4 0, #4ec6d4 100%);
   color: #fff;
   text-align: center;
   line-height: 50px;
@@ -2161,7 +2192,7 @@ footer {
 }
 
 #count .count-wrapper {
-  background-image: linear-gradient(65deg, #FF4D79 0, #FF809F 100%);
+  background-image: linear-gradient(65deg, rgba(0, 107, 139, 0.7) 0, rgba(196, 44, 44, .7) 100%);
   border-radius: 4px;
   box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.08);
   margin-bottom: -35px;
