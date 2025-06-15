@@ -91,12 +91,19 @@
   });
 </script>
 
-
+<script>
+  document.querySelectorAll('.dropdown-menu a[href^="Travel.html#"]').forEach(link => {
+    link.addEventListener('click', function (e) {
+      e.preventDefault(); // prevent default anchor behavior
+      const href = this.getAttribute('href');
+      // Force reload even if navigating within same page
+      window.location.href = href;
+    });
+  });
+</script>
 
 
 <body>
-
-
   <!-- Header Area wrapper Starts -->
   <header id="header-wrap">
     <!-- Navbar Start -->
@@ -131,7 +138,7 @@
                 Keynotes
               </a>
             </li>
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown active">
               <a class="nav-link dropdown-toggle" href="#" id="travelDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
                 Travel
