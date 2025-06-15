@@ -1516,6 +1516,40 @@ h1 {
   text-fill-color: transparent;
 }
 
+/* Carousel Section*/
+
+.carousel-image {
+  max-height: 480px;       /* or any height you want */
+  width: auto;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+.carousel-slide-wrapper {
+  /* background-color: #18181834; */
+  height: 70vh; /* ekranın %60'ı kadar yüksek */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.carousel-slide-wrapper img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.carousel-caption h5 {
+  color: white;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgb(0, 0, 0);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.7));
+}
+
+
 /* Gallery Section */
 #gallery {
   background: #f3f4f3;

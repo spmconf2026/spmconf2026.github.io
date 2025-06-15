@@ -23,6 +23,77 @@
 
 </head>
 
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const folder = 'assets/img/sightseeing/';
+    const imageList = [
+      "Anatolian Fortress.jpg",
+      "Basilica Cistern, Medusa Head.jpg",
+      "Basilica Cistern.jpg",
+      "Blue Mosque.jpg",
+      "Blue Mosque .jpg",
+      "Dolmabahce Palace .jpg",
+      "Dolmabahce Palace.jpg",
+      "Galata Tower.jpg",
+      "Galata Tower .jpg",
+      "Goths' Column Gulhane Park.jpg",
+      "Grand Bazaar.jpg",
+      "Grand Bazaar .jpg",
+      "Grand Bazaar  .jpg",
+      "Hagia Sofia.jpg",
+      "Hagia Sophia  .jpg",
+      "Istanbul Archeology Museum.jpg",
+      "Maiden Tower.jpg",
+      "Ortakoy Mosque.jpg",
+      "Rumeli Fortress.jpg",
+      "Theodosius obelisk.jpg",
+      "Topkapi Palace.jpg",
+      "Topkapi Palace .jpg",
+      "Topkapi Palace Entrance Gate.jpg"
+    ];
+
+    const IMAGE_HEIGHT = 600;
+    const container = document.getElementById('carouselImages');
+    const indicators = document.createElement('ol');
+    indicators.className = 'carousel-indicators';
+
+    imageList.forEach((file, index) => {
+      const caption = file
+        .replace(/\.[^/.]+$/, '')
+        .replace(/[-_]/g, ' ')
+        .replace(/\b\w/g, l => l.toUpperCase());
+
+      // IMAGE SLIDE
+      const item = document.createElement('div');
+      item.className = 'carousel-item' + (index === 0 ? ' active' : '');
+      item.innerHTML = `
+  <div class="carousel-slide-wrapper">
+    <img src="${folder + file}" alt="${caption}">
+  </div>
+  <div class="carousel-caption d-none d-md-block">
+    <h5>${caption}</h5>
+  </div>
+`;
+      container.appendChild(item);
+
+      // CIRCLE INDICATOR
+      const indicator = document.createElement('li');
+      indicator.setAttribute('data-target', '#sightseeingCarousel');
+      indicator.setAttribute('data-slide-to', index.toString());
+      if (index === 0) indicator.classList.add('active');
+      indicators.appendChild(indicator);
+    });
+
+    // Insert indicators just before the arrows
+    const carousel = document.getElementById('sightseeingCarousel');
+    carousel.insertBefore(indicators, carousel.querySelector('.carousel-control-prev'));
+  });
+</script>
+
+
+
+
 <body>
 
 
@@ -128,66 +199,67 @@
       <p style="text-align: justify;">
         Participants coming to Türkiye may require a visa depending on their nationality. Türkiye offers an e-Visa
         application system for many countries, which is fast and easy to use. We recommend checking the official <a
-          href="https://www.mfa.gov.tr/visa-information-for-foreigners.en.mfa" target="_blank"> Ministry of Foreign Affairs of the Republic of Türkiye</a> for up-to-date visa
+          href="https://www.mfa.gov.tr/visa-information-for-foreigners.en.mfa" target="_blank"> Ministry of Foreign
+          Affairs of the Republic of Türkiye</a> for up-to-date visa
         requirements.
       </p>
       <!-- <ul> -->
-        <!-- <li>Citizens of EU, UK, and several other countries can travel visa-free.</li> -->
-        <!-- <li>e-Visa applications typically take less than 10 minutes.</li> -->
-        <!-- <li>If you need an invitation letter, please contact the organizers.</li> -->
+      <!-- <li>Citizens of EU, UK, and several other countries can travel visa-free.</li> -->
+      <!-- <li>e-Visa applications typically take less than 10 minutes.</li> -->
+      <!-- <li>If you need an invitation letter, please contact the organizers.</li> -->
       <!-- </ul> -->
     </div>
   </section>
 
-<section id="sightseeing" class="section-padding">
-  <div class="container">
-    <h2 class="section-title text-center">Explore Istanbul</h2>
-    
-    <!-- Carousel Start -->
-    <div id="sightseeingCarousel" class="carousel slide mb-4" data-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img class="d-block w-100" src="assets/img/sightseeing/image1.jpg" alt="Hagia Sophia">
-        </div>
-        <div class="carousel-item">
-          <img class="d-block w-100" src="assets/img/sightseeing/image2.jpg" alt="Bosphorus">
-        </div>
-        <div class="carousel-item">
-          <img class="d-block w-100" src="assets/img/sightseeing/image3.jpg" alt="Grand Bazaar">
-        </div>
-        <!-- Add more carousel items as needed -->
+  <section id="sightseeing" class="section-padding">
+
+
+    <div class="container">
+      <h2 class="section-title text-center">Explore Istanbul</h2>
+      <div id="sightseeingCarousel" class="carousel slide mb-4" data-ride="carousel">
+        <div class="carousel-inner" id="carouselImages"></div>
+
+        <!-- Arrows will follow -->
+        <a class="carousel-control-prev" href="#sightseeingCarousel" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#sightseeingCarousel" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
       </div>
-      <a class="carousel-control-prev" href="#sightseeingCarousel" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#sightseeingCarousel" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
+
     </div>
-    <!-- Carousel End -->
 
-    <p style="text-align: justify;">
-      Istanbul offers a unique blend of East and West, ancient and modern. While attending the conference, take time to explore the city's rich history, vibrant streets, and stunning architecture.
-    </p>
-    <ul>
-      <li><b>Hagia Sophia</b> – A UNESCO World Heritage Site and architectural wonder.</li>
-      <li><b>Topkapi Palace</b> – The former palace of Ottoman sultans.</li>
-      <li><b>Blue Mosque</b> – Famous for its six minarets and blue tiles.</li>
-      <li><b>Grand Bazaar</b> – One of the world’s oldest and largest covered markets.</li>
-      <li><b>Bosphorus</b> – Take a ferry or boat tour to enjoy views of both Europe and Asia.</li>
-    </ul>
+    <div class="container">
+      <p style="text-align: justify;">
+        Istanbul offers a unique blend of East and West, ancient and modern. While attending the conference, take time
+        to
+        explore the city's rich history, vibrant streets, and stunning architecture.
+      </p>
+      <ul>
+        <li><b>Hagia Sophia</b> – A UNESCO World Heritage Site and architectural wonder.</li>
+        <li><b>Topkapi Palace</b> – The former palace of Ottoman sultans.</li>
+        <li><b>Blue Mosque</b> – Famous for its six minarets and blue tiles.</li>
+        <li><b>Grand Bazaar</b> – One of the world’s oldest and largest covered markets.</li>
+        <li><b>Bosphorus</b> – Take a ferry or boat tour to enjoy views of both Europe and Asia.</li>
+      </ul>
 
-    <p class="mt-3" style="text-align: justify;">
-      For more information about attractions, culture, and local tips, please visit the following official tourism websites:
-    </p>
-    <ul>
-      <li><a href="https://visit.istanbul/" target="_blank">Visit Istanbul - The Istanbul Metropolitan Municipality</a></li>
-      <li><a href="https://istanbul.ktb.gov.tr/?_dil=2" target="_blank">ISTANBUL DIRECTORATE OF CULTURE AND TOURISM</a></li>
-    </ul>
-  </div>
-</section>
+      <p class="mt-3" style="text-align: justify;">
+        For more information about attractions, culture, and local tips, please visit the following official tourism
+        websites:
+      </p>
+      <ul>
+        <li><a href="https://visit.istanbul/" target="_blank">Visit Istanbul - The Istanbul Metropolitan
+            Municipality</a>
+        </li>
+        <li><a href="https://istanbul.ktb.gov.tr/?_dil=2" target="_blank">ISTANBUL DIRECTORATE OF CULTURE AND
+            TOURISM</a>
+        </li>
+      </ul>
+    </div>
+  </section>
 
 
 
