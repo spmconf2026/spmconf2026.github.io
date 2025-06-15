@@ -15,7 +15,11 @@
       } else {
         $('.scrolling-navbar').removeClass('top-nav-collapse');
       }
+
+      // ← this new line forces the scroll handler to run immediately
+      //     so if you land via “Travel.html#visa” the navbar is already collapsed
     });
+      $(window).trigger('scroll');
 
     /* ==========================================================================
        countdown timer
@@ -27,6 +31,22 @@
         + '<div class="time-entry minutes"><span>%M</span> <b>:</b> Minutes</div> '
         + '<div class="time-entry seconds"><span>%S</span> Seconds</div> '));
     });
+
+
+
+    // 1) keep “Travel” highlighted when on Travel.html
+    var path = window.location.pathname.split('/').pop();
+    if (path === 'Travel.html') {
+      $('.navbar-nav .nav-link').removeClass('active'); // clear any other active
+      $('#travelDropdown').addClass('active'); // highlight the parent
+    }
+
+    // 2) on mobile, collapse the menu as soon as you click a dropdown‐item
+    $('.dropdown-menu .dropdown-item').on('click', function () {
+      $('.navbar-collapse').collapse('hide');
+    });
+
+
 
     /* Auto Close Responsive Navbar on Click
     ========================================================*/
