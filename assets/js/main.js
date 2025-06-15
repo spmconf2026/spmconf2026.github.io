@@ -2,24 +2,47 @@
 
   "use strict";
 
-  $(window).on('load', function () {
+$(window).on('load', function() {
+  // 1) Fade out preloader
+  $('#preloader').fadeOut();
 
-    /*Page Loader active
-      ========================================================*/
-    $('#preloader').fadeOut();
+  // 2) Sticky Nav + immediate trigger
+  $(window).on('scroll', function () {
+    if ($(window).scrollTop() > 200) {
+      $('.scrolling-navbar').addClass('top-nav-collapse');
+    } else {
+      $('.scrolling-navbar').removeClass('top-nav-collapse');
+    }
+  });
+  $(window).trigger('scroll');
 
-    // Sticky Nav
-    $(window).on('scroll', function () {
-      if ($(window).scrollTop() > 200) {
-        $('.scrolling-navbar').addClass('top-nav-collapse');
-      } else {
-        $('.scrolling-navbar').removeClass('top-nav-collapse');
-      }
+  // 3) Auto‐close on mobile (only non‐dropdown links)
+  function close_toggle() {
+    if ($(window).width() <= 768) {
+      $('.navbar-collapse a:not(.dropdown-toggle)').on('click', function () {
+        $('.navbar-collapse').collapse('hide');
+      });
+    } else {
+      $('.navbar-collapse a').off('click');
+    }
+  }
+  close_toggle();
+  $(window).resize(close_toggle);
 
-      // ← this new line forces the scroll handler to run immediately
-      //     so if you land via “Travel.html#visa” the navbar is already collapsed
+  // —— TRAVEL DROPDOWN ACTIVE & AUTO‐COLLAPSE ——
+  (function(){
+    const $travelToggle = $('#travelDropdown');
+    const page = window.location.pathname.split('/').pop().toLowerCase();
+    if (page === 'travel.html') {
+      $travelToggle.addClass('active');
+    } else {
+      $travelToggle.removeClass('active');
+    }
+    $('.dropdown-menu .dropdown-item').on('click', function(){
+      $travelToggle.addClass('active');
+      $('.navbar-collapse').collapse('hide');
     });
-      $(window).trigger('scroll');
+  })();
 
     /* ==========================================================================
        countdown timer
@@ -33,20 +56,7 @@
     });
 
 
-
-    // 1) keep “Travel” highlighted when on Travel.html
-    var path = window.location.pathname.split('/').pop();
-    if (path === 'Travel.html') {
-      $('.navbar-nav .nav-link').removeClass('active'); // clear any other active
-      $('#travelDropdown').addClass('active'); // highlight the parent
-    }
-
-    // 2) on mobile, collapse the menu as soon as you click a dropdown‐item
-    $('.dropdown-menu .dropdown-item').on('click', function () {
-      $('.navbar-collapse').collapse('hide');
-    });
-
-
+    
 
     /* Auto Close Responsive Navbar on Click
     ========================================================*/
