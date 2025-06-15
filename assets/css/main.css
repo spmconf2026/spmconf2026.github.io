@@ -335,7 +335,7 @@ a.back-to-top i {
   height: 40px;
   line-height: 40px;
   color: #fff;
-  background-image: linear-gradient(65deg, #FF4D79 0, #FF809F 100%);
+  background-image: linear-gradient(30deg, rgba(99, 216, 206, 0.8),  rgba(34, 69, 226, 0.8) 100%);
   border-radius: 30px;
   text-align: center;
   transition: all 0.2s ease-in-out;
@@ -1217,7 +1217,7 @@ h1 {
 .schedule .nav-tabs .nav-item .nav-link:hover {
   border-color: transparent;
   position: relative;
-  background-image: linear-gradient(65deg, #FF4D79 0, #FF809F 100%);
+  background-image: linear-gradient(65deg, #4d59ff 0, #78f5ef 100%);
 }
 
 .schedule .nav-tabs .nav-item.show .nav-link h4, .schedule .nav-tabs .nav-link.active h4,
@@ -1237,7 +1237,7 @@ h1 {
   bottom: -24px;
   border-width: 12px;
   border-style: solid;
-  border-color: #ff4a67 transparent transparent transparent;
+  border-color: rgba(44, 58, 255, 0.551) transparent transparent transparent;
 }
 
 .schedule .item-text {
@@ -1274,7 +1274,7 @@ h1 {
 }
 
 .schedule .card .schedule-slot-time {
-  background-image: linear-gradient(65deg, #FF4D79 0, #FF809F 100%);
+  background-image: linear-gradient(65deg, #4d59ff 0, #78f5ef 100%);
   color: #fff;
   padding: 38px 28px;
   float: left;
@@ -1499,7 +1499,7 @@ h1 {
   border-radius: 50%;
   -webkit-border-radius: 50%;
   -ms-border-radius: 50%;
-  background-image: linear-gradient(0deg, #FF4D79 0, #FF809F 100%);
+  background-image: linear-gradient(30deg, rgba(99, 216, 206, 0.8),  rgba(34, 69, 226, 0.8) 100%);
   color: #fff;
   display: block;
   text-align: left;
