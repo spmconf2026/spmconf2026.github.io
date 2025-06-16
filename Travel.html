@@ -54,65 +54,66 @@
     ];
 
     const ITUList = [
-      "Anatolian Fortress.webp",
-      "Basilica Cistern, Medusa Head.webp",
-      "Basilica Cistern.webp",
-      "Blue Mosque.webp",
-      "Blue Mosque .webp",
-      "Dolmabahce Palace .webp",
-      "Dolmabahce Palace.webp",
-      "Galata Tower.webp",
-      "Galata Tower .webp",
-      "Goths' Column Gulhane Park.webp",
-      "Grand Bazaar.webp",
-      "Grand Bazaar .webp",
-      "Grand Bazaar  .webp",
-      "Hagia Sofia.webp",
-      "Hagia Sophia  .webp",
-      "Istanbul Archeology Museum.webp",
-      "Maiden Tower.webp",
-      "Ortakoy Mosque.webp",
-      "Rumeli Fortress.webp",
-      "Theodosius obelisk.webp",
-      "Topkapi Palace.webp",
-      "Topkapi Palace .webp",
-      "Topkapi Palace Entrance Gate.webp"
+      "1.webp",
+      "DSC_7978.webp",
+      "DSC_8047.webp",
+      "DSCF9794.webp",
+      "GUMUSSUYU_2 2.webp",
+      "GUMUSSUYU_3 2.webp",
+      "GUMUSSUYU4.webp",
+      "Gümüşsuyu Yerleşkesi_001.webp",
+      "Gümüşsuyu Yerleşkesi_003.webp",
+      "IMG_3075.webp", 
+      "IMG_3124.webp",
+      "IMG_3129.webp", 
+      "IMG_5133.webp",
+      "IMG_5189.webp", 
+      "IMG_9266.webp",
+      "IMG_9267.webp",
+      "ratip_berker_gumussuyu.webp"
     ];
 
-    const IMAGE_HEIGHT = 600;
-    const container = document.getElementById('carouselImages');
-    const indicators = document.createElement('ol');
-    indicators.className = 'carousel-indicators';
+   function buildCarousel(list, carouselId, innerId) {
+      const container  = document.getElementById(innerId);
+      const indicators = document.createElement('ol');
+      indicators.className = 'carousel-indicators';
 
-    imageList.forEach((file, index) => {
-      const caption = file
-        .replace(/\.[^/.]+$/, '')
-        .replace(/[-_]/g, ' ')
-        .replace(/\b\w/g, l => l.toUpperCase());
+      list.forEach((file, idx) => {
+        const caption = file
+          .replace(/\.[^/.]+$/, '')
+          .replace(/[-_]/g, ' ')
+          .replace(/\b\w/g, l => l.toUpperCase());
 
-      // IMAGE SLIDE
-      const item = document.createElement('div');
-      item.className = 'carousel-item' + (index === 0 ? ' active' : '');
-      item.innerHTML = `<div class="carousel-slide-wrapper">
-                        <img 
-                        src="${folder + file}" alt="${caption}">  
-                        </div>
-                        <div class="carousel-caption d-none d-md-block">
-                        <h5>${caption}</h5>
-                        </div>`;
-      container.appendChild(item);
+        // Slide
+        const item = document.createElement('div');
+        item.className = 'carousel-item' + (idx === 0 ? ' active' : '');
+        item.innerHTML = `
+          <div class="carousel-slide-wrapper">
+            <img src="${folder + file}" alt="${caption}" loading="lazy">
+          </div>
+          <div class="carousel-caption d-none d-md-block">
+            <h5>${caption}</h5>
+          </div>`;
+        container.appendChild(item);
 
-      // CIRCLE INDICATOR
-      const indicator = document.createElement('li');
-      indicator.setAttribute('data-target', '#sightseeingCarousel');
-      indicator.setAttribute('data-slide-to', index.toString());
-      if (index === 0) indicator.classList.add('active');
-      indicators.appendChild(indicator);
-    });
+        // Indicator
+        const dot = document.createElement('li');
+        dot.setAttribute('data-target', `#${carouselId}`);
+        dot.setAttribute('data-slide-to', idx);
+        if (idx === 0) dot.classList.add('active');
+        indicators.appendChild(dot);
+      });
 
-    // Insert indicators just before the arrows
-    const carousel = document.getElementById('sightseeingCarousel');
-    carousel.insertBefore(indicators, carousel.querySelector('.carousel-control-prev'));
+      const carousel = document.getElementById(carouselId);
+      carousel.insertBefore(
+        indicators,
+        carousel.querySelector('.carousel-control-prev')
+      );
+    }
+
+    // build both carousels
+    buildCarousel(imageList,  'sightseeingCarousel', 'carouselImages');
+    buildCarousel(ITUList,      'ITUcarousel',         'carouselImagesITU');
   });
 
   $(function () {
@@ -257,15 +258,16 @@
   <section id="ITU" class="section-padding">
     <div class="container">
       <h2 class="section-title text-center">Istanbul Technical University (ITU) Mechanical Engineering Department</h2>
-      <div id="sightseeingCarousel" class="carousel slide mb-4" data-ride="carousel">
-        <div class="carousel-inner" id="carouselImages"></div>
+      <div id="ITUcarousel" class="carousel slide mb-4" data-ride="carousel">
+        <div class="carousel-inner" id="carouselImagesITU"></div>
+
 
         <!-- Arrows will follow -->
-        <a class="carousel-control-prev" href="#sightseeingCarousel" role="button" data-slide="prev">
+        <a class="carousel-control-prev" href="#ITUcarousel" role="button" data-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="sr-only">Previous</span>
         </a>
-        <a class="carousel-control-next" href="#sightseeingCarousel" role="button" data-slide="next">
+        <a class="carousel-control-next" href="#ITUcarousel" role="button" data-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="sr-only">Next</span>
         </a>
