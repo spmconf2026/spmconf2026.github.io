@@ -2,47 +2,47 @@
 
   "use strict";
 
-$(window).on('load', function() {
-  // 1) Fade out preloader
-  $('#preloader').fadeOut();
+  $(window).on('load', function () {
+    // 1) Fade out preloader
+    $('#preloader').fadeOut();
 
-  // 2) Sticky Nav + immediate trigger
-  $(window).on('scroll', function () {
-    if ($(window).scrollTop() > 200) {
-      $('.scrolling-navbar').addClass('top-nav-collapse');
-    } else {
-      $('.scrolling-navbar').removeClass('top-nav-collapse');
+    // 2) Sticky Nav + immediate trigger
+    $(window).on('scroll', function () {
+      if ($(window).scrollTop() > 200) {
+        $('.scrolling-navbar').addClass('top-nav-collapse');
+      } else {
+        $('.scrolling-navbar').removeClass('top-nav-collapse');
+      }
+    });
+    $(window).trigger('scroll');
+
+    // 3) Auto‐close on mobile (only non‐dropdown links)
+    function close_toggle() {
+      if ($(window).width() <= 768) {
+        $('.navbar-collapse a:not(.dropdown-toggle)').on('click', function () {
+          $('.navbar-collapse').collapse('hide');
+        });
+      } else {
+        $('.navbar-collapse a').off('click');
+      }
     }
-  });
-  $(window).trigger('scroll');
+    close_toggle();
+    $(window).resize(close_toggle);
 
-  // 3) Auto‐close on mobile (only non‐dropdown links)
-  function close_toggle() {
-    if ($(window).width() <= 768) {
-      $('.navbar-collapse a:not(.dropdown-toggle)').on('click', function () {
+    // —— TRAVEL DROPDOWN ACTIVE & AUTO‐COLLAPSE ——
+    (function () {
+      const $travelToggle = $('#travelDropdown');
+      const page = window.location.pathname.split('/').pop().toLowerCase();
+      if (page === 'travel.html') {
+        $travelToggle.addClass('active');
+      } else {
+        $travelToggle.removeClass('active');
+      }
+      $('.dropdown-menu .dropdown-item').on('click', function () {
+        $travelToggle.addClass('active');
         $('.navbar-collapse').collapse('hide');
       });
-    } else {
-      $('.navbar-collapse a').off('click');
-    }
-  }
-  close_toggle();
-  $(window).resize(close_toggle);
-
-  // —— TRAVEL DROPDOWN ACTIVE & AUTO‐COLLAPSE ——
-  (function(){
-    const $travelToggle = $('#travelDropdown');
-    const page = window.location.pathname.split('/').pop().toLowerCase();
-    if (page === 'travel.html') {
-      $travelToggle.addClass('active');
-    } else {
-      $travelToggle.removeClass('active');
-    }
-    $('.dropdown-menu .dropdown-item').on('click', function(){
-      $travelToggle.addClass('active');
-      $('.navbar-collapse').collapse('hide');
-    });
-  })();
+    })();
 
     /* ==========================================================================
        countdown timer
@@ -56,7 +56,7 @@ $(window).on('load', function() {
     });
 
 
-    
+
 
     /* Auto Close Responsive Navbar on Click
     ========================================================*/

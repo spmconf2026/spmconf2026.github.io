@@ -991,7 +991,7 @@ a.back-to-top:hover, a.back-to-top:focus {
 
 .ready-to-play:before {
   content: '';
-  background-image: linear-gradient(0deg, #4ec6d4 0, #4ec6d4 100%);
+  background-image: linear-gradient(0deg, #4ec7d400 0, #4ec7d400 100%);
   position: absolute;
   display: block;
   left: 0px;
@@ -1983,7 +1983,7 @@ h1 {
 
 .list-unstyled li {
   margin-top: 10px;
-  color: #dc3545 !important;
+  color: #006b8b !important;
 }
 
 .text-danger {
@@ -2472,7 +2472,7 @@ footer {
 }
 
 #hero-area .contents .banner-info {
-  font-size: 18px;
+  font-size: 22px;
   font-style: italic;
   margin-bottom: 22px;
   line-height: 24px;
@@ -2489,7 +2489,7 @@ footer {
 }
 
 #hero-area .contents .banner-desc {
-  font-size: 17px;
+  font-size: 22px;
   font-weight: 400;
   color: #fff;
   line-height: 30px;

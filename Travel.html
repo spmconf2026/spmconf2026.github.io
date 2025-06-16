@@ -28,29 +28,55 @@
   window.addEventListener('DOMContentLoaded', () => {
     const folder = 'assets/img/sightseeing/';
     const imageList = [
-      "Anatolian Fortress.jpg",
-      "Basilica Cistern, Medusa Head.jpg",
-      "Basilica Cistern.jpg",
-      "Blue Mosque.jpg",
-      "Blue Mosque .jpg",
-      "Dolmabahce Palace .jpg",
-      "Dolmabahce Palace.jpg",
-      "Galata Tower.jpg",
-      "Galata Tower .jpg",
-      "Goths' Column Gulhane Park.jpg",
-      "Grand Bazaar.jpg",
-      "Grand Bazaar .jpg",
-      "Grand Bazaar  .jpg",
-      "Hagia Sofia.jpg",
-      "Hagia Sophia  .jpg",
-      "Istanbul Archeology Museum.jpg",
-      "Maiden Tower.jpg",
-      "Ortakoy Mosque.jpg",
-      "Rumeli Fortress.jpg",
-      "Theodosius obelisk.jpg",
-      "Topkapi Palace.jpg",
-      "Topkapi Palace .jpg",
-      "Topkapi Palace Entrance Gate.jpg"
+      "Anatolian Fortress.webp",
+      "Basilica Cistern, Medusa Head.webp",
+      "Basilica Cistern.webp",
+      "Blue Mosque.webp",
+      "Blue Mosque .webp",
+      "Dolmabahce Palace .webp",
+      "Dolmabahce Palace.webp",
+      "Galata Tower.webp",
+      "Galata Tower .webp",
+      "Goths' Column Gulhane Park.webp",
+      "Grand Bazaar.webp",
+      "Grand Bazaar .webp",
+      "Grand Bazaar  .webp",
+      "Hagia Sofia.webp",
+      "Hagia Sophia  .webp",
+      "Istanbul Archeology Museum.webp",
+      "Maiden Tower.webp",
+      "Ortakoy Mosque.webp",
+      "Rumeli Fortress.webp",
+      "Theodosius obelisk.webp",
+      "Topkapi Palace.webp",
+      "Topkapi Palace .webp",
+      "Topkapi Palace Entrance Gate.webp"
+    ];
+
+    const ITUList = [
+      "Anatolian Fortress.webp",
+      "Basilica Cistern, Medusa Head.webp",
+      "Basilica Cistern.webp",
+      "Blue Mosque.webp",
+      "Blue Mosque .webp",
+      "Dolmabahce Palace .webp",
+      "Dolmabahce Palace.webp",
+      "Galata Tower.webp",
+      "Galata Tower .webp",
+      "Goths' Column Gulhane Park.webp",
+      "Grand Bazaar.webp",
+      "Grand Bazaar .webp",
+      "Grand Bazaar  .webp",
+      "Hagia Sofia.webp",
+      "Hagia Sophia  .webp",
+      "Istanbul Archeology Museum.webp",
+      "Maiden Tower.webp",
+      "Ortakoy Mosque.webp",
+      "Rumeli Fortress.webp",
+      "Theodosius obelisk.webp",
+      "Topkapi Palace.webp",
+      "Topkapi Palace .webp",
+      "Topkapi Palace Entrance Gate.webp"
     ];
 
     const IMAGE_HEIGHT = 600;
@@ -67,14 +93,13 @@
       // IMAGE SLIDE
       const item = document.createElement('div');
       item.className = 'carousel-item' + (index === 0 ? ' active' : '');
-      item.innerHTML = `
-  <div class="carousel-slide-wrapper">
-    <img src="${folder + file}" alt="${caption}">
-  </div>
-  <div class="carousel-caption d-none d-md-block">
-    <h5>${caption}</h5>
-  </div>
-`;
+      item.innerHTML = `<div class="carousel-slide-wrapper">
+                        <img 
+                        src="${folder + file}" alt="${caption}">  
+                        </div>
+                        <div class="carousel-caption d-none d-md-block">
+                        <h5>${caption}</h5>
+                        </div>`;
       container.appendChild(item);
 
       // CIRCLE INDICATOR
@@ -90,77 +115,30 @@
     carousel.insertBefore(indicators, carousel.querySelector('.carousel-control-prev'));
   });
 
+  $(function () {
+    const $travelToggle = $('#travelDropdown');
 
+    // 1) on page-load, if we’re on travel.html, mark it active
+    const page = window.location.pathname.split('/').pop().toLowerCase();
+    if (page === 'travel.html') {
+      $travelToggle.addClass('active');
+    }
+
+    // 2) whenever *any* dropdown-item is clicked, highlight Travel and collapse nav
+    $(document).on('click', '.dropdown-menu .dropdown-item', function (e) {
+      // mark the travel button active
+      $travelToggle.addClass('active');
+      // hide the mobile menu
+      $('.navbar-collapse').collapse('hide');
+    });
+  });
 </script>
 
 <body>
   <!-- Header Area wrapper Starts -->
   <header id="header-wrap">
     <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg bg-inverse fixed-top scrolling-navbar">
-      <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <a href="index.html" class="navbar-brand"><img src="assets/img/spm.png" alt=""></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-          aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-          <i class="lni-menu"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-          <ul class="navbar-nav mr-auto w-100 justify-content-end">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">
-                Home
-              </a>
-            </li>
-            <li class="nav-item">
-            </li>
-            <a class="nav-link" href="index.html#about">
-              About
-            </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="index.html#schedules">
-                schedules
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="index.html#team">
-                Keynotes
-              </a>
-            </li>
-            <li class="nav-item dropdown active">
-              <a class="nav-link dropdown-toggle" href="#" id="travelDropdown" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                Travel
-              </a>
-              <div class="dropdown-menu" aria-labelledby="travelDropdown">
-                <a class="dropdown-item" href="#visa">Visa</a>
-                <a class="dropdown-item" href="#sightseeing">Explore Istanbul</a>
-                <a class="dropdown-item" href="#local-info">Taksim & Local Info</a>
-                <a class="dropdown-item" href="#transport">How Can I Get to the Conference Venue?</a>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="http://solidmodeling.org/spm-conferences/">
-                Previous Conferences
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#sponsors">
-                Sponsors
-              </a>
-            </li>
-            <!-- <li class="nav-item">
-                <a class="nav-link" href="#google-map-area">
-                  Contact
-                </a>
-              </li> -->
-        </div>
-        <div class="button">
-          <a href="submit.html" class="btn2 btn2-common"> Submit Now</a>
-        </div>
-      </div>
-    </nav>
+    <div id="navbar-placeholder"></div>
     <!-- Navbar End -->
 
     <!-- Hero Area Start -->
@@ -276,9 +254,60 @@
     </div>
   </section>
 
+  <section id="ITU" class="section-padding">
+    <div class="container">
+      <h2 class="section-title text-center">Istanbul Technical University (ITU) Mechanical Engineering Department</h2>
+      <div id="sightseeingCarousel" class="carousel slide mb-4" data-ride="carousel">
+        <div class="carousel-inner" id="carouselImages"></div>
+
+        <!-- Arrows will follow -->
+        <a class="carousel-control-prev" href="#sightseeingCarousel" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#sightseeingCarousel" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+
+    </div>
+
+    <div class="container">
+      <p>
+        The Mechanical Engineering Faculty at Istanbul Technical University traces its roots back to the founding of the
+        Mühendishane-i Bahr-i Hümayun in 1773, and was formally established as the Faculty of Mechanical and Chemical
+        Engineering in 1944. Over its long history, it has grown into one of Turkey’s premier engineering schools,
+        blending centuries-old tradition with state-of-the-art research.
+      </p>
+      <p>
+        Today, the faculty offers BSc, MSc and PhD programs across core areas such as fluid mechanics, thermodynamics,
+        dynamics & control, mechatronics, robotics, materials science and manufacturing processes. Its capabilities
+        include cutting-edge laboratories (e.g. Fluid Dynamics Lab, Thermo-Fluid Systems Lab, Robotics & Mechatronics
+        Lab, CAD/CAM Center), high-performance computing facilities, and active participation in TÜBİTAK, EU Horizon and
+        industry-funded research projects.
+      </p>
+
+
+      <p class="mt-3" style="text-align: justify;">
+        For more information about attractions, culture, and local tips, please visit the following official tourism
+        websites:
+      </p>
+      <ul>
+        <li><a href="https://visit.istanbul/" target="_blank">Visit Istanbul - The Istanbul Metropolitan
+            Municipality</a>
+        </li>
+        <li><a href="https://istanbul.ktb.gov.tr/?_dil=2" target="_blank">ISTANBUL DIRECTORATE OF CULTURE AND
+            TOURISM</a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+
   <section id="transport" class="section-padding">
     <div class="container">
-      <h2 class="section-title text-center">How Can I Get to the Conference Venue?</h2>
+      <h2 class="section-title text-center">How to reach ITU Mechanical Engineering?</h2>
       <p style="text-align: justify;">
         The SPM 2026 conference will be held at <b>Istanbul Technical University, Gümüşsuyu Campus</b>, located close to
         Taksim Square. The venue is easily accessible by various means of transportation.
@@ -354,6 +383,24 @@
   <script src="assets/js/nivo-lightbox.js"></script>
   <script src="assets/js/video.js"></script>
   <script src="assets/js/main.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      fetch("navbar.html")
+        .then(function (res) { return res.text(); })
+        .then(function (html) {
+          document
+            .getElementById("navbar-placeholder")
+            .innerHTML = html;
+          // Eğer Bootstrap collapse ya da dropdown gibi şeyler hemen çalışmıyorsa:
+          // $('[data-toggle="collapse"]').collapse();
+        })
+        .catch(function (err) {
+          console.error("Navbar yüklenirken hata:", err);
+        });
+    });
+  </script>
+
 </body>
 
 </html>
