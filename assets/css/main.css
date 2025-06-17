@@ -1549,6 +1549,10 @@ h1 {
   filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.7));
 }
 
+.carousel-item {
+  transition: transform 0.8s ease-in-out, opacity 1s ease-in-out;
+}
+
 
 /* Gallery Section */
 #gallery {
