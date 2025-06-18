@@ -295,6 +295,82 @@ ul li, ol li {
   -webkit-transition: all .2s ease-in-out;
 }
 
+.btn3 {
+  font-size: 14px;
+  padding: 10px 15px;
+  line-height: 22px;
+  border-radius: 30px;
+  font-family: 'Roboto', sans-serif;
+  cursor: pointer;
+  font-weight: 500;
+  color: #fff;
+  text-transform: uppercase;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+  display: inline-block;
+}
+
+.btn3 i {
+  margin-right: 5px;
+}
+
+.btn3:focus,
+.btn3:active {
+  box-shadow: none;
+  outline: none;
+  color: #fff;
+}
+
+.btn3-common {
+  background-image: linear-gradient(30deg,  rgba(99, 216, 206, 0.5),  rgba(34, 69, 226, 0.5) 100%);
+  /* box-shadow: 0 8px 16px #12e6bcb0; */
+  position: relative;
+  z-index: 1;
+}
+
+.btn3-common:hover {
+  color: #fff;
+  background-image: linear-gradient(30deg, rgba(99, 216, 206, 0.5),  rgba(34, 69, 226, 0.5) 100%);
+  box-shadow: 0 8px 16px #12e6bcb0;
+  transition: all .2s ease-in-out;
+  -moz-transition: all .2s ease-in-out;
+  -webkit-transition: all .2s ease-in-out;
+}
+
+.btn3-border {
+  color: #212121;
+  background-color: transparent;
+  border: 1px solid rgba(36, 36, 36, 0.2);
+}
+
+.btn3-border:hover {
+  color: #ff4a67;
+  border-color: #ff4a67;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.btn3-fill {
+  background: #fff;
+  color: #212121;
+}
+
+.btn3-fill:hover {
+  color: #ff4a67;
+}
+
+.btn3-lg {
+  padding: 12px 34px;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.btn3-rm {
+  padding: 7px 10px;
+  text-transform: capitalize;
+}
+
 button:focus {
   outline: none !important;
 }
