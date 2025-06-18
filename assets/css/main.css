@@ -114,13 +114,13 @@ ul li, ol li {
 
 .section-title:before {
   content: "[";
-  color: #ff4a67;
+  color: #006b8b;
   padding-right: 10px;
 }
 
 .section-title:after {
   content: "]";
-  color: #ff4a67;
+  color: #006b8b;
   padding-left: 10px;
 }
 
