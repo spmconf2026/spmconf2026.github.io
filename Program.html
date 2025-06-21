@@ -26,44 +26,12 @@
 
 <script>
   window.addEventListener('DOMContentLoaded', () => {
-    const folder = 'assets/img/sightseeing/';
-    const imageList = [
-      "Basilica Cistern, Medusa Head.webp",
-      "Basilica Cistern.webp",
-      "Anatolian Fortress.webp",
-      "Blue Mosque.webp",
-      "Blue Mosque .webp",
-      "Dolmabahce Palace .webp",
-      "Dolmabahce Palace.webp",
-      "Galata Tower.webp",
-      "Galata Tower .webp",
-      "Goths' Column Gulhane Park.webp",
-      "Grand Bazaar.webp",
-      "Grand Bazaar .webp",
-      "Grand Bazaar  .webp",
-      "Hagia Sofia.webp",
-      "Hagia Sophia  .webp",
-      "Istanbul Archeology Museum.webp",
-      "Maiden Tower.webp",
-      "Ortakoy Mosque.webp",
-      "Rumeli Fortress.webp",
-      "Theodosius obelisk.webp",
-      "Topkapi Palace.webp",
-      "Topkapi Palace .webp",
-      "Topkapi Palace Entrance Gate.webp"
-    ];
-
+    const folder = 'assets/img/venue/';
     const ITUList = [
-      "DSCF9794.webp",
-      "GUMUSSUYU_3 2.webp",
-      "GUMUSSUYU4.webp",
-      "Gümüşsuyu Yerleşkesi_001.webp",
-      "Gümüşsuyu Yerleşkesi_003.webp",
-      "IMG_3124.webp",
-      "IMG_3129.webp",
-      "IMG_5189.webp",
-      "IMG_9266.webp",
-      "ratip_berker_gumussuyu.webp"
+      "70th year blue hall (72).jpg",
+      "Visual Education Hall (72).jpg",
+      "Orhan Ocalgiray conferance room (305).jpg",
+      "Uzeyir Garih Senate Hall (40).png",
     ];
 
     function buildCarousel(list, carouselId, innerId, add_caption) {
@@ -111,8 +79,7 @@
     }
 
     // build both carousels
-    buildCarousel(imageList, 'sightseeingCarousel', 'carouselImages', true);
-    buildCarousel(ITUList, 'ITUcarousel', 'carouselImagesITU', false);
+    buildCarousel(ITUList, 'ITUcarousel', 'carouselImagesITU', true);
   });
 
   $(function () {
@@ -168,177 +135,11 @@
   </header>
   <!-- Header Area wrapper End -->
 
-  <section id="visa" class="section-padding">
-    <div class="container">
-      <h2 class="section-title text-center">Visa</h2>
-      <p style="text-align: justify;">
-        Participants coming to Türkiye may require a visa depending on their nationality. Türkiye offers an e-Visa
-        application system for many countries, which is fast and easy to use. We recommend checking the official <a
-          href="https://www.mfa.gov.tr/visa-information-for-foreigners.en.mfa" target="_blank"> Ministry of Foreign
-          Affairs of the Republic of Türkiye</a> for up-to-date visa
-        requirements.
-      </p>
-
-      <br>
-      <div class="row justify-content-center mb-4">
-        <div class="col-lg-10">
-          <div class="table-responsive">
-            <table class="table table-bordered">
-              <thead class="thead-light">
-                <tr>
-                  <th>Category</th>
-                  <th>What it means / typical use case</th>
-                  <th>Usual maximum stay</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Visa-Free Entry</strong><br><span style="color: red;">(USA, China, Canada, EU, UK, Israel,
-                      Japan, South Korea)</span></td>
-                  <td>Nationals from ~90 jurisdictions enter with just their passport; no online application or fee.
-                  </td>
-                  <td>30, 60 or 90 days (country-specific)</td>
-                </tr>
-                <tr>
-                  <td><strong>National ID Card Entry</strong></td>
-                  <td>Citizens of certain European neighbours and EU/CoE states may enter using a chipped national ID
-                    instead of a passport.</td>
-                  <td>Up to 90 days</td>
-                </tr>
-                <tr>
-                  <td><strong>Electronic Visa (e-Visa)</strong></td>
-                  <td>Single or multiple-entry visa obtained in 3 minutes at <a href="https://www.evisa.gov.tr"
-                      target="_blank">evisa.gov.tr</a> before travel; available to dozens of countries (some
-                    conditionally).</td>
-                  <td>15, 30 or 90 days</td>
-                </tr>
-                <tr>
-                  <td><strong>Visa on Arrival / Airport Sticker Visa</strong></td>
-                  <td>Limited list of countries can still pay at border or at self-service kiosks for a sticker visa
-                    (often replaced by e-Visa).</td>
-                  <td>Usually 30 days (some 90 days)</td>
-                </tr>
-                <tr>
-                  <td><strong>Embassy / Consulate “Sticker” Visa</strong></td>
-                  <td>Traditional application for tourists, business, family visits, etc., when e-Visa or waiver is not
-                    available.</td>
-                  <td>30–90 days (as issued)</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-      <!-- <ul> -->
-      <!-- <li>Citizens of EU, UK, and several other countries can travel visa-free.</li> -->
-      <!-- <li>e-Visa applications typically take less than 10 minutes.</li> -->
-      <!-- <li>If you need an invitation letter, please contact the organizers.</li> -->
-      <!-- </ul> -->
-    </div>
-  </section>
-  <hr>
-  <section id="sightseeing" class="section-padding">
-
-
-    <div class="container">
-      <h2 class="section-title text-center">Explore Istanbul</h2>
-      <div id="sightseeingCarousel" class="carousel slide carousel-fade mb-4" data-interval="3000" data-ride="carousel">
-        <div class="carousel-inner" id="carouselImages"></div>
-
-        <!-- Arrows will follow -->
-        <a class="carousel-control-prev" href="#sightseeingCarousel" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#sightseeingCarousel" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div>
-
-    </div>
-
-    <div class="container">
-      <p style="text-align: justify;">
-        Istanbul is a city where continents collide and centuries converse in every stone and street. Ancient Byzantine
-        mosaics sit side by side with soaring Ottoman minarets, while sleek glass towers cast reflections on
-        centuries-old waterways. As you wander through winding lanes, you’ll pass bustling bazaars brimming with spices
-        and silks, hear the call to prayer echo off marble domes, and taste the savory sweetness of freshly baked simit
-        from a corner vendor. Don’t miss a sunset cruise along the Bosphorus—where Europe’s grand palaces face Asia’s
-        tree-lined shores—and be sure to lose yourself in vibrant neighborhoods like Karaköy, with its street-art-clad
-        warehouses turned hip cafés, or Üsküdar, where tea gardens spill onto the waterfront. Whether you’re drawn to
-        hidden courtyard mosques, rooftop terraces overlooking the Golden Horn, or the pulse of modern art galleries in
-        the former galley district of Tophane, Istanbul rewards every curiosity and transforms even a brief stroll into
-        an unforgettable journey through time.
-
-      </p>
-      <br>
-      <ul>
-        <li><b>Hagia Sophia</b> – A UNESCO World Heritage Site and architectural wonder.</li>
-        <li><b>Topkapi Palace</b> – The former palace of Ottoman sultans.</li>
-        <li><b>Blue Mosque</b> – Famous for its six minarets and blue tiles.</li>
-        <li><b>Grand Bazaar</b> – One of the world’s oldest and largest covered markets.</li>
-        <li><b>Galata Tower</b> – A medieval stone tower offering panoramic views over Istanbul’s historic peninsula.
-        </li>
-        <li><b>Bosphorus</b> – Take a ferry or boat tour to enjoy views of both Europe and Asia.</li>
-      </ul>
-
-      <p class="mt-3" style="text-align: justify;">
-        For more information about attractions, culture, and local tips, please visit the following official tourism
-        websites:
-      </p>
-      <ul>
-        <li><a href="https://visit.istanbul/" target="_blank">Visit Istanbul - The Istanbul Metropolitan
-            Municipality</a>
-        </li>
-        <li><a href="https://istanbul.ktb.gov.tr/?_dil=2" target="_blank">ISTANBUL DIRECTORATE OF CULTURE AND
-            TOURISM</a>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <hr>
-
-  <section id="local-info" class="section-padding">
-    <div class="container">
-      <h2 class="section-title text-center">Taksim & Local Info</h2>
-      <p style="text-align: justify;">
-        The conference venue is located near <b>Taksim Square</b>, one of Istanbul’s most central and vibrant areas.
-        Taksim offers numerous hotels, restaurants, cafés, and easy access to public transportation.
-      </p>
-      <ul>
-        <li>Popular areas to stay: Taksim, Cihangir, Galata, Karaköy.</li>
-        <li>Metro, tram, and bus lines run frequently and are affordable.</li>
-        <li>Currency: Turkish Lira (₺). Credit cards are widely accepted.</li>
-        <li>Official language: Turkish. English is commonly understood in tourist areas.</li>
-      </ul>
-    </div>
-  </section>
-
-  <hr>
-
-  <section id="local-info" class="section-padding">
-    <div class="container">
-      <h2 class="section-title text-center">Accommodation</h2>
-      <p style="text-align: justify;">
-        Disclaimer: None of the listed hotels are affiliated with SPM, and attendees are not obligated to choose any of
-        them.
-        All prices are listed in USD.
-        <br>
-        (TBA)
-      </p>
-    </div>
-  </section>
-
-
-  <hr>
-
   <section id="ITU" class="section-padding">
     <div class="container">
       <h2 class="section-title text-center">ITU
         Mechanical Engineering Department</h2>
-      <div id="ITUcarousel" class="carousel slide carousel-fade mb-4" data-interval="3000" data-ride="carousel">
+      <div id="ITUcarousel" class="carousel slide carousel-fade mb-4" data-interval="3000"  data-ride="carousel">
         <div class="carousel-inner" id="carouselImagesITU"></div>
 
 
@@ -373,7 +174,7 @@
 
     </div>
   </section>
-  <hr>
+<hr>
 
   <section id="transport" class="section-padding">
     <div class="container">
