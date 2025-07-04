@@ -151,9 +151,10 @@
               <div class="icon">
                 <img class="img-fluid" src="assets/img/spm22.png" alt="">
               </div>
-  <h2 class="head-title">Symposium on Solid and Physical Modeling (SPM) 2026 </h2>
+              <h2 class="head-title">Symposium on Solid and Physical Modeling (SPM) 2026 </h2>
               <p class="banner-info"> <i class="lni-calendar"></i> 6-9, July 2026</p>
-              <p class="banner-desc"> <i class="lni-map-marker"></i> Istanbul Technical University,<br> Gumussuyu Campus, <br>Istanbul, Türkiye</p>
+              <p class="banner-desc"> <i class="lni-map-marker"></i> Istanbul Technical University,<br> Gumussuyu
+                Campus, <br>Istanbul, Türkiye</p>
               <!-- <p class="banner-desc"style="color: yellow;">
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente, nobis nesciunt atque perferendis, ipsa doloremque deserunt cum qui.</p> -->
               <div class="banner-btn">
@@ -301,7 +302,7 @@
 
   <hr>
 
-  <section id="local-info" class="section-padding">
+  <section id="taksim-info" class="section-padding">
     <div class="container">
       <h2 class="section-title text-center">Taksim & Local Info</h2>
       <p style="text-align: justify;">
@@ -319,7 +320,7 @@
 
   <hr>
 
-  <section id="local-info" class="section-padding">
+  <section id="accommodation" class="section-padding">
     <div class="container">
       <!-- 1. Heading -->
       <h2 class="section-title text-center mb-2">Accommodation</h2>
@@ -485,22 +486,44 @@
   <script src="assets/js/video.js"></script>
   <script src="assets/js/main.js"></script>
 
+
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       fetch("navbar.html")
-        .then(function (res) { return res.text(); })
-        .then(function (html) {
-          document
-            .getElementById("navbar-placeholder")
-            .innerHTML = html;
-          // Eğer Bootstrap collapse ya da dropdown gibi şeyler hemen çalışmıyorsa:
-          // $('[data-toggle="collapse"]').collapse();
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById("navbar-placeholder").innerHTML = html;
+
+          $('.dropdown-menu a[href^="Travel.html#"]').on('click', function (e) {
+            e.preventDefault();
+
+            const targetId = $(this).attr('href').split('#')[1];
+            const target = document.getElementById(targetId);
+            if (target) {
+              $('html, body').animate({
+                scrollTop: $(target).offset().top - 80
+              }, 600);
+            }
+
+            const $navbarCollapse = $('.navbar-collapse');
+            if ($navbarCollapse.hasClass('show')) {
+              $navbarCollapse.collapse('hide');
+            }
+
+            const $dropdown = $(this).closest('.dropdown');
+            $dropdown.removeClass('show');
+            $dropdown.find('.dropdown-menu').removeClass('show');
+            $dropdown.find('a.dropdown-toggle').attr('aria-expanded', 'false');
+          });
+
+          $('#travelDropdown').hover(function () {
+            $(this).trigger('click');
+          });
         })
-        .catch(function (err) {
-          console.error("Navbar yüklenirken hata:", err);
-        });
+        .catch(err => console.error("Navbar yüklenirken hata:", err));
     });
   </script>
+
 
 </body>
 
