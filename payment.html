@@ -46,11 +46,13 @@
             </div>
         </div>
     </header>
+
     <section id="payment-details" class="section-padding">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 col-md-10 col-12">
-                    <div class="card shadow-sm border-0">
+
+                    <div class="card shadow-sm border-0 mb-5">
                         <div class="card-body p-5">
                             <h4 class="mb-4 text-center">Bank Transfer (SWIFT) Instructions</h4>
                             <p class="mb-4 text-center text-danger">
@@ -86,7 +88,8 @@
                                         <tr>
                                             <th scope="row" class="bg-light"
                                                 style="vertical-align: top !important; padding-top: 15px !important;">
-                                                Transfer Description / Notes <span style="color: red;""><strong>(*)</strong></span></th>
+                                                Transfer Description / Notes <span
+                                                    style="color: red;"><strong>(*)</strong></span></th>
                                             <td style="vertical-align: top !important; padding-top: 15px !important;">
 
                                                 <p style="margin-top: 0; margin-bottom: 5px;">
@@ -109,18 +112,107 @@
                                     Please note that international SWIFT transfers typically take 3 to 5 business days
                                     to reach our account.
                                 </p>
-                                <p class="text-muted small">
-                                    After completing the transfer, please send the payment receipt to <a
-                                        href="mailto:cams19@itu.edu.tr">cams19@itu.edu.tr</a> to confirm
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4 class="mb-4 text-center">Submit Your Payment Receipt</h4>
+
+                    <div class="d-flex flex-column p-4 mb-5 shadow-sm rounded"
+                        style="background-color: #fcfcfc; border-left: 4px solid #28a745; transition: transform 0.3s ease;">
+
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="icon-box mr-3" style="font-size: 2rem; color: #28a745;">
+                                <i class="lni-cloud-upload"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-weight-bold mb-1" style="font-size: 1.1rem; color: #222;">Upload
+                                    Document</h5>
+                                <p class="small text-muted mb-0" style="font-size: 14px;">
+                                    After completing the transfer, please upload your receipt (PDF, JPG, PNG) to confirm
                                     your registration.
                                 </p>
                             </div>
                         </div>
+
+                        <form id="uploadForm">
+
+                            <div class="row">
+                                <div class="col-md-6 form-group mb-3">
+                                    <label for="uploaderName" class="font-weight-bold" style="color: #444;">Full
+                                        Name:</label>
+                                    <input type="text" class="form-control" id="uploaderName" name="uploaderName"
+                                        placeholder="Name used for registration" required
+                                        style="border-radius: 6px; border: 1px solid #ced4da;">
+                                </div>
+
+                                <div class="col-md-6 form-group mb-3">
+                                    <label for="contactEmail" class="font-weight-bold" style="color: #444;">Contact
+                                        Email:</label>
+                                    <input type="email" class="form-control" id="contactEmail" name="contactEmail"
+                                        placeholder="your.email@example.com" required
+                                        style="border-radius: 6px; border: 1px solid #ced4da;">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4 form-group mb-3">
+                                    <label for="conferenceType" class="font-weight-bold"
+                                        style="color: #444;">Conference:</label>
+                                    <select class="form-control" id="conferenceType" name="conferenceType" required
+                                        style="border-radius: 6px; border: 1px solid #ced4da;">
+                                        <option value="" disabled selected>Select Conference</option>
+                                        <option value="SPM">SPM</option>
+                                        <option value="SMI">SMI</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-4 form-group mb-3">
+                                    <label for="submissionType" class="font-weight-bold" style="color: #444;">Submission
+                                        Type:</label>
+                                    <select class="form-control" id="submissionType" name="submissionType" required
+                                        style="border-radius: 6px; border: 1px solid #ced4da;">
+                                        <option value="" disabled selected>Select Type</option>
+                                        <option value="Full Paper">Full Paper</option>
+                                        <option value="Presentation-Only">Presentation-Only</option>
+                                        <option value="Poster">Poster</option>
+                                        <option value="External Attendee">External Attendee (No Paper)</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-4 form-group mb-3">
+                                    <label for="submissionNumber" class="font-weight-bold"
+                                        style="color: #444;">Submission Number:</label>
+                                    <input type="text" class="form-control" id="submissionNumber"
+                                        name="submissionNumber" placeholder="e.g., 123 (If applicable)"
+                                        style="border-radius: 6px; border: 1px solid #ced4da;">
+                                </div>
+                            </div>
+
+                            <div class="form-group mb-4 mt-2">
+                                <label for="documentFile" class="font-weight-bold" style="color: #444;">Select Receipt
+                                    File:</label>
+                                <input type="file" class="form-control-file p-2 w-100" id="documentFile"
+                                    name="documentFile" accept=".pdf, .jpg, .jpeg, .png" required
+                                    style="border-radius: 6px; border: 1px dashed #adb5bd; background-color: #ffffff;">
+                            </div>
+
+                            <button type="submit" id="submitBtn" class="btn btn-common btn-block"
+                                style="border-radius: 30px; padding: 12px 0; font-weight: 600; text-transform: uppercase;">
+                                <i class="lni-check-mark-circle mr-1"></i> Send Receipt
+                            </button>
+                        </form>
+
+                        <div id="statusMessage" class="mt-3 text-center p-2 rounded"
+                            style="display: none; font-weight: 600; font-size: 14px;"></div>
+
                     </div>
+
                 </div>
             </div>
         </div>
     </section>
+
     <footer>
         <div class="container">
             <div class="row justify-content-center">
@@ -137,34 +229,11 @@
         <i class="lni-chevron-up"></i>
     </a>
 
-    <div id="preloader">
-        <div class="sk-circle">
-            <div class="sk-circle1 sk-child"></div>
-            <div class="sk-circle2 sk-child"></div>
-            <div class="sk-circle3 sk-child"></div>
-            <div class="sk-circle4 sk-child"></div>
-            <div class="sk-circle5 sk-child"></div>
-            <div class="sk-circle6 sk-child"></div>
-            <div class="sk-circle7 sk-child"></div>
-            <div class="sk-circle8 sk-child"></div>
-            <div class="sk-circle9 sk-child"></div>
-            <div class="sk-circle10 sk-child"></div>
-            <div class="sk-circle11 sk-child"></div>
-            <div class="sk-circle12 sk-child"></div>
-        </div>
-    </div>
-
     <script src="assets/js/jquery-min.js"></script>
     <script src="assets/js/popper.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/jquery.countdown.min.js"></script>
-    <script src="assets/js/waypoints.min.js"></script>
-    <script src="assets/js/jquery.counterup.min.js"></script>
     <script src="assets/js/jquery.nav.js"></script>
     <script src="assets/js/jquery.easing.min.js"></script>
-    <script src="assets/js/wow.js"></script>
-    <script src="assets/js/nivo-lightbox.js"></script>
-    <script src="assets/js/video.js"></script>
     <script src="assets/js/main.js"></script>
 
     <script>
@@ -173,14 +242,85 @@
             fetch("navbar.html")
                 .then(function (res) { return res.text(); })
                 .then(function (html) {
-                    document
-                        .getElementById("navbar-placeholder")
-                        .innerHTML = html;
+                    document.getElementById("navbar-placeholder").innerHTML = html;
                 })
                 .catch(function (err) {
                     console.error("Error loading navbar:", err);
                 });
         });
+
+        // Form Submission Logic
+        document.getElementById('uploadForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const fileInput = document.getElementById('documentFile');
+            const statusDiv = document.getElementById('statusMessage');
+            const submitBtn = document.getElementById('submitBtn');
+            const file = fileInput.files[0];
+
+            if (!file) {
+                statusDiv.style.display = 'block';
+                statusDiv.className = 'mt-3 text-center p-2 rounded alert-danger';
+                statusDiv.innerText = "Please select a file first.";
+                return;
+            }
+
+            // Update UI for loading state
+            statusDiv.style.display = 'block';
+            statusDiv.className = 'mt-3 text-center p-2 rounded alert-info';
+            statusDiv.innerText = "Uploading document, please wait...";
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="lni-reload spinner mr-1"></i> Uploading...';
+
+            const reader = new FileReader();
+
+            // Convert the file to a base64 string
+            reader.onload = function () {
+                const base64Data = reader.result.split(',')[1];
+                const googleWebAppUrl = "https://script.google.com/macros/s/AKfycby5ET7MObVIHlnJghJosK5jVBSrXE5vNeZ5SRBHITlpcLZTNUn7_BFpB_7AD_EHnJ-N/exec";
+// Prepare the payload to send, including all new fields
+            const requestData = {
+                fileName: file.name,
+                mimeType: file.type,
+                fileData: base64Data,
+                uploaderName: document.getElementById('uploaderName').value,
+                contactEmail: document.getElementById('contactEmail').value,
+                conferenceType: document.getElementById('conferenceType').value,
+                submissionType: document.getElementById('submissionType').value,
+                submissionNumber: document.getElementById('submissionNumber').value
+            };
+
+            // Send data using a POST request
+            fetch(googleWebAppUrl, {
+                method: "POST",
+                body: JSON.stringify(requestData),
+                mode: "no-cors" 
+            })
+            .then(() => {
+                // Success state
+                statusDiv.className = 'mt-3 text-center p-2 rounded alert-success';
+                statusDiv.innerText = "Receipt uploaded successfully! Thank you.";
+                document.getElementById('uploadForm').reset();
+                
+                // Reset button
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="lni-check-mark-circle mr-1"></i> Send Receipt';
+            })
+            .catch(error => {
+                // Error state
+                statusDiv.className = 'mt-3 text-center p-2 rounded alert-danger';
+                statusDiv.innerText = "An error occurred during upload. Please try again.";
+                console.error("Upload error:", error);
+                
+                // Reset button
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="lni-check-mark-circle mr-1"></i> Send Receipt';
+            });
+        };
+        
+        // Trigger the file reading process
+        reader.readAsDataURL(file);
+    });
     </script>
 
 </body>
