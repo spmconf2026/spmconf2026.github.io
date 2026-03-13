@@ -104,11 +104,11 @@
 
                             <div class="mt-4 text-center">
                                 <p style="margin-top: 0 !important; margin-bottom: 10px;">
-                                    <span class="text-danger"><strong>(*) Mandatory Note:</strong></span>
+                                    <span class="text-danger"><strong>(*) Mandatory Note:</strong>
                                     You must include the following conditional donation note in your
-                                    transfer. Please replace the paper ID with your own:
+                                    transfer. Please replace the paper ID with your own.</span>
                                 </p>
-                                <p class="text-danger mb-2" style="font-weight: 600;">
+                                <p>
                                     Please note that international SWIFT transfers typically take 3 to 5 business days
                                     to reach our account.
                                 </p>
@@ -156,7 +156,7 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-md-4 form-group mb-3">
+                                <div class="col-md-6 form-group mb-3">
                                     <label for="conferenceType" class="font-weight-bold"
                                         style="color: #444;">Conference:</label>
                                     <select class="form-control" id="conferenceType" name="conferenceType" required
@@ -167,7 +167,7 @@
                                     </select>
                                 </div>
 
-                                <div class="col-md-4 form-group mb-3">
+                                <div class="col-md-6 form-group mb-3">
                                     <label for="submissionType" class="font-weight-bold" style="color: #444;">Submission
                                         Type:</label>
                                     <select class="form-control" id="submissionType" name="submissionType" required
@@ -179,12 +179,22 @@
                                         <option value="External Attendee">External Attendee (No Paper)</option>
                                     </select>
                                 </div>
+                            </div>
 
+                            <div class="row">
                                 <div class="col-md-4 form-group mb-3">
                                     <label for="submissionNumber" class="font-weight-bold"
                                         style="color: #444;">Submission Number:</label>
                                     <input type="text" class="form-control" id="submissionNumber"
-                                        name="submissionNumber" placeholder="e.g., 123 (If applicable)"
+                                        name="submissionNumber" placeholder="e.g., 123" required
+                                        style="border-radius: 6px; border: 1px solid #ced4da;">
+                                </div>
+
+                                <div class="col-md-8 form-group mb-3">
+                                    <label for="submissionTitle" class="font-weight-bold"
+                                        style="color: #444;">Submission Title:</label>
+                                    <input type="text" class="form-control" id="submissionTitle" name="submissionTitle"
+                                        placeholder="Title of your paper/poster" required
                                         style="border-radius: 6px; border: 1px solid #ced4da;">
                                 </div>
                             </div>
@@ -237,19 +247,34 @@
     <script src="assets/js/main.js"></script>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            // Fetch navigation bar component
-            fetch("navbar.html")
-                .then(function (res) { return res.text(); })
-                .then(function (html) {
-                    document.getElementById("navbar-placeholder").innerHTML = html;
-                })
-                .catch(function (err) {
-                    console.error("Error loading navbar:", err);
-                });
+        // --- UI Logic: Auto-fill and disable fields for External Attendees ---
+        const submissionTypeSelect = document.getElementById('submissionType');
+        const submissionNumInput = document.getElementById('submissionNumber');
+        const submissionTitleInput = document.getElementById('submissionTitle');
+
+        submissionTypeSelect.addEventListener('change', function () {
+            if (this.value === 'External Attendee') {
+                // Disable fields and set automated text
+                submissionNumInput.value = 'External Attendee';
+                submissionNumInput.setAttribute('readonly', 'true');
+                submissionNumInput.style.backgroundColor = '#e9ecef'; // Make it look disabled
+
+                submissionTitleInput.value = 'External Attendee';
+                submissionTitleInput.setAttribute('readonly', 'true');
+                submissionTitleInput.style.backgroundColor = '#e9ecef'; // Make it look disabled
+            } else {
+                // Enable fields and clear automated text
+                if (submissionNumInput.value === 'External Attendee') submissionNumInput.value = '';
+                submissionNumInput.removeAttribute('readonly');
+                submissionNumInput.style.backgroundColor = '#ffffff';
+
+                if (submissionTitleInput.value === 'External Attendee') submissionTitleInput.value = '';
+                submissionTitleInput.removeAttribute('readonly');
+                submissionTitleInput.style.backgroundColor = '#ffffff';
+            }
         });
 
-        // Form Submission Logic
+        // --- Form Submission Logic ---
         document.getElementById('uploadForm').addEventListener('submit', function (event) {
             event.preventDefault();
 
@@ -258,10 +283,23 @@
             const submitBtn = document.getElementById('submitBtn');
             const file = fileInput.files[0];
 
+            // Check if a file is selected
             if (!file) {
                 statusDiv.style.display = 'block';
                 statusDiv.className = 'mt-3 text-center p-2 rounded alert-danger';
                 statusDiv.innerText = "Please select a file first.";
+                return;
+            }
+
+            // Strict File Type Validation
+            const allowedExtensions = ['pdf', 'jpg', 'jpeg', 'png'];
+            const fileExtension = file.name.split('.').pop().toLowerCase();
+
+            if (!allowedExtensions.includes(fileExtension)) {
+                statusDiv.style.display = 'block';
+                statusDiv.className = 'mt-3 text-center p-2 rounded alert-danger';
+                statusDiv.innerText = "Error: Invalid file type! Please upload only PDF, JPG, JPEG, or PNG files.";
+                fileInput.value = '';
                 return;
             }
 
@@ -278,49 +316,53 @@
             reader.onload = function () {
                 const base64Data = reader.result.split(',')[1];
                 const googleWebAppUrl = "https://script.google.com/macros/s/AKfycby5ET7MObVIHlnJghJosK5jVBSrXE5vNeZ5SRBHITlpcLZTNUn7_BFpB_7AD_EHnJ-N/exec";
-// Prepare the payload to send, including all new fields
-            const requestData = {
-                fileName: file.name,
-                mimeType: file.type,
-                fileData: base64Data,
-                uploaderName: document.getElementById('uploaderName').value,
-                contactEmail: document.getElementById('contactEmail').value,
-                conferenceType: document.getElementById('conferenceType').value,
-                submissionType: document.getElementById('submissionType').value,
-                submissionNumber: document.getElementById('submissionNumber').value
+                // Prepare the payload to send
+                const requestData = {
+                    fileName: file.name,
+                    mimeType: file.type,
+                    fileData: base64Data,
+                    uploaderName: document.getElementById('uploaderName').value,
+                    contactEmail: document.getElementById('contactEmail').value,
+                    conferenceType: document.getElementById('conferenceType').value,
+                    submissionType: document.getElementById('submissionType').value,
+                    submissionNumber: document.getElementById('submissionNumber').value,
+                    submissionTitle: document.getElementById('submissionTitle').value // NEW
+                };
+
+                // Send data using a POST request
+                fetch(googleWebAppUrl, {
+                    method: "POST",
+                    body: JSON.stringify(requestData),
+                    mode: "no-cors"
+                })
+                    .then(() => {
+                        // Success state
+                        statusDiv.className = 'mt-3 text-center p-2 rounded alert-success';
+                        statusDiv.innerText = "Receipt uploaded successfully! Thank you.";
+                        document.getElementById('uploadForm').reset();
+
+                        // Reset input colors if they were grayed out
+                        submissionNumInput.style.backgroundColor = '#ffffff';
+                        submissionTitleInput.style.backgroundColor = '#ffffff';
+
+                        // Reset button
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = '<i class="lni-check-mark-circle mr-1"></i> Send Receipt';
+                    })
+                    .catch(error => {
+                        // Error state
+                        statusDiv.className = 'mt-3 text-center p-2 rounded alert-danger';
+                        statusDiv.innerText = "An error occurred during upload. Please try again.";
+                        console.error("Upload error:", error);
+
+                        // Reset button
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = '<i class="lni-check-mark-circle mr-1"></i> Send Receipt';
+                    });
             };
 
-            // Send data using a POST request
-            fetch(googleWebAppUrl, {
-                method: "POST",
-                body: JSON.stringify(requestData),
-                mode: "no-cors" 
-            })
-            .then(() => {
-                // Success state
-                statusDiv.className = 'mt-3 text-center p-2 rounded alert-success';
-                statusDiv.innerText = "Receipt uploaded successfully! Thank you.";
-                document.getElementById('uploadForm').reset();
-                
-                // Reset button
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = '<i class="lni-check-mark-circle mr-1"></i> Send Receipt';
-            })
-            .catch(error => {
-                // Error state
-                statusDiv.className = 'mt-3 text-center p-2 rounded alert-danger';
-                statusDiv.innerText = "An error occurred during upload. Please try again.";
-                console.error("Upload error:", error);
-                
-                // Reset button
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = '<i class="lni-check-mark-circle mr-1"></i> Send Receipt';
-            });
-        };
-        
-        // Trigger the file reading process
-        reader.readAsDataURL(file);
-    });
+            reader.readAsDataURL(file);
+        });
     </script>
 
 </body>
