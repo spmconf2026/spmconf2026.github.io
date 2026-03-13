@@ -254,122 +254,139 @@
     <script src="assets/js/main.js"></script>
 
     <script>
-        // --- UI Logic: Auto-fill and disable fields for External Attendees ---
-        const submissionTypeSelect = document.getElementById('submissionType');
-        const submissionNumInput = document.getElementById('submissionNumber');
-        const submissionTitleInput = document.getElementById('submissionTitle');
+// --- UI Logic: Auto-fill and disable fields for External Attendees ---
+    const submissionTypeSelect = document.getElementById('submissionType');
+    const submissionNumInput = document.getElementById('submissionNumber');
+    const submissionTitleInput = document.getElementById('submissionTitle');
 
-        submissionTypeSelect.addEventListener('change', function () {
-            if (this.value === 'External Attendee') {
-                // Disable fields and set automated text
-                submissionNumInput.value = 'External Attendee';
-                submissionNumInput.setAttribute('readonly', 'true');
-                submissionNumInput.style.backgroundColor = '#e9ecef'; // Make it look disabled
+    submissionTypeSelect.addEventListener('change', function() {
+        if (this.value === 'External Attendee') {
+            // Disable fields and set automated text
+            submissionNumInput.value = 'External Attendee';
+            submissionNumInput.setAttribute('readonly', 'true');
+            submissionNumInput.style.backgroundColor = '#e9ecef'; 
+            
+            submissionTitleInput.value = 'External Attendee';
+            submissionTitleInput.setAttribute('readonly', 'true');
+            submissionTitleInput.style.backgroundColor = '#e9ecef'; 
+        } else {
+            // Enable fields and clear automated text
+            if (submissionNumInput.value === 'External Attendee') submissionNumInput.value = '';
+            submissionNumInput.removeAttribute('readonly');
+            submissionNumInput.style.backgroundColor = '#ffffff';
+            
+            if (submissionTitleInput.value === 'External Attendee') submissionTitleInput.value = '';
+            submissionTitleInput.removeAttribute('readonly');
+            submissionTitleInput.style.backgroundColor = '#ffffff';
+        }
+    });
 
-                submissionTitleInput.value = 'External Attendee';
-                submissionTitleInput.setAttribute('readonly', 'true');
-                submissionTitleInput.style.backgroundColor = '#e9ecef'; // Make it look disabled
-            } else {
-                // Enable fields and clear automated text
-                if (submissionNumInput.value === 'External Attendee') submissionNumInput.value = '';
-                submissionNumInput.removeAttribute('readonly');
-                submissionNumInput.style.backgroundColor = '#ffffff';
-
-                if (submissionTitleInput.value === 'External Attendee') submissionTitleInput.value = '';
-                submissionTitleInput.removeAttribute('readonly');
-                submissionTitleInput.style.backgroundColor = '#ffffff';
-            }
-        });
-
-        // --- Form Submission Logic ---
-        document.getElementById('uploadForm').addEventListener('submit', function (event) {
-            event.preventDefault();
-
-            const fileInput = document.getElementById('documentFile');
-            const statusDiv = document.getElementById('statusMessage');
-            const submitBtn = document.getElementById('submitBtn');
-            const file = fileInput.files[0];
-
-            // Check if a file is selected
-            if (!file) {
-                statusDiv.style.display = 'block';
-                statusDiv.className = 'mt-3 text-center p-2 rounded alert-danger';
-                statusDiv.innerText = "Please select a file first.";
-                return;
-            }
-
-            // Strict File Type Validation
-            const allowedExtensions = ['pdf', 'jpg', 'jpeg', 'png'];
-            const fileExtension = file.name.split('.').pop().toLowerCase();
-
-            if (!allowedExtensions.includes(fileExtension)) {
-                statusDiv.style.display = 'block';
-                statusDiv.className = 'mt-3 text-center p-2 rounded alert-danger';
-                statusDiv.innerText = "Error: Invalid file type! Please upload only PDF, JPG, JPEG, or PNG files.";
-                fileInput.value = '';
-                return;
-            }
-
-            // Update UI for loading state
+    // --- Form Submission Logic ---
+    document.getElementById('uploadForm').addEventListener('submit', function(event) {
+        event.preventDefault(); 
+        
+        const fileInput = document.getElementById('documentFile');
+        const statusDiv = document.getElementById('statusMessage');
+        const submitBtn = document.getElementById('submitBtn');
+        const file = fileInput.files[0];
+        
+        // 1. Check if a file is selected
+        if (!file) {
             statusDiv.style.display = 'block';
-            statusDiv.className = 'mt-3 text-center p-2 rounded alert-info';
-            statusDiv.innerText = "Uploading document, please wait...";
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="lni-reload spinner mr-1"></i> Uploading...';
+            statusDiv.className = 'mt-3 text-center p-2 rounded alert-danger';
+            statusDiv.innerText = "Please select a file first.";
+            return;
+        }
 
-            const reader = new FileReader();
+        // --- NEW: Maximum File Size Validation (Set to 5 MB) ---
+        const maxSizeInMB = 5;
+        const maxSizeInBytes = maxSizeInMB * 1024 * 1024;
+        
+        if (file.size > maxSizeInBytes) {
+            statusDiv.style.display = 'block';
+            statusDiv.className = 'mt-3 text-center p-2 rounded alert-danger';
+            statusDiv.innerText = "Error: File size exceeds the " + maxSizeInMB + " MB limit. Please select a smaller file.";
+            
+            // Clear the file input
+            fileInput.value = ''; 
+            return;
+        }
+        // -------------------------------------------------------
 
-            // Convert the file to a base64 string
-            reader.onload = function () {
-                const base64Data = reader.result.split(',')[1];
+        // 2. Strict File Type Validation
+        const allowedExtensions = ['pdf', 'jpg', 'jpeg', 'png'];
+        const fileExtension = file.name.split('.').pop().toLowerCase();
+        
+        if (!allowedExtensions.includes(fileExtension)) {
+            statusDiv.style.display = 'block';
+            statusDiv.className = 'mt-3 text-center p-2 rounded alert-danger';
+            statusDiv.innerText = "Error: Invalid file type! Please upload only PDF, JPG, JPEG, or PNG files.";
+            fileInput.value = ''; 
+            return;
+        }
+
+        // Update UI for loading state
+        statusDiv.style.display = 'block';
+        statusDiv.className = 'mt-3 text-center p-2 rounded alert-info';
+        statusDiv.innerText = "Uploading document, please wait...";
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="lni-reload spinner mr-1"></i> Uploading...';
+
+        const reader = new FileReader();
+        
+        // Convert the file to a base64 string
+        reader.onload = function() {
+            const base64Data = reader.result.split(',')[1];
+            
+            // IMPORTANT: Replace this URL with your published Google Apps Script Web App URL
                 const googleWebAppUrl = "https://script.google.com/macros/s/AKfycby5ET7MObVIHlnJghJosK5jVBSrXE5vNeZ5SRBHITlpcLZTNUn7_BFpB_7AD_EHnJ-N/exec";
-                // Prepare the payload to send
-                const requestData = {
-                    fileName: file.name,
-                    mimeType: file.type,
-                    fileData: base64Data,
-                    uploaderName: document.getElementById('uploaderName').value,
-                    contactEmail: document.getElementById('contactEmail').value,
-                    conferenceType: document.getElementById('conferenceType').value,
-                    submissionType: document.getElementById('submissionType').value,
-                    submissionNumber: document.getElementById('submissionNumber').value,
-                    submissionTitle: document.getElementById('submissionTitle').value // NEW
-                };
-
-                // Send data using a POST request
-                fetch(googleWebAppUrl, {
-                    method: "POST",
-                    body: JSON.stringify(requestData),
-                    mode: "no-cors"
-                })
-                    .then(() => {
-                        // Success state
-                        statusDiv.className = 'mt-3 text-center p-2 rounded alert-success';
-                        statusDiv.innerText = "Receipt uploaded successfully! Thank you.";
-                        document.getElementById('uploadForm').reset();
-
-                        // Reset input colors if they were grayed out
-                        submissionNumInput.style.backgroundColor = '#ffffff';
-                        submissionTitleInput.style.backgroundColor = '#ffffff';
-
-                        // Reset button
-                        submitBtn.disabled = false;
-                        submitBtn.innerHTML = '<i class="lni-check-mark-circle mr-1"></i> Send Receipt';
-                    })
-                    .catch(error => {
-                        // Error state
-                        statusDiv.className = 'mt-3 text-center p-2 rounded alert-danger';
-                        statusDiv.innerText = "An error occurred during upload. Please try again.";
-                        console.error("Upload error:", error);
-
-                        // Reset button
-                        submitBtn.disabled = false;
-                        submitBtn.innerHTML = '<i class="lni-check-mark-circle mr-1"></i> Send Receipt';
-                    });
+            // Prepare the payload to send
+            const requestData = {
+                fileName: file.name,
+                mimeType: file.type,
+                fileData: base64Data,
+                uploaderName: document.getElementById('uploaderName').value,
+                contactEmail: document.getElementById('contactEmail').value,
+                conferenceType: document.getElementById('conferenceType').value,
+                submissionType: document.getElementById('submissionType').value,
+                submissionNumber: document.getElementById('submissionNumber').value,
+                submissionTitle: document.getElementById('submissionTitle').value
             };
 
-            reader.readAsDataURL(file);
-        });
+            // Send data using a POST request
+            fetch(googleWebAppUrl, {
+                method: "POST",
+                body: JSON.stringify(requestData),
+                mode: "no-cors" 
+            })
+            .then(() => {
+                // Success state
+                statusDiv.className = 'mt-3 text-center p-2 rounded alert-success';
+                statusDiv.innerText = "Receipt uploaded successfully! Thank you.";
+                document.getElementById('uploadForm').reset();
+                
+                // Reset input colors if they were grayed out
+                submissionNumInput.style.backgroundColor = '#ffffff';
+                submissionTitleInput.style.backgroundColor = '#ffffff';
+                
+                // Reset button
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="lni-check-mark-circle mr-1"></i> Send Receipt';
+            })
+            .catch(error => {
+                // Error state
+                statusDiv.className = 'mt-3 text-center p-2 rounded alert-danger';
+                statusDiv.innerText = "An error occurred during upload. Please try again.";
+                console.error("Upload error:", error);
+                
+                // Reset button
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="lni-check-mark-circle mr-1"></i> Send Receipt';
+            });
+        };
+        
+        reader.readAsDataURL(file);
+    });
     </script>
 
 </body>
