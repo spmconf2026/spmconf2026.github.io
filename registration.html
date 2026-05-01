@@ -1472,6 +1472,10 @@
                         configureSubmissionFields();
                         submitBtn.disabled = false;
                         submitBtn.innerHTML = '<i class="lni-check-mark-circle mr-1"></i> Send Receipt & Complete Registration';
+                        
+                        // Hide the bank transfer panel until generated again
+                        document.getElementById('bankTransferPanel').style.display = 'none';
+                        checkGenerateBtn();
                     })
                     .catch(error => {
                         statusDiv.className = 'mt-3 text-center p-2 rounded alert-danger';
