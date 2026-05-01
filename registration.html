@@ -348,7 +348,7 @@
                                         <li><i class="lni-check-mark-circle"></i>Full conference registration</li>
                                         <li><i class="lni-check-mark-circle"></i>Required for accepted paper coverage
                                         </li>
-                                        <li><i class="lni-check-mark-circle"></i>Lunch + Coffe Break + Conferance Dinner
+                                        <li><i class="lni-check-mark-circle"></i>Lunch + Coffee Break + Conference Dinner
                                             included</li>
                                         <li><i class="lni-check-mark-circle"></i>Can add students (volume discount)</li>
                                     </ul>
@@ -362,7 +362,7 @@
                                     <ul class="registration-list">
                                         <li><i class="lni-check-mark-circle"></i>Student full registration</li>
                                         <li><i class="lni-check-mark-circle"></i>Valid for paper coverage</li>
-                                        <li><i class="lni-check-mark-circle"></i>Lunch + Coffe Break + Conferance Dinner
+                                        <li><i class="lni-check-mark-circle"></i>Lunch + Coffee Break + Conference Dinner
                                             included</li>
                                     </ul>
                                 </div>
@@ -375,7 +375,7 @@
 
                                     <ul class="registration-list">
                                         <li><i class="lni-check-mark-circle"></i>Select 1 to 4 conference days</li>
-                                        <li><i class="lni-check-mark-circle"></i>Lunch + Coffe Break + Conferance Dinner
+                                        <li><i class="lni-check-mark-circle"></i>Lunch + Coffee Break + Conference Dinner
                                             (Optional +€180) included </li>
                                         <li><i class="lni-check-mark-circle"></i>Does not cover accepted papers</li>
                                     </ul>
@@ -419,7 +419,14 @@
                                             <td>Selected days only</td>
                                         </tr>
                                         <tr>
-                                            <td class="text-left">Banquet access</td>
+                                            <td class="text-left">Coffee Break & Lunch</td>
+                                            <td><span class="checkmark">Included</span></td>
+                                            <td><span class="checkmark">Included</span></td>
+                                            <td><span class="checkmark">Included</span></td>
+                                            <td> <span class="checkmark">Included for the selected days</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-left">Conference Dinner access</td>
                                             <td><span class="checkmark">Included</span></td>
                                             <td><span class="checkmark">Included</span></td>
                                             <td><span class="checkmark">Included</span></td>
@@ -486,7 +493,7 @@
                                             <td>Select 1–4 days. Does not cover accepted papers.</td>
                                         </tr>
                                         <tr>
-                                            <td>Banquet Add-on (Daily Pass)</td>
+                                            <td>Conference Dinner Add-on (Daily Pass)</td>
                                             <td><strong>+€180</strong></td>
                                             <td>Available only for Daily Pass registrations.</td>
                                         </tr>
@@ -656,10 +663,11 @@
                                                 style="color: #097a7d; font-size: 16px;">
                                                 <i class="lni-check-mark-circle mr-1"
                                                     style="transition: color 200ms;"></i>
-                                                Include Banquet Access (+€180)
+                                                Include Conference Dinner Access (+€180)
                                             </span>
                                             <small class="form-text text-muted mt-1">
-                                                Select this option if you would like to add banquet access to your daily
+                                                Select this option if you would like to add conference dinner access to
+                                                your daily
                                                 pass.
                                             </small>
                                         </span>
@@ -723,7 +731,7 @@
                                         <p><strong id="calculatedTotal">€0</strong></p>
                                     </div>
                                     <div class="col-md-4">
-                                        <p class="small text-muted mb-1">Banquet</p>
+                                        <p class="small text-muted mb-1">Conference Dinner</p>
                                         <p><strong id="banquetStatus">Select a package</strong></p>
                                     </div>
                                 </div>
@@ -794,7 +802,7 @@
                                                     style="vertical-align: top !important; padding-top: 15px !important;">
                                                     <p style="margin-top: 0; margin-bottom: 5px;">
                                                         <strong
-                                                            id="bankNoteExample">Conditional-donation-Conferance-SPM-000-101</strong>
+                                                            id="bankNoteExample">Conditional-donation-Conference-SPM-000-101</strong>
                                                     </p>
                                                 </td>
                                             </tr>
@@ -1143,7 +1151,7 @@
                 return;
             }
 
-            // Banquet add-on only for Daily Pass
+            // Conference Dinner add-on only for Daily Pass
             if (packageSelect.value === 'DAILY') {
                 if (banquetAddonContainer) banquetAddonContainer.style.display = 'block';
             } else {
@@ -1218,7 +1226,7 @@
                 Y = String(getCheckedAttendanceInputs().length);
             }
 
-            // Z = Banquet: 0=no, 1=yes (always 1 for Full/Student)
+            // Z = Conference Dinner: 0=no, 1=yes (always 1 for Full/Student)
             let Z = '0';
             if (selectedPackage.banquetIncluded) {
                 Z = '1';
@@ -1226,7 +1234,7 @@
                 Z = '1';
             }
 
-            return 'Conditional-donation-Conferance-' + confType + '-' + paperId + '-' + X + Y + Z;
+            return 'Conditional-donation-Conference-' + confType + '-' + paperId + '-' + X + Y + Z;
         }
 
         function updatePaymentSummary() {
@@ -1240,7 +1248,7 @@
                 calculatedPaymentCode.value = '';
                 calculatedPaymentTotal.value = '';
                 recommendedTransferNote.value = '';
-                bankNoteExample.innerText = 'Conditional-donation-Conferance-SPM-000-101';
+                bankNoteExample.innerText = 'Conditional-donation-Conference-SPM-000-101';
                 return;
             }
 
@@ -1254,7 +1262,7 @@
                 total = selectedPackage.price;
             }
 
-            // Add banquet for daily pass
+            // Add conference dinner for daily pass
             if (banquetAddonCheck && banquetAddonCheck.checked) {
                 total += 180;
             }
@@ -1271,7 +1279,7 @@
 
             let codeDisplay = selectedPackage.label;
             if (banquetAddonCheck && banquetAddonCheck.checked) {
-                codeDisplay += ' + Banquet';
+                codeDisplay += ' + Conference Dinner';
             }
 
             selectedPaymentCode.innerText = codeDisplay;
