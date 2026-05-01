@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Registration - SPM 2026: Symposium on Solid and Physical Modeling</title>
+
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/fonts/line-icons.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/nivo-lightbox.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/responsive.css">
+
+    <style>
+        .registration-alert,
+        .registration-panel,
+        .registration-option,
+        .receipt-panel {
+            background-color: #fcfcfc;
+            border-radius: 6px;
+            box-shadow: 0 8px 24px #E2E8ED;
+        }
+
+        .registration-alert {
+            border-left: 6px solid #ed3537;
+        }
+
+        .registration-panel {
+            border-left: 6px solid rgb(121, 144, 255);
+        }
+
+        .receipt-panel {
+            border-left: 6px solid #28a745;
+        }
+
+        .registration-option {
+            height: 100%;
+            border-top: 4px solid #097a7d;
+            padding: 26px 24px;
+            transition: all 300ms ease-in-out;
+        }
+
+        .registration-option:hover {
+            box-shadow: 0 16px 48px #E2E8ED;
+            transform: translateY(-2px);
+        }
+
+        .registration-option.featured {
+            border-top-color: #ed3537;
+        }
+
+        .registration-option h5 {
+            color: #212121;
+            font-size: 18px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .registration-price {
+            color: #097a7d;
+            font-family: 'Roboto', sans-serif;
+            font-size: 34px;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .registration-code {
+            background: #f1f6f8;
+            border-radius: 30px;
+            color: #006b8b;
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            margin-bottom: 14px;
+            padding: 5px 12px;
+        }
+
+        .registration-list li {
+            color: #555;
+            font-size: 14px;
+            line-height: 25px;
+            margin-bottom: 6px;
+        }
+
+        .registration-list i {
+            color: #097a7d;
+            font-size: 12px;
+            margin-right: 7px;
+        }
+
+        .payment-summary {
+            background: #f8fafa;
+            border: 1px solid #e2e8ed;
+            border-radius: 6px;
+        }
+
+        .payment-summary strong {
+            color: #212121;
+        }
+
+        .transfer-note-preview {
+            background: #fff;
+            border: 1px dashed #adb5bd;
+            border-radius: 6px;
+            color: #006b8b;
+            font-weight: 700;
+            overflow-wrap: anywhere;
+            padding: 12px 14px;
+        }
+
+        .attendance-day-options {
+            display: grid;
+            gap: 10px;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+
+        .attendance-day-card {
+            cursor: pointer;
+            margin: 0;
+            position: relative;
+        }
+
+        .attendance-day-card input {
+            opacity: 0;
+            position: absolute;
+        }
+
+        .attendance-day-card .day-card-body {
+            background: #fff;
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            display: block;
+            min-height: 88px;
+            padding: 12px 10px;
+            text-align: center;
+            transition: all 200ms ease-in-out;
+        }
+
+        .attendance-day-card input:checked+.day-card-body {
+            background: #f1f6f8;
+            border-color: #097a7d;
+            box-shadow: 0 8px 20px #E2E8ED;
+        }
+
+        .attendance-day-card input:disabled+.day-card-body {
+            background: #e9ecef;
+            cursor: not-allowed;
+            opacity: 0.45;
+        }
+
+        .attendance-day-card .day-name {
+            color: #097a7d;
+            display: block;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .attendance-day-card .day-date {
+            color: #212121;
+            display: block;
+            font-family: 'Roboto', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            margin-top: 5px;
+        }
+
+        .table-registration th {
+            background: #f8fafa;
+            color: #212121;
+            font-size: 13px;
+            vertical-align: middle !important;
+        }
+
+        .table-registration td {
+            font-size: 14px;
+            vertical-align: middle !important;
+        }
+
+        .checkmark {
+            color: #28a745;
+            font-weight: 700;
+        }
+
+        .dashmark {
+            color: #999;
+        }
+
+        .banquet-card-body {
+            background: #f8fafa;
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            display: block;
+            padding: 14px 16px;
+            transition: all 200ms ease-in-out;
+            cursor: pointer;
+        }
+
+        .banquet-addon-input:checked+.banquet-card-body {
+            background: #f1f6f8;
+            border-color: #097a7d;
+            box-shadow: 0 4px 12px #E2E8ED;
+        }
+
+        .banquet-addon-input:checked+.banquet-card-body .lni-check-mark-circle {
+            color: #28a745;
+        }
+
+        @media (max-width: 767px) {
+            .registration-option {
+                padding: 22px 18px;
+            }
+
+            .registration-price {
+                font-size: 30px;
+            }
+
+            .attendance-day-options {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+    </style>
+
+</head>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P7LCZLLL6H"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-P7LCZLLL6H');
+</script>
+
+<body>
+
+    <header id="header-wrap">
+        <div id="navbar-placeholder"></div>
+        <div id="hero-area" class="hero-area-bg">
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-9 col-sm-12">
+                        <div class="contents text-center">
+                            <!-- <div class="icon">
+                                <img class="img-fluid" src="assets/img/PaymentLogo1.png" alt="SPM Logo" " style="width: 250px; height: auto;">
+                            </div>                            -->
+                            <h2 class="head-title">
+                                <span
+                                    style="background: linear-gradient(to right, #097a7d, #ed3537); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: inline-block;">
+                                    SPM &amp; SMI
+                                </span>
+                            </h2>
+
+                            <h2 class="head-title">Registration</h2>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="registration-details" class="section-padding">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-11 col-md-12 col-12">
+                    <div class="section-title-header text-center mb-4">
+                        <h2 class="section-title">Registration</h2>
+                        <p class="section-subcontent mb-0">
+                            Select your registration option, make the SWIFT transfer, and upload your receipt to
+                            complete
+                            your registration.<br>
+                            <strong>Conference Dates:</strong> 6-9 July 2026
+                        </p>
+                    </div>
+
+                    <div class="registration-alert p-4 mb-5">
+                        <div class="d-flex align-items-start">
+                            <div class="mr-3" style="font-size: 2rem; color: #ed3537;">
+                                <i class="lni-warning"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-weight-bold mb-2" style="font-size: 1.1rem; color: #222;">
+                                    Important for Accepted Papers
+                                </h5>
+                                <p>
+                                    At least one author of each accepted paper must complete a
+                                    <strong>Full Registration</strong> or <strong>Student Full Registration</strong>
+                                    for the paper to be covered by the conference registration. Daily pass
+                                    registrations do not count toward paper coverage.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4 class="mb-4 text-center" style="cursor: pointer;" data-toggle="collapse" data-target="#collapseRegOptions" aria-expanded="true" aria-controls="collapseRegOptions">
+                        Registration Options <i class="lni-chevron-up ml-2" style="font-size: 14px; transition: transform 0.3s;"></i>
+                    </h4>
+
+                    <div class="collapse show" id="collapseRegOptions">
+                    <div class="row mb-5">
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="registration-option featured">
+                                <h5>Paper Authors</h5>
+                                <div class="registration-price">€570</div>
+
+                                <ul class="registration-list">
+                                    <li><i class="lni-check-mark-circle"></i>Full conference registration</li>
+                                    <li><i class="lni-check-mark-circle"></i>Required for accepted paper coverage</li>
+                                    <li><i class="lni-check-mark-circle"></i>Banquet included</li>
+                                    <li><i class="lni-check-mark-circle"></i>Can add students (volume discount)</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="registration-option featured">
+                                <h5>Student Authors</h5>
+                                <div class="registration-price">€380</div>
+
+                                <ul class="registration-list">
+                                    <li><i class="lni-check-mark-circle"></i>Student full registration</li>
+                                    <li><i class="lni-check-mark-circle"></i>Valid for paper coverage</li>
+                                    <li><i class="lni-check-mark-circle"></i>Banquet included</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-12 mb-4">
+                            <div class="registration-option">
+                                <h5>Daily Pass</h5>
+                                <div class="registration-price">€150<small
+                                        style="font-size: 14px; color: #555;">/day</small></div>
+
+                                <ul class="registration-list">
+                                    <li><i class="lni-check-mark-circle"></i>Select 1 to 4 conference days</li>
+                                    <li><i class="lni-check-mark-circle"></i>Optional banquet add-on (+€180)</li>
+                                    <li><i class="lni-check-mark-circle"></i>Does not cover accepted papers</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+
+                    <h4 class="mb-4 text-center" style="cursor: pointer;" data-toggle="collapse" data-target="#collapseWhatsIncluded" aria-expanded="true" aria-controls="collapseWhatsIncluded">
+                        What's Included? <i class="lni-chevron-up ml-2" style="font-size: 14px; transition: transform 0.3s;"></i>
+                    </h4>
+
+                    <div class="collapse show" id="collapseWhatsIncluded">
+                    <div class="registration-panel p-4 mb-5">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-registration mb-0 text-center">
+                                <thead>
+                                    <tr>
+                                        <th class="text-left">Benefit</th>
+                                        <th>Full (€570)</th>
+                                        <th>Student Full (€380)</th>
+                                        <th>Additional Students</th>
+                                        <th>Daily Pass (€150/day)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="text-left">Accepted paper coverage</td>
+                                        <td><span class="checkmark">Yes</span></td>
+                                        <td><span class="checkmark">Yes</span></td>
+                                        <td><span class="dashmark">No</span></td>
+                                        <td><span class="dashmark">No</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-left">Conference access</td>
+                                        <td>Full (4 days)</td>
+                                        <td>Full (4 days)</td>
+                                        <td>Full (4 days)</td>
+                                        <td>Selected days only</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-left">Banquet access</td>
+                                        <td><span class="checkmark">Included</span></td>
+                                        <td><span class="checkmark">Included</span></td>
+                                        <td><span class="checkmark">Included</span></td>
+                                        <td>Optional (+€180)</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-left">Can add students</td>
+                                        <td><span class="checkmark">Yes (up to 3+)</span></td>
+                                        <td><span class="dashmark">No</span></td>
+                                        <td><span class="dashmark">N/A</span></td>
+                                        <td><span class="dashmark">No</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    </div>
+
+                    <h4 class="mb-4 text-center" style="cursor: pointer;" data-toggle="collapse" data-target="#collapsePricing" aria-expanded="true" aria-controls="collapsePricing">
+                        Pricing <i class="lni-chevron-up ml-2" style="font-size: 14px; transition: transform 0.3s;"></i>
+                    </h4>
+
+                    <div class="collapse show" id="collapsePricing">
+                    <div class="registration-panel p-4 mb-5">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-registration mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>Registration Type</th>
+                                        <th>Price</th>
+                                        <th>Notes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Full Registration</td>
+                                        <td><strong>€570</strong></td>
+                                        <td>Required for non-student accepted paper authors.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Student Full Registration</td>
+                                        <td><strong>€380</strong></td>
+                                        <td>Valid for paper coverage when the registered author is a student.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Additional Student (1st)</td>
+                                        <td><strong>€380/student</strong></td>
+                                        <td>Added to a Full Registration. Total: €950.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Additional Students (2)</td>
+                                        <td><strong>€290/student</strong></td>
+                                        <td>Volume discount for 2 students. Total: €1,150.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Additional Students (3+)</td>
+                                        <td><strong>€250/student</strong></td>
+                                        <td>Volume discount for 3+ students. Total (3): €1,320.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Daily Pass</td>
+                                        <td><strong>€150/day</strong></td>
+                                        <td>Select 1–4 days. Does not cover accepted papers.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Banquet Add-on (Daily Pass)</td>
+                                        <td><strong>+€180</strong></td>
+                                        <td>Available only for Daily Pass registrations.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    </div>
+
+                    <h4 class="mb-4 text-center">Registration Receipt Submission</h4>
+
+                    <div class="receipt-panel p-4 mb-5">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="icon-box mr-3" style="font-size: 2rem; color: #28a745;">
+                                <i class="lni-cloud-upload"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-weight-bold mb-1" style="font-size: 1.1rem; color: #222;">Registration
+                                    Form</h5>
+                                <p class="small text-muted mb-0" style="font-size: 14px;">
+                                    After completing the transfer, please upload your receipt (PDF, JPG, PNG) to
+                                    complete
+                                    your registration.
+                                </p>
+                            </div>
+                        </div>
+
+                        <form id="uploadForm">
+                            <div class="row">
+                                <div class="col-md-6 form-group mb-3">
+                                    <label for="uploaderName" class="font-weight-bold" style="color: #444;">Full
+                                        Name:</label>
+                                    <input type="text" class="form-control" id="uploaderName" name="uploaderName"
+                                        placeholder="Name used for registration" required
+                                        style="border-radius: 6px; border: 1px solid #ced4da;">
+                                </div>
+                                <div class="col-md-6 form-group mb-3">
+                                    <label for="contactEmail" class="font-weight-bold" style="color: #444;">Contact
+                                        Email:</label>
+                                    <input type="email" class="form-control" id="contactEmail" name="contactEmail"
+                                        placeholder="your.email@example.com" required
+                                        style="border-radius: 6px; border: 1px solid #ced4da;">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12 form-group mb-3">
+                                    <label for="affiliation" class="font-weight-bold"
+                                        style="color: #444;">Affiliation:</label>
+                                    <input type="text" class="form-control" id="affiliation" name="affiliation"
+                                        placeholder="University / Institution / Company" required
+                                        style="border-radius: 6px; border: 1px solid #ced4da;">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12 form-group mb-3">
+                                    <label for="registrationPackage" class="font-weight-bold"
+                                        style="color: #444;">Registration Package:</label>
+                                    <select class="form-control" id="registrationPackage" name="registrationPackage"
+                                        required style="border-radius: 6px; border: 1px solid #ced4da;">
+                                        <option value="" disabled selected>Select Registration Package</option>
+                                        <option value="SPM26-FULL">Full Registration (€570)</option>
+                                        <option value="SPM26-STUDENT">Student Full Registration (€380)
+                                        </option>
+                                        <option value="SPM26-DAILY">Daily Pass (€150/day)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row" id="studentNamesRow" style="display: none;">
+                                <div class="col-12 form-group mb-3">
+                                    <label class="font-weight-bold" style="color: #444;" id="studentNamesLabel">Add
+                                        Students (€380/student):</label>
+                                    <div id="studentInputsContainer"></div>
+                                    <button type="button" id="addStudentBtn" class="btn btn-sm mt-2"
+                                        style="background-color: #f1f6f8; color: #097a7d; border: 1px dashed #097a7d; border-radius: 6px; font-weight: 600;">
+                                        <i class="lni-plus"></i> Add Student
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12 form-group mb-3">
+                                    <label id="attendanceDaysLabel" class="font-weight-bold"
+                                        style="color: #444;">Conference Dates: 6-9 July 2026. Please select your
+                                        attendance day(s):</label>
+                                    <div id="attendanceDayOptions" class="attendance-day-options" role="group"
+                                        aria-labelledby="attendanceDaysLabel" aria-describedby="attendanceDaysHelp">
+                                        <label class="attendance-day-card">
+                                            <input type="checkbox" class="attendance-day-input" value="6"
+                                                data-note="Jul 6">
+                                            <span class="day-card-body">
+                                                <span class="day-name">Monday</span>
+                                                <span class="day-date">6 July</span>
+                                            </span>
+                                        </label>
+                                        <label class="attendance-day-card">
+                                            <input type="checkbox" class="attendance-day-input" value="7"
+                                                data-note="Jul 7">
+                                            <span class="day-card-body">
+                                                <span class="day-name">Tuesday</span>
+                                                <span class="day-date">7 July</span>
+                                            </span>
+                                        </label>
+                                        <label class="attendance-day-card">
+                                            <input type="checkbox" class="attendance-day-input" value="8"
+                                                data-note="Jul 8">
+                                            <span class="day-card-body">
+                                                <span class="day-name">Wednesday</span>
+                                                <span class="day-date">8 July</span>
+                                            </span>
+                                        </label>
+                                        <label class="attendance-day-card">
+                                            <input type="checkbox" class="attendance-day-input" value="9"
+                                                data-note="Jul 9">
+                                            <span class="day-card-body">
+                                                <span class="day-name">Thursday</span>
+                                                <span class="day-date">9 July</span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                    <input type="hidden" id="attendanceDays" name="attendanceDays">
+                                    <small id="attendanceDaysHelp" class="form-text text-muted">
+                                        Conference dates are 6-9 July 2026. Select your attendance days for the Daily
+                                        Pass.
+                                    </small>
+                                </div>
+                            </div>
+
+                            <div class="row" id="banquetAddonContainer" style="display: none;">
+                                <div class="col-12 form-group mb-3">
+                                    <label class="d-block m-0" style="position: relative; cursor: pointer;">
+                                        <input type="checkbox" class="banquet-addon-input" id="banquetAddon"
+                                            name="banquetAddon" style="opacity: 0; position: absolute;">
+                                        <span class="banquet-card-body">
+                                            <span class="font-weight-bold d-block"
+                                                style="color: #097a7d; font-size: 16px;">
+                                                <i class="lni-check-mark-circle mr-1"
+                                                    style="transition: color 200ms;"></i> Include Banquet Access (+€180)
+                                            </span>
+                                            <small class="form-text text-muted mt-1">
+                                                Select this option if you would like to add banquet access to your daily
+                                                pass.
+                                            </small>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 form-group mb-3">
+                                    <label for="conferenceType" class="font-weight-bold"
+                                        style="color: #444;">Conference:</label>
+                                    <select class="form-control" id="conferenceType" name="conferenceType" required
+                                        style="border-radius: 6px; border: 1px solid #ced4da;">
+                                        <option value="" disabled selected>Select Conference</option>
+                                        <option value="SPM">SPM</option>
+                                        <option value="SMI">SMI</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 form-group mb-3">
+                                    <label for="submissionType" class="font-weight-bold" style="color: #444;">Submission
+                                        Type:</label>
+                                    <select class="form-control" id="submissionType" name="submissionType" required
+                                        style="border-radius: 6px; border: 1px solid #ced4da;">
+                                        <option value="" disabled selected>Select Type</option>
+                                        <option value="Full Paper">Full Paper</option>
+                                        <option value="Presentation-Only">Presentation-Only</option>
+                                        <option value="Poster">Poster</option>
+                                        <option value="External Attendee">External Attendee (No Paper)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4 form-group mb-3">
+                                    <label for="submissionNumber" id="submissionNumberLabel" class="font-weight-bold"
+                                        style="color: #444;">Submission Number:</label>
+                                    <input type="text" class="form-control" id="submissionNumber"
+                                        name="submissionNumber" placeholder="e.g., 123" required
+                                        style="border-radius: 6px; border: 1px solid #ced4da;">
+                                    <small id="submissionNumberHelp" class="form-text text-muted">
+                                        Use the accepted paper ID when applicable.
+                                    </small>
+                                </div>
+                                <div class="col-md-8 form-group mb-3">
+                                    <label for="submissionTitle" id="submissionTitleLabel" class="font-weight-bold"
+                                        style="color: #444;">Submission Title:</label>
+                                    <input type="text" class="form-control" id="submissionTitle" name="submissionTitle"
+                                        placeholder="Title of your paper/poster" required
+                                        style="border-radius: 6px; border: 1px solid #ced4da;">
+                                </div>
+                            </div>
+
+                            <div class="payment-summary p-3 mb-4">
+                                <div class="row">
+                                    <div class="col-md-4 mb-3 mb-md-0">
+                                        <p class="small text-muted mb-1">Registration Type</p>
+                                        <p><strong id="selectedPaymentCode">Select a package</strong></p>
+                                    </div>
+                                    <div class="col-md-4 mb-3 mb-md-0">
+                                        <p class="small text-muted mb-1">Calculated Total</p>
+                                        <p><strong id="calculatedTotal">€0</strong></p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <p class="small text-muted mb-1">Banquet</p>
+                                        <p><strong id="banquetStatus">Select a package</strong></p>
+                                    </div>
+                                </div>
+                                <p class="mb-3 text-danger" style="font-size: 15px;">
+                                    SWIFT Transfer Note (use this as your
+                                    transfer
+                                    description)
+                                </p>
+                                <div id="transferNotePreview" class="transfer-note-preview">
+                                    Select a registration package to generate the transfer note.
+                                </div>
+                            </div>
+
+                            <input type="hidden" id="calculatedPaymentCode" name="calculatedPaymentCode">
+                            <input type="hidden" id="calculatedPaymentTotal" name="calculatedPaymentTotal">
+                            <input type="hidden" id="recommendedTransferNote" name="recommendedTransferNote">
+
+                            <div class="text-center mb-4">
+                                <button type="button" id="generateTransferBtn" class="btn btn-common" disabled
+                                    style="border-radius: 30px; padding: 10px 40px; font-weight: 600; opacity: 0.5; cursor: not-allowed;">
+                                    <i class="lni-reload mr-1"></i> Generate Transfer Details
+                                </button>
+                                <div id="generateWarning" class="mt-2" style="display: none; font-size: 13px; color: #dc3545;"></div>
+                            </div>
+
+                            <!-- Bank Transfer (SWIFT) Instructions - inside form -->
+                            <div id="bankTransferPanel" class="registration-panel p-4 mb-4" style="display: none;">
+                                <h5 class="font-weight-bold mb-3 text-center" style="color: #222;">
+                                    <i class="lni-wallet mr-1"></i> Bank Transfer (SWIFT) Instructions
+                                </h5>
+                                <p class="mb-3 text-center text-danger" style="font-size: 13px;">
+                                    <strong>Important:</strong> All bank transfer fees and exchange rate differences
+                                    must be covered by the sender. Please ensure you select the <strong>"OUR"</strong>
+                                    instruction when making the SWIFT transfer so that the full registration amount
+                                    reaches our account.
+                                </p>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-sm mb-0">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row" class="bg-light" style="width: 30%;">Bank Name</th>
+                                                <td>HALKBANK (Bank Code: 0012)</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="bg-light">Bank Branch</th>
+                                                <td>Maslak Branch (Branch Code: 9761)</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="bg-light">Bank Address</th>
+                                                <td>Ahi Evren Cad. Atacenter İş Merkezi No: 1 Maslak 80670 Şişli /
+                                                    Istanbul</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="bg-light">Account Number</th>
+                                                <td><strong>58000592</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="bg-light">SWIFT / BIC Code</th>
+                                                <td><strong>TRHBTR2A</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="bg-light"
+                                                    style="vertical-align: top !important; padding-top: 15px !important;">
+                                                    Transfer Description / Notes <span
+                                                        style="color: red;"><strong>(*)</strong></span></th>
+                                                <td
+                                                    style="vertical-align: top !important; padding-top: 15px !important;">
+                                                    <p style="margin-top: 0; margin-bottom: 5px;">
+                                                        <strong
+                                                            id="bankNoteExample">Conditional-donation-Conferance-SPM-000-101</strong>
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <p class="mb-3 text-center text-danger" style="font-size: 13px;">
+                                    <strong>(*) Mandatory Note:</strong> You must include the above generated
+                                    Swift transfer note in your transfer description/notes field.
+                                </p>
+                                <p class="small text-muted text-center mt-3 mb-0">
+                                    International SWIFT transfers typically take 3 to 5 business days.
+                                </p>
+                            </div>
+
+                            <div class="form-group mb-4 mt-2">
+                                <label for="documentFile" class="font-weight-bold" style="color: #444;">Select Receipt
+                                    File:</label>
+                                <input type="file" class="form-control-file p-2 w-100" id="documentFile"
+                                    name="documentFile" accept=".pdf, .jpg, .jpeg, .png" required
+                                    style="border-radius: 6px; border: 1px dashed #adb5bd; background-color: #ffffff;">
+                            </div>
+
+                            <button type="submit" id="submitBtn" class="btn btn-common btn-block"
+                                style="border-radius: 30px; padding: 12px 0; font-weight: 600; text-transform: uppercase;">
+                                <i class="lni-check-mark-circle mr-1"></i> Send Receipt & Complete Registration
+                            </button>
+                        </form>
+
+                        <div id="statusMessage" class="mt-3 text-center p-2 rounded"
+                            style="display: none; font-weight: 600; font-size: 14px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-md-12 col-xs-12">
+                    <div class="site-info">
+                        <p>Designed and Developed by <a href="http://uideck.com" rel="nofollow">UIdeck</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top">
+        <i class="lni-chevron-up"></i>
+    </a>
+
+    <script src="assets/js/jquery-min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery.nav.js"></script>
+    <script src="assets/js/jquery.easing.min.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch("navbar.html")
+                .then(function (res) { return res.text(); })
+                .then(function (html) {
+                    document.getElementById("navbar-placeholder").innerHTML = html;
+                })
+                .catch(function (err) {
+                    console.error("Navbar loading error:", err);
+                });
+        });
+
+        const registrationPackages = {
+            "SPM26-FULL": {
+                label: "Full Registration",
+                price: 570,
+                banquetIncluded: true,
+                paperCoverage: true,
+                canAddStudents: true,
+                defaultDays: 'Full'
+            },
+            "SPM26-STUDENT": {
+                label: "Student Full Registration",
+                price: 380,
+                banquetIncluded: true,
+                paperCoverage: true,
+                defaultDays: 'Full'
+            },
+            "SPM26-DAILY": {
+                label: "Daily Pass",
+                pricePerDay: 150,
+                price: 150,
+                banquetIncluded: false,
+                paperCoverage: false,
+                externalOnly: true,
+                requiresDaySelection: true,
+                dayLimit: 4
+            }
+        };
+
+        // Volume discount: per-student price applies to ALL students at that tier
+        function getStudentTotalCost(count) {
+            if (count <= 0) return 0;
+            if (count === 1) return 380;       // 380/student
+            if (count === 2) return 290 * 2;   // 580 total
+            return 250 * count;                // 750 for 3, 1000 for 4, etc.
+        }
+        function getStudentPerRate(count) {
+            if (count <= 1) return 380;
+            if (count === 2) return 290;
+            return 250;
+        }
+
+        const uploadForm = document.getElementById('uploadForm');
+        const packageSelect = document.getElementById('registrationPackage');
+        const studentNamesRow = document.getElementById('studentNamesRow');
+        const studentNamesLabel = document.getElementById('studentNamesLabel');
+        const studentInputsContainer = document.getElementById('studentInputsContainer');
+        const addStudentBtn = document.getElementById('addStudentBtn');
+        let studentCount = 0;
+        const maxStudents = 10;
+        const attendanceDaysInput = document.getElementById('attendanceDays');
+        const attendanceDayInputs = Array.prototype.slice.call(document.querySelectorAll('.attendance-day-input'));
+        const attendanceDaysHelp = document.getElementById('attendanceDaysHelp');
+        const nameInput = document.getElementById('uploaderName');
+        const submissionTypeSelect = document.getElementById('submissionType');
+        const submissionNumInput = document.getElementById('submissionNumber');
+        const submissionTitleInput = document.getElementById('submissionTitle');
+        const submissionNumberLabel = document.getElementById('submissionNumberLabel');
+        const submissionTitleLabel = document.getElementById('submissionTitleLabel');
+        const submissionNumberHelp = document.getElementById('submissionNumberHelp');
+        const selectedPaymentCode = document.getElementById('selectedPaymentCode');
+        const calculatedTotal = document.getElementById('calculatedTotal');
+        const banquetStatus = document.getElementById('banquetStatus');
+        const transferNotePreview = document.getElementById('transferNotePreview');
+        const bankNoteExample = document.getElementById('bankNoteExample');
+        const calculatedPaymentCode = document.getElementById('calculatedPaymentCode');
+        const calculatedPaymentTotal = document.getElementById('calculatedPaymentTotal');
+        const recommendedTransferNote = document.getElementById('recommendedTransferNote');
+        const banquetAddonContainer = document.getElementById('banquetAddonContainer');
+        const banquetAddonCheck = document.getElementById('banquetAddon');
+
+        function getSelectedPackage() {
+            return registrationPackages[packageSelect.value] || null;
+        }
+
+        function updateStudentInputs() {
+            if (studentCount >= maxStudents) {
+                addStudentBtn.style.display = 'none';
+            } else {
+                addStudentBtn.style.display = 'inline-block';
+            }
+            updatePaymentSummary();
+        }
+
+        addStudentBtn.addEventListener('click', function () {
+            if (studentCount < maxStudents) {
+                studentCount++;
+                const studentDiv = document.createElement('div');
+                studentDiv.className = 'mb-2 d-flex align-items-center student-entry';
+                studentDiv.innerHTML = `
+                    <input type="text" class="form-control student-name-input" placeholder="Student ${studentCount} Name & Surname" required style="border-radius: 6px; border: 1px solid #ced4da; margin-right: 10px;">
+                    <button type="button" class="btn btn-sm btn-danger remove-student-btn" style="border-radius: 6px;"><i class="lni-trash"></i></button>
+                `;
+                studentDiv.querySelector('.remove-student-btn').addEventListener('click', function () {
+                    studentDiv.remove();
+                    studentCount--;
+                    const inputs = studentInputsContainer.querySelectorAll('.student-name-input');
+                    inputs.forEach((input, index) => {
+                        input.placeholder = `Student ${index + 1} Name & Surname`;
+                    });
+                    updateStudentInputs();
+                });
+                studentDiv.querySelector('.student-name-input').addEventListener('input', updatePaymentSummary);
+                studentInputsContainer.appendChild(studentDiv);
+                updateStudentInputs();
+            }
+        });
+
+        function setSubmissionFieldsReadonly(isReadonly, numberValue, titleValue) {
+            if (isReadonly) {
+                submissionNumInput.value = numberValue;
+                submissionTitleInput.value = titleValue;
+                submissionNumInput.setAttribute('readonly', 'true');
+                submissionTitleInput.setAttribute('readonly', 'true');
+                submissionNumInput.style.backgroundColor = '#e9ecef';
+                submissionTitleInput.style.backgroundColor = '#e9ecef';
+                return;
+            }
+
+            if (submissionNumInput.value === 'Not Applicable' || submissionNumInput.value === 'External Attendee') {
+                submissionNumInput.value = '';
+            }
+            if (submissionTitleInput.value === 'Not Applicable' || submissionTitleInput.value === 'External Attendee') {
+                submissionTitleInput.value = '';
+            }
+            submissionNumInput.removeAttribute('readonly');
+            submissionTitleInput.removeAttribute('readonly');
+            submissionNumInput.style.backgroundColor = '#ffffff';
+            submissionTitleInput.style.backgroundColor = '#ffffff';
+        }
+
+        function getCheckedAttendanceInputs() {
+            return attendanceDayInputs.filter(function (input) {
+                return input.checked;
+            });
+        }
+
+        function getSelectedAttendanceDays() {
+            return getCheckedAttendanceInputs().map(function (input) {
+                return input.value;
+            });
+        }
+
+        function getSelectedAttendanceNoteDays() {
+            return getCheckedAttendanceInputs().map(function (input) {
+                return input.getAttribute('data-note');
+            });
+        }
+
+        function setAllAttendanceDaysChecked(isChecked) {
+            attendanceDayInputs.forEach(function (input) {
+                input.checked = isChecked;
+            });
+        }
+
+        function setAttendanceDayInputsDisabled(isDisabled) {
+            attendanceDayInputs.forEach(function (input) {
+                input.disabled = isDisabled;
+            });
+        }
+
+        function updateAttendanceDaysValue() {
+            attendanceDaysInput.value = getSelectedAttendanceDays().join(', ');
+        }
+
+        function updateAttendanceDayAvailability(selectedPackage) {
+            if (!selectedPackage || !selectedPackage.requiresDaySelection) {
+                return;
+            }
+
+            const limit = selectedPackage.dayLimit;
+            const checkedCount = getCheckedAttendanceInputs().length;
+
+            attendanceDayInputs.forEach(function (input) {
+                input.disabled = checkedCount >= limit && !input.checked;
+            });
+        }
+
+        function configureAttendanceDays() {
+            const selectedPackage = getSelectedPackage();
+
+            if (!selectedPackage) {
+                setAllAttendanceDaysChecked(false);
+                setAttendanceDayInputsDisabled(true);
+                attendanceDaysInput.value = '';
+                attendanceDaysHelp.innerText = 'Conference dates are 6-9 July 2026. Select a registration package to choose attendance days.';
+                return;
+            }
+
+            if (selectedPackage.requiresDaySelection) {
+                setAttendanceDayInputsDisabled(false);
+                if (getCheckedAttendanceInputs().length > selectedPackage.dayLimit) {
+                    setAllAttendanceDaysChecked(false);
+                }
+                updateAttendanceDayAvailability(selectedPackage);
+                updateAttendanceDaysValue();
+                attendanceDaysHelp.innerText = 'Select 1 to ' + selectedPackage.dayLimit + ' day(s) between 6-9 July 2026. Price: €150 per day.';
+                return;
+            }
+
+            setAllAttendanceDaysChecked(false);
+            setAttendanceDayInputsDisabled(true);
+            attendanceDaysInput.value = selectedPackage.defaultDays || '';
+            attendanceDaysHelp.innerText = 'All conference days are included: 6-9 July 2026.';
+        }
+
+        function handleAttendanceDayChange(changedInput) {
+            const selectedPackage = getSelectedPackage();
+            if (!selectedPackage || !selectedPackage.requiresDaySelection) {
+                configureAttendanceDays();
+                updatePaymentSummary();
+                return;
+            }
+
+            if (selectedPackage.dayLimit === 1 && changedInput.checked) {
+                attendanceDayInputs.forEach(function (input) {
+                    if (input !== changedInput) {
+                        input.checked = false;
+                    }
+                });
+            }
+
+            if (selectedPackage.dayLimit > 1 && getCheckedAttendanceInputs().length > selectedPackage.dayLimit) {
+                changedInput.checked = false;
+            }
+
+            updateAttendanceDaysValue();
+            updateAttendanceDayAvailability(selectedPackage);
+            updatePaymentSummary();
+        }
+
+        function restrictSubmissionTypes(allowAll) {
+            Array.from(submissionTypeSelect.options).forEach(function (opt) {
+                if (opt.value && opt.value !== 'External Attendee') {
+                    opt.disabled = !allowAll;
+                    opt.style.display = allowAll ? '' : 'none';
+                }
+            });
+        }
+
+        function configureSubmissionFields() {
+            const selectedPackage = getSelectedPackage();
+            configureAttendanceDays();
+
+            // Show student add-on only for Full Registration
+            if (selectedPackage && selectedPackage.canAddStudents) {
+                studentNamesRow.style.display = 'block';
+                // Update label with current rate
+                const nextCount = studentCount + 1;
+                const rate = getStudentPerRate(nextCount);
+                studentNamesLabel.innerText = 'Add Students (€' + rate + '/student):';
+            } else {
+                studentNamesRow.style.display = 'none';
+                studentInputsContainer.innerHTML = '';
+                studentCount = 0;
+                updateStudentInputs();
+            }
+
+            submissionNumberLabel.innerText = 'Submission Number:';
+            submissionTitleLabel.innerText = 'Submission Title:';
+            submissionNumberHelp.innerText = 'Use the accepted paper ID when applicable.';
+            submissionNumInput.placeholder = 'e.g., 123';
+            submissionTitleInput.placeholder = 'Title of your paper/poster';
+
+            if (!selectedPackage) {
+                setSubmissionFieldsReadonly(false);
+                restrictSubmissionTypes(true);
+                if (banquetAddonContainer) banquetAddonContainer.style.display = 'none';
+                if (banquetAddonCheck) banquetAddonCheck.checked = false;
+                updatePaymentSummary();
+                return;
+            }
+
+            // Banquet add-on only for Daily Pass
+            if (packageSelect.value === 'SPM26-DAILY') {
+                if (banquetAddonContainer) banquetAddonContainer.style.display = 'block';
+            } else {
+                if (banquetAddonContainer) banquetAddonContainer.style.display = 'none';
+                if (banquetAddonCheck) banquetAddonCheck.checked = false;
+            }
+
+            // Daily pass: force External Attendee, readonly submission fields
+            if (selectedPackage.externalOnly) {
+                setSubmissionFieldsReadonly(true, 'Not Applicable', 'Not Applicable');
+                restrictSubmissionTypes(false);
+                submissionTypeSelect.value = 'External Attendee';
+                updatePaymentSummary();
+                return;
+            }
+
+            // Full and Student: allow all submission types including External Attendee
+            setSubmissionFieldsReadonly(false);
+            restrictSubmissionTypes(true);
+            // If External Attendee is selected, make submission fields readonly
+            if (submissionTypeSelect.value === 'External Attendee') {
+                setSubmissionFieldsReadonly(true, 'Not Applicable', 'Not Applicable');
+            }
+            updatePaymentSummary();
+        }
+
+        function handleSubmissionTypeChange() {
+            const selectedPackage = getSelectedPackage();
+            if (selectedPackage && selectedPackage.externalOnly) {
+                configureSubmissionFields();
+                return;
+            }
+
+            if (submissionTypeSelect.value === 'External Attendee') {
+                setSubmissionFieldsReadonly(true, 'Not Applicable', 'Not Applicable');
+            } else {
+                setSubmissionFieldsReadonly(false);
+            }
+            updatePaymentSummary();
+        }
+
+        function buildTransferNote() {
+            const selectedPackage = getSelectedPackage();
+            if (!selectedPackage) {
+                return 'Select a registration package to generate the transfer note.';
+            }
+
+            // Conference type (SPM or SMI)
+            const confType = document.getElementById('conferenceType').value || 'SPM';
+
+            // Paper ID: 3-digit, right-aligned, default 000
+            const rawPaperId = submissionNumInput.value.trim();
+            let paperId = '000';
+            if (rawPaperId && rawPaperId !== 'Not Applicable' && rawPaperId !== 'External Attendee') {
+                const numericId = parseInt(rawPaperId, 10);
+                if (!isNaN(numericId)) {
+                    paperId = String(numericId).padStart(3, '0');
+                }
+            }
+
+            // #XYZ code
+            // X = Package type: 1=Full, 2=Student, 3=Daily
+            let X = '1';
+            if (packageSelect.value === 'SPM26-STUDENT') X = '2';
+            else if (packageSelect.value === 'SPM26-DAILY') X = '3';
+
+            // Y = Additional students count (Full) or day count (Daily)
+            let Y = '0';
+            if (packageSelect.value === 'SPM26-FULL') {
+                Y = String(studentCount);
+            } else if (packageSelect.value === 'SPM26-DAILY') {
+                Y = String(getCheckedAttendanceInputs().length);
+            }
+
+            // Z = Banquet: 0=no, 1=yes (always 1 for Full/Student)
+            let Z = '0';
+            if (selectedPackage.banquetIncluded) {
+                Z = '1';
+            } else if (banquetAddonCheck && banquetAddonCheck.checked) {
+                Z = '1';
+            }
+
+            return 'Conditional-donation-Conferance-' + confType + '-' + paperId + '-' + X + Y + Z;
+        }
+
+        function updatePaymentSummary() {
+            const selectedPackage = getSelectedPackage();
+
+            if (!selectedPackage) {
+                selectedPaymentCode.innerText = 'Select a package';
+                calculatedTotal.innerText = '€0';
+                banquetStatus.innerText = 'Select a package';
+                transferNotePreview.innerText = 'Select a registration package to generate the transfer note.';
+                calculatedPaymentCode.value = '';
+                calculatedPaymentTotal.value = '';
+                recommendedTransferNote.value = '';
+                bankNoteExample.innerText = 'Conditional-donation-Conferance-SPM-000-101';
+                return;
+            }
+
+            let total = 0;
+
+            if (packageSelect.value === 'SPM26-DAILY') {
+                // Daily pass: price per day * selected days
+                const dayCount = getCheckedAttendanceInputs().length;
+                total = dayCount * 150;
+            } else {
+                total = selectedPackage.price;
+            }
+
+            // Add banquet for daily pass
+            if (banquetAddonCheck && banquetAddonCheck.checked) {
+                total += 180;
+            }
+
+            // Add students (volume discount)
+            if (studentCount > 0 && selectedPackage.canAddStudents) {
+                total += getStudentTotalCost(studentCount);
+                // Update label with current rate
+                const rate = getStudentPerRate(studentCount);
+                studentNamesLabel.innerText = 'Add Students (€' + rate + '/student):';
+            }
+
+            const note = buildTransferNote();
+
+            let codeDisplay = selectedPackage.label;
+            if (banquetAddonCheck && banquetAddonCheck.checked) {
+                codeDisplay += ' + Banquet';
+            }
+
+            selectedPaymentCode.innerText = codeDisplay;
+            calculatedTotal.innerText = '€' + total;
+            banquetStatus.innerText = (selectedPackage.banquetIncluded || (banquetAddonCheck && banquetAddonCheck.checked)) ? 'Included' : 'Not included';
+            transferNotePreview.innerText = note;
+            calculatedPaymentCode.value = packageSelect.value;
+            calculatedPaymentTotal.value = '€' + total;
+            recommendedTransferNote.value = note;
+            bankNoteExample.innerText = note;
+        }
+
+        // Validation: check all required fields and enable/disable Generate button
+        function getGenerateMissingFields() {
+            var missing = [];
+            if (!nameInput.value.trim()) missing.push('Full Name');
+            if (!document.getElementById('contactEmail').value.trim()) missing.push('Contact Email');
+            if (!document.getElementById('affiliation').value.trim()) missing.push('Affiliation');
+            if (!packageSelect.value) missing.push('Registration Package');
+            if (!document.getElementById('conferenceType').value) missing.push('Conference');
+
+            var selectedPackage = getSelectedPackage();
+            if (selectedPackage && selectedPackage.requiresDaySelection && getCheckedAttendanceInputs().length === 0) {
+                missing.push('Attendance Days (select at least 1)');
+            }
+            if (selectedPackage && !selectedPackage.externalOnly) {
+                if (submissionTypeSelect.value !== 'External Attendee') {
+                    if (!submissionNumInput.value.trim() || submissionNumInput.value === 'Not Applicable') missing.push('Submission Number');
+                    if (!submissionTitleInput.value.trim() || submissionTitleInput.value === 'Not Applicable') missing.push('Submission Title');
+                }
+            }
+            return missing;
+        }
+
+        function checkGenerateBtn() {
+            var btn = document.getElementById('generateTransferBtn');
+            var warning = document.getElementById('generateWarning');
+            var missing = getGenerateMissingFields();
+            if (missing.length === 0) {
+                btn.disabled = false;
+                btn.style.opacity = '1';
+                btn.style.cursor = 'pointer';
+                warning.style.display = 'none';
+            } else {
+                btn.disabled = true;
+                btn.style.opacity = '0.5';
+                btn.style.cursor = 'not-allowed';
+                // Hide warning when just checking (only show on click)
+            }
+        }
+
+        if (banquetAddonCheck) banquetAddonCheck.addEventListener('change', function() { updatePaymentSummary(); checkGenerateBtn(); });
+        packageSelect.addEventListener('change', function() {
+            document.getElementById('bankTransferPanel').style.display = 'none';
+            document.getElementById('generateWarning').style.display = 'none';
+            configureSubmissionFields();
+            checkGenerateBtn();
+        });
+        nameInput.addEventListener('input', function() { updatePaymentSummary(); checkGenerateBtn(); });
+        document.getElementById('contactEmail').addEventListener('input', checkGenerateBtn);
+        document.getElementById('affiliation').addEventListener('input', checkGenerateBtn);
+        submissionNumInput.addEventListener('input', function() { updatePaymentSummary(); checkGenerateBtn(); });
+        submissionTitleInput.addEventListener('input', checkGenerateBtn);
+        submissionTypeSelect.addEventListener('change', function() { handleSubmissionTypeChange(); checkGenerateBtn(); });
+        document.getElementById('conferenceType').addEventListener('change', function() { updatePaymentSummary(); checkGenerateBtn(); });
+        attendanceDayInputs.forEach(function (input) {
+            input.addEventListener('change', function () {
+                handleAttendanceDayChange(input);
+                checkGenerateBtn();
+            });
+        });
+
+        // Generate button: validate, show warnings, or show Bank Transfer panel
+        document.getElementById('generateTransferBtn').addEventListener('click', function() {
+            var missing = getGenerateMissingFields();
+            var warning = document.getElementById('generateWarning');
+            if (missing.length > 0) {
+                warning.innerHTML = '<strong>Please fill in:</strong> ' + missing.join(', ');
+                warning.style.display = 'block';
+                return;
+            }
+            warning.style.display = 'none';
+            updatePaymentSummary();
+            var panel = document.getElementById('bankTransferPanel');
+            panel.style.display = 'block';
+            panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+
+        configureSubmissionFields();
+        checkGenerateBtn();
+
+        uploadForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const selectedPackage = getSelectedPackage();
+            const fileInput = document.getElementById('documentFile');
+            const statusDiv = document.getElementById('statusMessage');
+            const submitBtn = document.getElementById('submitBtn');
+            const file = fileInput.files[0];
+
+            updatePaymentSummary();
+
+            if (!selectedPackage) {
+                statusDiv.style.display = 'block';
+                statusDiv.className = 'mt-3 text-center p-2 rounded alert-danger';
+                statusDiv.innerText = 'Please select a registration package.';
+                return;
+            }
+
+            if (selectedPackage.requiresDaySelection &&
+                getSelectedAttendanceDays().length === 0) {
+                statusDiv.style.display = 'block';
+                statusDiv.className = 'mt-3 text-center p-2 rounded alert-danger';
+                statusDiv.innerText = 'Please select at least 1 attendance day for the Daily Pass.';
+                return;
+            }
+
+            if (!file) {
+                statusDiv.style.display = 'block';
+                statusDiv.className = 'mt-3 text-center p-2 rounded alert-danger';
+                statusDiv.innerText = 'Please select a file first.';
+                return;
+            }
+
+            const maxSizeInMB = 5;
+            const maxSizeInBytes = maxSizeInMB * 1024 * 1024;
+
+            if (file.size > maxSizeInBytes) {
+                statusDiv.style.display = 'block';
+                statusDiv.className = 'mt-3 text-center p-2 rounded alert-danger';
+                statusDiv.innerText = 'Error: File size exceeds the ' + maxSizeInMB + ' MB limit. Please select a smaller file.';
+                fileInput.value = '';
+                return;
+            }
+
+            const allowedExtensions = ['pdf', 'jpg', 'jpeg', 'png'];
+            const fileExtension = file.name.split('.').pop().toLowerCase();
+
+            if (!allowedExtensions.includes(fileExtension)) {
+                statusDiv.style.display = 'block';
+                statusDiv.className = 'mt-3 text-center p-2 rounded alert-danger';
+                statusDiv.innerText = 'Error: Invalid file type! Please upload only PDF, JPG, JPEG, or PNG files.';
+                fileInput.value = '';
+                return;
+            }
+
+            statusDiv.style.display = 'block';
+            statusDiv.className = 'mt-3 text-center p-2 rounded alert-info';
+            statusDiv.innerText = 'Uploading document, please wait...';
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="lni-reload spinner mr-1"></i> Uploading...';
+
+            const reader = new FileReader();
+
+            reader.onload = function () {
+                const base64Data = reader.result.split(',')[1];
+                const googleWebAppUrl = 'https://script.google.com/macros/s/AKfycby5ET7MObVIHlnJghJosK5jVBSrXE5vNeZ5SRBHITlpcLZTNUn7_BFpB_7AD_EHnJ-N/exec';
+
+                let studentNamesArr = [];
+                document.querySelectorAll('.student-name-input').forEach(input => {
+                    if (input.value.trim()) studentNamesArr.push(input.value.trim());
+                });
+
+                const requestData = {
+                    fileName: file.name,
+                    mimeType: file.type,
+                    fileData: base64Data,
+                    uploaderName: nameInput.value,
+                    contactEmail: document.getElementById('contactEmail').value,
+                    affiliation: document.getElementById('affiliation').value,
+                    registrationPackage: selectedPackage.label,
+                    packageCode: packageSelect.value,
+                    registrationQuantity: 1 + studentCount,
+                    registrationUnitPrice: selectedPackage.price,
+                    calculatedPaymentTotal: calculatedPaymentTotal.value.replace('€', ''),
+                    recommendedTransferNote: recommendedTransferNote.value,
+                    banquetIncluded: (selectedPackage.banquetIncluded || (banquetAddonCheck && banquetAddonCheck.checked)) ? 'Yes' : 'No',
+                    paperCoverage: selectedPackage.paperCoverage ? 'Yes' : 'No',
+                    attendanceDays: attendanceDaysInput.value,
+                    conferenceType: document.getElementById('conferenceType').value,
+                    submissionType: submissionTypeSelect.value,
+                    submissionNumber: submissionNumInput.value,
+                    submissionTitle: submissionTitleInput.value,
+                    student1Name: studentNamesArr[0] || '',
+                    student2Name: studentNamesArr[1] || '',
+                    student3Name: studentNamesArr[2] || '',
+                    student4Name: studentNamesArr[3] || '',
+                    student5Name: studentNamesArr[4] || '',
+                    studentCount: studentCount
+                };
+
+                fetch(googleWebAppUrl, {
+                    method: 'POST',
+                    body: JSON.stringify(requestData),
+                    mode: 'no-cors'
+                })
+                    .then(() => {
+                        statusDiv.className = 'mt-3 text-center p-2 rounded alert-success';
+                        statusDiv.innerText = 'Receipt uploaded successfully! Thank you.';
+                        uploadForm.reset();
+                        configureSubmissionFields();
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = '<i class="lni-check-mark-circle mr-1"></i> Send Receipt & Complete Registration';
+                    })
+                    .catch(error => {
+                        statusDiv.className = 'mt-3 text-center p-2 rounded alert-danger';
+                        statusDiv.innerText = 'An error occurred during upload. Please try again.';
+                        console.error('Upload error:', error);
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = '<i class="lni-check-mark-circle mr-1"></i> Send Receipt & Complete Registration';
+                    });
+            };
+
+            reader.readAsDataURL(file);
+        });
+    </script>
+
+</body>
+
+</html>
