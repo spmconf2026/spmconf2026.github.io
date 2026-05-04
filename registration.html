@@ -296,7 +296,7 @@
                                 </h5>
                                 <p>
                                     At least one author of each accepted paper must complete a
-                                    <strong>Full Registration</strong> or <strong>Student Full Registration</strong>
+                                    <strong>Full</strong> or <strong>Student</strong>
                                     for the paper to be covered by the conference registration. Daily pass
                                     registrations do not count toward paper coverage.
                                 </p>
@@ -346,11 +346,11 @@
                         <div class="row mb-5">
                             <div class="col-lg-4 col-md-6 mb-4">
                                 <div class="registration-option card-blue">
-                                    <h5>Paper Authors</h5>
+                                    <h5>Full</h5>
                                     <div class="registration-price" id="card-price-full">€570 <span style="font-size: 16px; color: #777; text-decoration: line-through;">€670</span></div>
 
                                     <ul class="registration-list">
-                                        <li><i class="lni-check-mark-circle"></i>Full conference registration</li>
+                                        <li><i class="lni-check-mark-circle"></i>Full</li>
                                         <li><i class="lni-check-mark-circle"></i>Required for accepted paper coverage
                                         </li>
                                         <li><i class="lni-check-mark-circle"></i>Lunch + Coffee Break + Conference Dinner
@@ -362,11 +362,11 @@
                             </div>
                             <div class="col-lg-4 col-md-6 mb-4">
                                 <div class="registration-option card-turquoise">
-                                    <h5>Student Authors</h5>
+                                    <h5>Student</h5>
                                     <div class="registration-price" id="card-price-student">€380 <span style="font-size: 16px; color: #777; text-decoration: line-through;">€450</span></div>
 
                                     <ul class="registration-list">
-                                        <li><i class="lni-check-mark-circle"></i>Student full registration</li>
+                                        <li><i class="lni-check-mark-circle"></i>Student</li>
                                         <li><i class="lni-check-mark-circle"></i>Valid for paper coverage</li>
                                         <li><i class="lni-check-mark-circle"></i>Lunch + Coffee Break + Conference Dinner
                                             included</li>
@@ -406,7 +406,7 @@
                                         <tr>
                                             <th class="text-left">Benefit</th>
                                             <th>Full</th>
-                                            <th>Student Full</th>
+                                            <th>Student</th>
                                             <th>Additional Students</th>
                                             <th>Daily Pass</th>
                                             <th>Dinner Only</th>
@@ -478,13 +478,13 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>Full Registration</td>
+                                            <td>Full</td>
                                             <td><strong>€570</strong></td>
                                             <td><strong>€670</strong></td>
                                             <td>Required for non-student authors with an accepted paper.</td>
                                         </tr>
                                         <tr>
-                                            <td>Student Full Registration</td>
+                                            <td>Student</td>
                                             <td><strong>€380</strong></td>
                                             <td><strong>€450</strong></td>
                                             <td>Covers an accepted paper when the registering author is a student.</td>
@@ -493,7 +493,7 @@
                                             <td>Additional Student (1st)</td>
                                             <td><strong>€380/student</strong></td>
                                             <td><strong>€450/student</strong></td>
-                                            <td>Can be added to a Full Registration.</td>
+                                            <td>Can be added to a Full.</td>
                                         </tr>
                                         <tr>
                                             <td>Additional Students (up to 2)</td>
@@ -530,7 +530,7 @@
                                     Payment Guidelines</div>
                                 <div style="margin-bottom: 8px;"><strong style="color: #bf360c;">Base Registration
                                         Requirement:</strong> Every accepted paper must be
-                                    covered by at least 1 Full Registration or 1 Student Full Registration.</div>
+                                    covered by at least 1 Full or 1 Student.</div>
                                 <div style="margin-bottom: 8px;"><strong style="color: #bf360c;">Scope of the Additional
                                         Student Discount:</strong>
                                     The additional student discounts (Additional Student 1st, 2, or 3+) are
@@ -541,12 +541,12 @@
                                 <div style="margin-bottom: 8px;"><strong style="color: #bf360c;">Multiple Paper
                                         Policy:</strong> If a research group (e.g., an advisor and their
                                     students) has more than one accepted paper, an independent primary registration
-                                    (Full or Student Full) is required for each paper.</div>
+                                    (Full or Student) is required for each paper.</div>
                                 <div><strong style="color: #bf360c;">Example Scenario:</strong> If 1 professor and 3
-                                    students have 2 accepted papers, they must purchase 1 Full Registration and 1
-                                    Student Full Registration to cover both papers, rather than applying the Additional
-                                    Students (3 or more) discount. Alternatively, they can use 1 Student Full
-                                    Registration alongside the Additional Students (up to 2) package to cover their
+                                    students have 2 accepted papers, they must purchase 1 Full and 1
+                                    Student to cover both papers, rather than applying the Additional
+                                    Students (3 or more) discount. Alternatively, they can use 1 Student
+                                    alongside the Additional Students (up to 2) package to cover their
                                     accepted papers.</div>
                             </div>
 
@@ -609,8 +609,8 @@
                                     <select class="form-control" id="registrationPackage" name="registrationPackage"
                                         required style="border-radius: 6px; border: 1px solid #ced4da;">
                                         <option value="" disabled selected>Select Registration Package</option>
-                                        <option value="FULL">Full Registration</option>
-                                        <option value="STUDENT">Student Full Registration</option>
+                                        <option value="FULL">Full</option>
+                                        <option value="STUDENT">Student</option>
                                         <option value="DAILY">Daily Pass</option>
                                         <option value="DINNER_ONLY">Conference Dinner Only</option>
                                     </select>
@@ -910,8 +910,8 @@
             const packageSelect = document.getElementById('registrationPackage');
             if (packageSelect) {
                 Array.from(packageSelect.options).forEach(opt => {
-                    if (opt.value === 'FULL') opt.text = `Full Registration (€${isEarlyBird ? 570 : 670})`;
-                    if (opt.value === 'STUDENT') opt.text = `Student Full Registration (€${isEarlyBird ? 380 : 450})`;
+                    if (opt.value === 'FULL') opt.text = `Full (€${isEarlyBird ? 570 : 670})`;
+                    if (opt.value === 'STUDENT') opt.text = `Student (€${isEarlyBird ? 380 : 450})`;
                     if (opt.value === 'DAILY') opt.text = `Daily Pass (€${isEarlyBird ? 150 : 180}/day)`;
                     if (opt.value === 'DINNER_ONLY') opt.text = `Conference Dinner Only (€${isEarlyBird ? 150 : 200})`;
                 });
@@ -952,7 +952,7 @@
 
         const registrationPackages = {
             "FULL": {
-                label: "Full Registration",
+                label: "Full",
                 price: isEarlyBird ? 570 : 670,
                 banquetIncluded: true,
                 paperCoverage: true,
@@ -960,7 +960,7 @@
                 defaultDays: 'Full'
             },
             "STUDENT": {
-                label: "Student Full Registration",
+                label: "Student",
                 price: isEarlyBird ? 380 : 450,
                 banquetIncluded: true,
                 paperCoverage: true,
