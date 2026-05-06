@@ -55,20 +55,29 @@
       display: block !important;
     }
 
-    .nivo-lightbox-prev::before { content: "\ea44" !important; }
-    .nivo-lightbox-next::before { content: "\ea46" !important; }
+    .nivo-lightbox-prev::before {
+      content: "\ea44" !important;
+    }
 
-    .nivo-lightbox-prev, .nivo-lightbox-next { font-size: 0 !important; }
-    
+    .nivo-lightbox-next::before {
+      content: "\ea46" !important;
+    }
+
+    .nivo-lightbox-prev,
+    .nivo-lightbox-next {
+      font-size: 0 !important;
+    }
+
     /* Keynote Detail Styles */
     .keynote-details-box {
       background: #ffffff;
       border: 1px solid #eee;
       border-radius: 20px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
       position: relative;
       overflow: hidden;
     }
+
     .keynote-details-box .close-btn {
       position: absolute;
       right: 25px;
@@ -88,6 +97,7 @@
       justify-content: center;
       align-items: center;
     }
+
     .keynote-details-box .close-btn:hover {
       background: #006b8b;
       color: #fff;
@@ -108,23 +118,34 @@
       justify-content: center;
       align-items: center;
       z-index: 10;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
       animation: pulse-click 2s infinite;
       pointer-events: none;
       transition: opacity 0.3s ease;
     }
-    
+
     .click-indicator i {
       font-size: 20px;
       margin-top: 2px;
     }
 
     @keyframes pulse-click {
-      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 107, 139, 0.7); }
-      70% { transform: scale(1.15); box-shadow: 0 0 0 15px rgba(0, 107, 139, 0); }
-      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 107, 139, 0); }
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(0, 107, 139, 0.7);
+      }
+
+      70% {
+        transform: scale(1.15);
+        box-shadow: 0 0 0 15px rgba(0, 107, 139, 0);
+      }
+
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(0, 107, 139, 0);
+      }
     }
-    
+
     .team-item:hover .click-indicator {
       opacity: 0;
     }
@@ -455,274 +476,322 @@
           <!-- <a href="Committee.html" class="btn btn-common mt-30 wow fadeInUp" data-wow-delay="0.1s">Committee</a> -->
         </div>
       </div>
-    </section>
+  </section>
 
-    <!-- Keynotes Section Start -->
-    <section id="Keynotes" class="section-padding text-center pt-4">
+  <!-- Keynotes Section Start -->
+  <section id="Keynotes" class="section-padding text-center pt-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="section-title-header text-center">
+            <h2 class="section-title wow fadeInUp" data-wow-delay="0.2s">Keynote Speakers</h2>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-3 col-md-6 col-xs-12">
+          <!-- Team Item Starts -->
+          <div class="team-item wow fadeInUp" data-wow-delay="0.2s">
+            <div class="team-img">
+              <a href="#desbrun-details" data-toggle="collapse" role="button" aria-expanded="false"
+                aria-controls="desbrun-details">
+                <img class="img-fluid" src="assets/img/Keynote/Mathieu_Desbrun/MathieuDesbrun.jpg"
+                  alt="Mathieu Desbrun">
+                <div class="team-overlay">
+                  <div class="overlay-social-icon text-center">
+                    <span style="color: white; font-weight: bold; font-size: 14px;">Click for detailed info</span>
+                  </div>
+                </div>
+                <div class="click-indicator">
+                  <i class="lni-pointer-up"></i>
+                </div>
+              </a>
+            </div>
+            <div class="info-text">
+              <h3><a href="#desbrun-details" data-toggle="collapse">Mathieu Desbrun</a></h3>
+              <p>Inria / Ecole Polytechnique, France</p>
+            </div>
+          </div>
+          <!-- Team Item Ends -->
+        </div>
+        <div class="col-lg-3 col-md-6 col-xs-12">
+          <!-- Team Item Starts -->
+          <div class="team-item wow fadeInUp" data-wow-delay="0.4s">
+            <div class="team-img">
+              <img class="img-fluid" src="assets/img/team/white.jpg" alt="">
+              <div class="team-overlay">
+                <div class="overlay-social-icon text-center">
+                  <p style="color: white; font-weight: bold; font-size: 14px;">TBA</p>
+                </div>
+              </div>
+            </div>
+            <div class="info-text">
+              <h3>TBA</h3>
+              <p>TBA</p>
+            </div>
+          </div>
+          <!-- Team Item Ends -->
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-xs-12">
+          <!-- Team Item Starts -->
+          <div class="team-item wow fadeInUp" data-wow-delay="1s">
+            <div class="team-img">
+              <img class="img-fluid" src="assets/img/team/white.jpg" alt="">
+              <div class="team-overlay">
+                <div class="overlay-social-icon text-center">
+                  <p style="color: white; font-weight: bold; font-size: 14px;">TBA</p>
+                </div>
+              </div>
+            </div>
+            <div class="info-text">
+              <h3>TBA</h3>
+              <p>TBA</p>
+            </div>
+          </div>
+          <!-- Team Item Ends -->
+        </div>
+      </div>
+
+      <!-- Mathieu Desbrun Details Start -->
+      <div class="collapse" id="desbrun-details">
+        <div class="keynote-details-box mt-5 p-4 p-lg-5 text-left">
+          <!-- Close button -->
+          <button type="button" class="close-btn" data-toggle="collapse" data-target="#desbrun-details"
+            aria-label="Close">
+            <i class="lni-close"></i>
+          </button>
+
+          <div class="row">
+            <!-- Speaker Photo & Bio -->
+            <div class="col-lg-4 col-md-12">
+              <div class="speaker-image-box text-center mb-4">
+                <a href="assets/img/Keynote/Mathieu_Desbrun/MathieuDesbrun.jpg" class="lightbox">
+                  <img class="img-fluid" src="assets/img/Keynote/Mathieu_Desbrun/MathieuDesbrun.jpg"
+                    alt="Mathieu Desbrun"
+                    style="border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); max-width: 220px;">
+                </a>
+              </div>
+              <div class="speaker-info-box">
+                <h4
+                  style="color: #006b8b; font-weight: bold; margin-bottom: 15px; border-bottom: 2px solid #006b8b; display: inline-block;">
+                  Mathieu Desbrun</h4>
+                <p style="text-align: justify; line-height: 1.6; font-size: 14px; color: #444;">
+                  After obtaining a PhD in computer graphics in Grenoble, France, Professor Desbrun joined Caltech as a
+                  postdoctoral fellow in 1998. He joined the CS department at the University of Southern California as
+                  an Assistant Professor in January 2000, where he remained for four years in charge of the GRAIL lab.
+                  He then became an Associate Professor at Caltech in the CS department in 2003, where he started the
+                  Applied Geometry lab and was awarded the ACM SIGGRAPH Significant New Researcher award. He took on
+                  administrative duties after he became a full professor, becoming the founding chair of the Computing +
+                  Mathematical Sciences department and the director of the Information Science and Technology initiative
+                  from 2009 to 2015. More recently, he received an International Chair from France's Inria, has been the
+                  Technical Papers Chair for the ACM SIGGRAPH 2018 conference, spent a sabbatical year at ShanghaiTech
+                  University in the School of Information Science and Technology, and was elected as ACM Fellow and a
+                  member of the SIGGRAPH Academy in 2020. He is now working at LIX as both a researcher at Inria Saclay
+                  (where he established the Geomerix lab), and as a Professor at Ecole Polytechnique in France, where he
+                  focuses on geometry, machine learning, and simulation.
+                </p>
+              </div>
+            </div>
+
+            <!-- Talk Title & Abstract -->
+            <div class="col-lg-8 col-md-12 mt-4 mt-lg-0">
+              <div class="talk-content">
+                <h3 style="color: #212121; font-weight: 700; margin-bottom: 20px; line-height: 1.3;">Computing through
+                  the Lens of Geometry</h3>
+                <p style="text-align: justify; line-height: 1.7; font-size: 15px; color: #333;">
+                  While numerical methods are often treated as low-level exercises in floating-point operations and
+                  index bookkeeping, looking at computation through the lens of geometry is frequently the key to
+                  predictive modeling. This talk offers a fast-paced survey of how respecting the geometry underlying
+                  various shape modeling and physical simulation tasks results in efficient, versatile tools for both
+                  research and industry. We begin by exploring how discrete connections provide a rigorous framework for
+                  both the grooming of virtual characters and high-dimensional data analytics. We then pivot to the
+                  geometric foundations of calculus, illustrating how mimicking the structure of exterior calculus
+                  ensures that computational operators remain faithful to their fundamental continuous definitions. The
+                  discussion shifts to the geometric nature of mechanics, where we show that preserving physical
+                  constraints—such as symmetry and conservation laws—is an effective way to ensure long-term simulation
+                  stability. We conclude with a candid look at the current state of machine learning for geometry,
+                  weighing the undeniable flexibility of neural methods against the risks of losing the structural
+                  guarantees provided by classical geometric methods. Throughout this talk, the recurring theme is that
+                  drawing inspiration from differential geometry in the discrete setting is rarely just about
+                  mathematical purity; it is a practical necessity for building a robust and general-purpose
+                  computational toolbox.
+                </p>
+              </div>
+
+              <!-- Gallery Section -->
+              <div class="work-gallery mt-5 pt-4" style="border-top: 1px solid #eee;">
+                <h4 style="color: #006b8b; font-weight: bold; margin-bottom: 25px;">Works & Research</h4>
+                <div class="row">
+                  <div class="col-sm-6 mb-4 d-flex flex-column align-items-center">
+                    <a href="assets/img/Keynote/Mathieu_Desbrun/Picture1.jpg" class="lightbox"
+                      data-lightbox-gallery="keynote-gallery-inline">
+                      <img class="img-fluid" src="assets/img/Keynote/Mathieu_Desbrun/Picture1.jpg" alt="Work 1"
+                        style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+                    </a>
+                    <p class="mt-2 text-center" style="font-size: 11px; color: #666; line-height: 1.4;">
+                      <a href="https://dl.acm.org/doi/10.1145/3386569.3392389" target="_blank" rel="noopener noreferrer"
+                        style="color: #006b8b; font-weight: 500;">Discrete Differential Operators on Polygonal
+                        Meshes</a>
+                    </p>
+                  </div>
+                  <div class="col-sm-6 mb-4 d-flex flex-column align-items-center">
+                    <a href="assets/img/Keynote/Mathieu_Desbrun/Picture2.jpg" class="lightbox"
+                      data-lightbox-gallery="keynote-gallery-inline">
+                      <img class="img-fluid" src="assets/img/Keynote/Mathieu_Desbrun/Picture2.jpg" alt="Work 2"
+                        style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+                    </a>
+                    <p class="mt-2 text-center" style="font-size: 11px; color: #666; line-height: 1.4;">
+                      <a href="https://geometry.caltech.edu/pubs/PMLDA26.pdf" target="_blank" rel="noopener noreferrer"
+                        style="color: #006b8b; font-weight: 500;">SuperSDF: Sparse SDF Super-Resolution for Surface
+                        Extraction</a>
+                    </p>
+                  </div>
+                  <div class="col-sm-6 mb-4 d-flex flex-column align-items-center">
+                    <a href="assets/img/Keynote/Mathieu_Desbrun/Picture3.jpg" class="lightbox"
+                      data-lightbox-gallery="keynote-gallery-inline">
+                      <img class="img-fluid" src="assets/img/Keynote/Mathieu_Desbrun/Picture3.jpg" alt="Work 3"
+                        style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+                    </a>
+                    <p class="mt-2 text-center" style="font-size: 11px; color: #666; line-height: 1.4;">
+                      <a href="https://doi.org/10.1145/3355089.3356546" target="_blank" rel="noopener noreferrer"
+                        style="color: #006b8b; font-weight: 500;">3D Hodge Decompositions of Vector Fields</a>
+                    </p>
+                  </div>
+                  <div class="col-sm-6 mb-4 d-flex flex-column align-items-center">
+                    <a href="assets/img/Keynote/Mathieu_Desbrun/Picture4.jpg" class="lightbox"
+                      data-lightbox-gallery="keynote-gallery-inline">
+                      <img class="img-fluid" src="assets/img/Keynote/Mathieu_Desbrun/Picture4.jpg" alt="Work 4"
+                        style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+                    </a>
+                    <p class="mt-2 text-center" style="font-size: 11px; color: #666; line-height: 1.4;">
+                      <a href="https://geometry.caltech.edu/pubs/XWYDL26.pdf" target="_blank" rel="noopener noreferrer"
+                        style="color: #006b8b; font-weight: 500;">LBM-MPM Coupling for Air-Water-Sand Mixtures</a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Keynotes Section End -->
+
+  <section id="committee" class="section-padding text-center">
+    <div class="container">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+            <h2 class="section-title wow fadeInUp" data-wow-delay="0.2s">International Program Committee</h2>
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col-lg-4 col-md-6 col-sm-12">
+            <ul class="list-unstyled">
+              <li>Qiang Zou (Zhejiang University)</li>
+              <li>Yuanfeng Zhou (Shandong University)</li>
+              <li>Zichun Zhong (Wayne State University)</li>
+              <li>Jianmin Zheng (Nanyang Technological University)</li>
+              <li>Gang Zhao (Beihang University)</li>
+              <li>Congyi Zhang (University of Texas at Dallas)</li>
+              <li>Jessica Zhang (Carnegie Mellon University)</li>
+              <li>Gang Xu (Hangzhou Dianzi University)</li>
+              <li>Weiwei Xu (Zhejiang University)</li>
+              <li>Shiqing Xin (Shandong University, China)</li>
+              <li>Chuhua Xian (The South China University of Technology)</li>
+              <li>Jun Wu (Delft University of Technology)</li>
+              <li>Charlie Wang (University of Manchester)</li>
+              <li>Bin Wang (Tsinghua University)</li>
+              <li>Ningna Wang (Columbia University)</li>
+              <li>Lucas Vergez (Condordia University)</li>
+              <li>Amir Vaxman (The University of Edinburgh)</li>
+              <li>Jean-Marc Thiery (Adobe Research)</li>
+              <li>Hyewon Seo (ICube - University of Strasbourg)</li>
+              <li>Scott Schaefer (Texas A&M University)</li>
+              <li>Lucia Romani (University of Bologna)</li>
+              <li>Jing Ren (ETH Zurich)</li>
+              <li>Konrad Polthier (Freie Universität Berlin)</li>
+              <li>Ergun Akleman (Texas A&M University)</li>
+            </ul>
+          </div>
+
+          <div class="col-lg-4 col-md-6 col-sm-12">
+            <ul class="list-unstyled">
+              <li>Jorg Peters (University of Florida)</li>
+              <li>Jean-Philippe Pernot (Arts et Métiers ParisTech)</li>
+              <li>Scott Mitchell (Sandia National Laboratories)</li>
+              <li>Christopher-Denny Matte (Concordia University)</li>
+              <li>Lin Lu (Shandong University)</li>
+              <li>Xingchen Liu (University of California, Berkeley)</li>
+              <li>Yang Liu (Microsoft)</li>
+              <li>Shengjun Liu (Central South University)</li>
+              <li>Ligang Liu (University of Science and Technology of China)</li>
+              <li>Hongwei Lin (Zhejiang University)</li>
+              <li>Xin Li (Texas A&M University)</li>
+              <li>Tsz Ho Kwok (Concordia University)</li>
+              <li>Adarsh Krishnamurthy (Iowa State University)</li>
+              <li>Vinayak Krishnamurthy (Texas A&M University)</li>
+              <li>Jiří Kosinka (University of Groningen)</li>
+              <li>Mario Kapl (Department of Engineering & IT, Carinthia University of Applied Sciences)</li>
+              <li>Tao Ju (Washington University in St. Louis)</li>
+              <li>Xiaohong Jia (Chinese Academy of Sciences)</li>
+              <li>Jida Huang (University of Illinois at Chicago)</li>
+              <li>Jin Huang (Zhejiang University)</li>
+              <li>Kai Hormann (University of Lugano)</li>
+              <li>Ying He (Nanyang Technological University)</li>
+              <li>Michael Barton (BCAM)</li>
+            </ul>
+          </div>
+
+          <div class="col-lg-4 col-md-6 col-sm-12">
+            <ul class="list-unstyled">
+              <li>George Harabin (Palo Alto Research Center)</li>
+              <li>Stefanie Hahmann (University of Grenoble)</li>
+              <li>Xiaohu Guo (University of Texas at Dallas)</li>
+              <li>Shuming Gao (38 Zheda Rd,Hangzhou,Zhejiang Province,P.R.China)</li>
+              <li>Xiao-Ming Fu (University of Science and Technology of China)</li>
+              <li>Guoxin Fang (The Chinese University of Hong Kong)</li>
+              <li>Gershon Elber (Technion- Israel Institute of Technology)</li>
+              <li>Bailin Deng (Cardiff University)</li>
+              <li>Zhonggui Chen (Xiamen University)</li>
+              <li>Falai Chen (Department of Mathematics, University of Science and Technology of China)</li>
+              <li>Renjie Chen (University of Science and Technology of China)</li>
+              <li>Frederic Cazals (INRIA)</li>
+              <li>Juan Cao (Xiamen University)</li>
+              <li>Marcel Campen (Osnabrück University)</li>
+              <li>Laurent Buse (INRIA)</li>
+              <li>Georges-Pierre Bonneau (University of Grenoble and INRIA)</li>
+              <li>Pengbo Bo (Harbin Institute of Technology)</li>
+              <li>Silvia Biasotti (IMATI-CNR)</li>
+            </ul>
+          </div>
+        </div>
+        <br>
+      </div>
+
       <div class="container">
         <div class="row">
           <div class="col-12">
             <div class="section-title-header text-center">
-              <h2 class="section-title wow fadeInUp" data-wow-delay="0.2s">Keynote Speakers</h2>
+              <h2 class="section-title wow fadeInUp" data-wow-delay="0.2s">Local Organizing Team</h2>
             </div>
           </div>
         </div>
         <div class="row justify-content-center">
           <div class="col-lg-3 col-md-6 col-xs-12">
-            <!-- Team Item Starts -->
-            <div class="team-item wow fadeInUp" data-wow-delay="0.2s">
-              <div class="team-img">
-                <a href="#desbrun-details" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="desbrun-details">
-                  <img class="img-fluid" src="assets/img/Keynote/Mathieu_Desbrun/MathieuDesbrun.jpg" alt="Mathieu Desbrun">
-                  <div class="team-overlay">
-                    <div class="overlay-social-icon text-center">
-                      <span style="color: white; font-weight: bold; font-size: 14px;">Click for detailed info</span>
-                    </div>
-                  </div>
-                  <div class="click-indicator">
-                    <i class="lni-pointer-up"></i>
-                  </div>
-                </a>
-              </div>
-              <div class="info-text">
-                <h3><a href="#desbrun-details" data-toggle="collapse">Mathieu Desbrun</a></h3>
-                <p>Inria / Ecole Polytechnique, France</p>
-              </div>
-            </div>
-            <!-- Team Item Ends -->
+            <p><a>A. Alper Tasmektepligil</a></p>
+            <p>Yildiz Technical University, Türkiye</p>
           </div>
           <div class="col-lg-3 col-md-6 col-xs-12">
-            <!-- Team Item Starts -->
-            <div class="team-item wow fadeInUp" data-wow-delay="0.4s">
-              <div class="team-img">
-                <img class="img-fluid" src="assets/img/team/white.jpg" alt="">
-                <div class="team-overlay">
-                  <div class="overlay-social-icon text-center">
-                    <p style="color: white; font-weight: bold; font-size: 14px;">TBA</p>
-                  </div>
-                </div>
-              </div>
-              <div class="info-text">
-                <h3>TBA</h3>
-                <p>TBA</p>
-              </div>
-            </div>
-            <!-- Team Item Ends -->
-          </div>
-
-          <div class="col-lg-3 col-md-6 col-xs-12">
-            <!-- Team Item Starts -->
-            <div class="team-item wow fadeInUp" data-wow-delay="1s">
-              <div class="team-img">
-                <img class="img-fluid" src="assets/img/team/white.jpg" alt="">
-                <div class="team-overlay">
-                  <div class="overlay-social-icon text-center">
-                    <p style="color: white; font-weight: bold; font-size: 14px;">TBA</p>
-                  </div>
-                </div>
-              </div>
-              <div class="info-text">
-                <h3>TBA</h3>
-                <p>TBA</p>
-              </div>
-            </div>
-            <!-- Team Item Ends -->
-          </div>
-        </div>
-
-        <!-- Mathieu Desbrun Details Start -->
-        <div class="collapse" id="desbrun-details">
-          <div class="keynote-details-box mt-5 p-4 p-lg-5 text-left">
-            <!-- Close button -->
-            <button type="button" class="close-btn" data-toggle="collapse" data-target="#desbrun-details" aria-label="Close">
-              <i class="lni-close"></i>
-            </button>
-
-            <div class="row">
-              <!-- Speaker Photo & Bio -->
-              <div class="col-lg-4 col-md-12">
-                <div class="speaker-image-box text-center mb-4">
-                  <a href="assets/img/Keynote/Mathieu_Desbrun/MathieuDesbrun.jpg" class="lightbox">
-                    <img class="img-fluid" src="assets/img/Keynote/Mathieu_Desbrun/MathieuDesbrun.jpg" alt="Mathieu Desbrun"
-                      style="border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); max-width: 220px;">
-                  </a>
-                </div>
-                <div class="speaker-info-box">
-                  <h4 style="color: #006b8b; font-weight: bold; margin-bottom: 15px; border-bottom: 2px solid #006b8b; display: inline-block;">Bio</h4>
-                  <p style="text-align: justify; line-height: 1.6; font-size: 14px; color: #444;">
-                    After obtaining a PhD in computer graphics in Grenoble, France, Professor Desbrun joined Caltech as a postdoctoral fellow in 1998. He joined the CS department at the University of Southern California as an Assistant Professor in January 2000, where he remained for four years in charge of the GRAIL lab. He then became an Associate Professor at Caltech in the CS department in 2003, where he started the Applied Geometry lab and was awarded the ACM SIGGRAPH Significant New Researcher award. He took on administrative duties after he became a full professor, becoming the founding chair of the Computing + Mathematical Sciences department and the director of the Information Science and Technology initiative from 2009 to 2015. More recently, he received an International Chair from France's Inria, has been the Technical Papers Chair for the ACM SIGGRAPH 2018 conference, spent a sabbatical year at ShanghaiTech University in the School of Information Science and Technology, and was elected as ACM Fellow and a member of the SIGGRAPH Academy in 2020. He is now working at LIX as both a researcher at Inria Saclay (where he established the Geomerix lab), and as a Professor at Ecole Polytechnique in France, where he focuses on geometry, machine learning, and simulation.
-                  </p>
-                </div>
-              </div>
-
-              <!-- Talk Title & Abstract -->
-              <div class="col-lg-8 col-md-12 mt-4 mt-lg-0">
-                <div class="talk-content">
-                  <h3 style="color: #212121; font-weight: 700; margin-bottom: 20px; line-height: 1.3;">Computing through the Lens of Geometry</h3>
-                  <p style="text-align: justify; line-height: 1.7; font-size: 15px; color: #333;">
-                    While numerical methods are often treated as low-level exercises in floating-point operations and index bookkeeping, looking at computation through the lens of geometry is frequently the key to predictive modeling. This talk offers a fast-paced survey of how respecting the geometry underlying various shape modeling and physical simulation tasks results in efficient, versatile tools for both research and industry. We begin by exploring how discrete connections provide a rigorous framework for both the grooming of virtual characters and high-dimensional data analytics. We then pivot to the geometric foundations of calculus, illustrating how mimicking the structure of exterior calculus ensures that computational operators remain faithful to their fundamental continuous definitions. The discussion shifts to the geometric nature of mechanics, where we show that preserving physical constraints—such as symmetry and conservation laws—is an effective way to ensure long-term simulation stability. We conclude with a candid look at the current state of machine learning for geometry, weighing the undeniable flexibility of neural methods against the risks of losing the structural guarantees provided by classical geometric methods. Throughout this talk, the recurring theme is that drawing inspiration from differential geometry in the discrete setting is rarely just about mathematical purity; it is a practical necessity for building a robust and general-purpose computational toolbox.
-                  </p>
-                </div>
-
-                <!-- Gallery Section -->
-                <div class="work-gallery mt-5 pt-4" style="border-top: 1px solid #eee;">
-                  <h4 style="color: #006b8b; font-weight: bold; margin-bottom: 25px;">Works & Research</h4>
-                  <div class="row">
-                    <div class="col-sm-6 mb-4 d-flex flex-column align-items-center">
-                      <a href="assets/img/Keynote/Mathieu_Desbrun/Picture1.jpg" class="lightbox" data-lightbox-gallery="keynote-gallery-inline">
-                        <img class="img-fluid" src="assets/img/Keynote/Mathieu_Desbrun/Picture1.jpg" alt="Work 1" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
-                      </a>
-                      <p class="mt-2 text-center" style="font-size: 11px; color: #666; line-height: 1.4;">
-                        <a href="https://dl.acm.org/doi/10.1145/3386569.3392389" target="_blank" rel="noopener noreferrer" style="color: #006b8b; font-weight: 500;">Discrete Differential Operators on Polygonal Meshes</a>
-                      </p>
-                    </div>
-                    <div class="col-sm-6 mb-4 d-flex flex-column align-items-center">
-                      <a href="assets/img/Keynote/Mathieu_Desbrun/Picture2.jpg" class="lightbox" data-lightbox-gallery="keynote-gallery-inline">
-                        <img class="img-fluid" src="assets/img/Keynote/Mathieu_Desbrun/Picture2.jpg" alt="Work 2" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
-                      </a>
-                      <p class="mt-2 text-center" style="font-size: 11px; color: #666; line-height: 1.4;">
-                        <a href="https://geometry.caltech.edu/pubs/PMLDA26.pdf" target="_blank" rel="noopener noreferrer" style="color: #006b8b; font-weight: 500;">SuperSDF: Sparse SDF Super-Resolution for Surface Extraction</a>
-                      </p>
-                    </div>
-                    <div class="col-sm-6 mb-4 d-flex flex-column align-items-center">
-                      <a href="assets/img/Keynote/Mathieu_Desbrun/Picture3.jpg" class="lightbox" data-lightbox-gallery="keynote-gallery-inline">
-                        <img class="img-fluid" src="assets/img/Keynote/Mathieu_Desbrun/Picture3.jpg" alt="Work 3" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
-                      </a>
-                      <p class="mt-2 text-center" style="font-size: 11px; color: #666; line-height: 1.4;">
-                        <a href="https://doi.org/10.1145/3355089.3356546" target="_blank" rel="noopener noreferrer" style="color: #006b8b; font-weight: 500;">3D Hodge Decompositions of Vector Fields</a>
-                      </p>
-                    </div>
-                    <div class="col-sm-6 mb-4 d-flex flex-column align-items-center">
-                      <a href="assets/img/Keynote/Mathieu_Desbrun/Picture4.jpg" class="lightbox" data-lightbox-gallery="keynote-gallery-inline">
-                        <img class="img-fluid" src="assets/img/Keynote/Mathieu_Desbrun/Picture4.jpg" alt="Work 4" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
-                      </a>
-                      <p class="mt-2 text-center" style="font-size: 11px; color: #666; line-height: 1.4;">
-                        <a href="https://geometry.caltech.edu/pubs/XWYDL26.pdf" target="_blank" rel="noopener noreferrer" style="color: #006b8b; font-weight: 500;">LBM-MPM Coupling for Air-Water-Sand Mixtures</a>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <p><a>Serhat CAM</a></p>
+            <p>Istanbul Technical University, Türkiye</p>
           </div>
         </div>
       </div>
-    </section>
-    <!-- Keynotes Section End -->
-
-    <section id="committee" class="section-padding text-center">
-      <div class="container">
-        <div class="container">
-          <div class="row">
-            <div class="col-12 text-center">
-              <h2 class="section-title wow fadeInUp" data-wow-delay="0.2s">International Program Committee</h2>
-            </div>
-          </div>
-          <div class="row mt-4">
-            <div class="col-lg-4 col-md-6 col-sm-12">
-              <ul class="list-unstyled">
-                <li>Qiang Zou (Zhejiang University)</li>
-                <li>Yuanfeng Zhou (Shandong University)</li>
-                <li>Zichun Zhong (Wayne State University)</li>
-                <li>Jianmin Zheng (Nanyang Technological University)</li>
-                <li>Gang Zhao (Beihang University)</li>
-                <li>Congyi Zhang (University of Texas at Dallas)</li>
-                <li>Jessica Zhang (Carnegie Mellon University)</li>
-                <li>Gang Xu (Hangzhou Dianzi University)</li>
-                <li>Weiwei Xu (Zhejiang University)</li>
-                <li>Shiqing Xin (Shandong University, China)</li>
-                <li>Chuhua Xian (The South China University of Technology)</li>
-                <li>Jun Wu (Delft University of Technology)</li>
-                <li>Charlie Wang (University of Manchester)</li>
-                <li>Bin Wang (Tsinghua University)</li>
-                <li>Ningna Wang (Columbia University)</li>
-                <li>Lucas Vergez (Condordia University)</li>
-                <li>Amir Vaxman (The University of Edinburgh)</li>
-                <li>Jean-Marc Thiery (Adobe Research)</li>
-                <li>Hyewon Seo (ICube - University of Strasbourg)</li>
-                <li>Scott Schaefer (Texas A&M University)</li>
-                <li>Lucia Romani (University of Bologna)</li>
-                <li>Jing Ren (ETH Zurich)</li>
-                <li>Konrad Polthier (Freie Universität Berlin)</li>
-                <li>Ergun Akleman (Texas A&M University)</li>
-              </ul>
-            </div>
-
-            <div class="col-lg-4 col-md-6 col-sm-12">
-              <ul class="list-unstyled">
-                <li>Jorg Peters (University of Florida)</li>
-                <li>Jean-Philippe Pernot (Arts et Métiers ParisTech)</li>
-                <li>Scott Mitchell (Sandia National Laboratories)</li>
-                <li>Christopher-Denny Matte (Concordia University)</li>
-                <li>Lin Lu (Shandong University)</li>
-                <li>Xingchen Liu (University of California, Berkeley)</li>
-                <li>Yang Liu (Microsoft)</li>
-                <li>Shengjun Liu (Central South University)</li>
-                <li>Ligang Liu (University of Science and Technology of China)</li>
-                <li>Hongwei Lin (Zhejiang University)</li>
-                <li>Xin Li (Texas A&M University)</li>
-                <li>Tsz Ho Kwok (Concordia University)</li>
-                <li>Adarsh Krishnamurthy (Iowa State University)</li>
-                <li>Vinayak Krishnamurthy (Texas A&M University)</li>
-                <li>Jiří Kosinka (University of Groningen)</li>
-                <li>Mario Kapl (Department of Engineering & IT, Carinthia University of Applied Sciences)</li>
-                <li>Tao Ju (Washington University in St. Louis)</li>
-                <li>Xiaohong Jia (Chinese Academy of Sciences)</li>
-                <li>Jida Huang (University of Illinois at Chicago)</li>
-                <li>Jin Huang (Zhejiang University)</li>
-                <li>Kai Hormann (University of Lugano)</li>
-                <li>Ying He (Nanyang Technological University)</li>
-                <li>Michael Barton (BCAM)</li>
-              </ul>
-            </div>
-
-            <div class="col-lg-4 col-md-6 col-sm-12">
-              <ul class="list-unstyled">
-                <li>George Harabin (Palo Alto Research Center)</li>
-                <li>Stefanie Hahmann (University of Grenoble)</li>
-                <li>Xiaohu Guo (University of Texas at Dallas)</li>
-                <li>Shuming Gao (38 Zheda Rd,Hangzhou,Zhejiang Province,P.R.China)</li>
-                <li>Xiao-Ming Fu (University of Science and Technology of China)</li>
-                <li>Guoxin Fang (The Chinese University of Hong Kong)</li>
-                <li>Gershon Elber (Technion- Israel Institute of Technology)</li>
-                <li>Bailin Deng (Cardiff University)</li>
-                <li>Zhonggui Chen (Xiamen University)</li>
-                <li>Falai Chen (Department of Mathematics, University of Science and Technology of China)</li>
-                <li>Renjie Chen (University of Science and Technology of China)</li>
-                <li>Frederic Cazals (INRIA)</li>
-                <li>Juan Cao (Xiamen University)</li>
-                <li>Marcel Campen (Osnabrück University)</li>
-                <li>Laurent Buse (INRIA)</li>
-                <li>Georges-Pierre Bonneau (University of Grenoble and INRIA)</li>
-                <li>Pengbo Bo (Harbin Institute of Technology)</li>
-                <li>Silvia Biasotti (IMATI-CNR)</li>
-              </ul>
-            </div>
-          </div>
-          <br>
-        </div>
-
-        <div class="container">
-          <div class="row">
-            <div class="col-12">
-              <div class="section-title-header text-center">
-                <h2 class="section-title wow fadeInUp" data-wow-delay="0.2s">Local Organizing Team</h2>
-              </div>
-            </div>
-          </div>
-          <div class="row justify-content-center">
-            <div class="col-lg-3 col-md-6 col-xs-12">
-              <p><a>A. Alper Tasmektepligil</a></p>
-              <p>Yildiz Technical University, Türkiye</p>
-            </div>
-            <div class="col-lg-3 col-md-6 col-xs-12">
-              <p><a>Serhat CAM</a></p>
-              <p>Istanbul Technical University, Türkiye</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    </div>
+  </section>
 
 
 
