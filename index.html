@@ -93,6 +93,41 @@
       color: #fff;
       transform: rotate(90deg);
     }
+
+    /* Click Indicator for Keynotes */
+    .click-indicator {
+      position: absolute;
+      bottom: 15px;
+      right: 15px;
+      background: rgba(0, 107, 139, 0.85);
+      color: #fff;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      animation: pulse-click 2s infinite;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    
+    .click-indicator i {
+      font-size: 20px;
+      margin-top: 2px;
+    }
+
+    @keyframes pulse-click {
+      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 107, 139, 0.7); }
+      70% { transform: scale(1.15); box-shadow: 0 0 0 15px rgba(0, 107, 139, 0); }
+      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 107, 139, 0); }
+    }
+    
+    .team-item:hover .click-indicator {
+      opacity: 0;
+    }
   </style>
 </head>
 
@@ -443,6 +478,9 @@
                     <div class="overlay-social-icon text-center">
                       <span style="color: white; font-weight: bold; font-size: 14px;">Click for detailed info</span>
                     </div>
+                  </div>
+                  <div class="click-indicator">
+                    <i class="lni-pointer-up"></i>
                   </div>
                 </a>
               </div>

@@ -52,9 +52,17 @@
             border-top-color: #ed3537;
         }
 
-        .card-red { border-top-color: #ed3537 !important; }
-        .card-blue { border-top-color: rgb(121, 144, 255) !important; }
-        .card-turquoise { border-top-color: #097a7d !important; }
+        .card-red {
+            border-top-color: #ed3537 !important;
+        }
+
+        .card-blue {
+            border-top-color: rgb(121, 144, 255) !important;
+        }
+
+        .card-turquoise {
+            border-top-color: #097a7d !important;
+        }
 
         .registration-option h5 {
             color: #212121;
@@ -296,8 +304,8 @@
                                 </h5>
                                 <p>
                                     At least one author of each accepted paper must complete a
-                                    <strong>Full</strong> or <strong>Student</strong>
-                                    for the paper to be covered by the conference registration. Daily pass
+                                    <strong>Full</strong> registration
+                                    for the paper to be covered by the conference registration. Student and Daily pass
                                     registrations do not count toward paper coverage.
                                 </p>
                             </div>
@@ -325,7 +333,7 @@
                             </div>
                             <div>
                                 <h5 class="font-weight-bold mb-2" style="font-size: 1.1rem; color: #222;">
-                                    Payment Reference
+                                    Payment Transfer Note (Must be included to the SWIFT/Bank Transfer)
                                 </h5>
                                 <p>
                                     You must include the exact registration description generated during the
@@ -347,13 +355,16 @@
                             <div class="col-lg-4 col-md-6 mb-4">
                                 <div class="registration-option card-blue">
                                     <h5>Full</h5>
-                                    <div class="registration-price" id="card-price-full">€570 <span style="font-size: 16px; color: #777; text-decoration: line-through;">€670</span></div>
+                                    <div class="registration-price" id="card-price-full">€600 <span
+                                            style="font-size: 16px; color: #777; text-decoration: line-through;">€700</span>
+                                    </div>
 
                                     <ul class="registration-list">
                                         <li><i class="lni-check-mark-circle"></i>Full</li>
                                         <li><i class="lni-check-mark-circle"></i>Required for accepted paper coverage
                                         </li>
-                                        <li><i class="lni-check-mark-circle"></i>Lunch + Coffee Break + Conference Dinner
+                                        <li><i class="lni-check-mark-circle"></i>Lunch + Coffee Break + Conference
+                                            Dinner
                                             included</li>
                                         <li><i class="lni-check-mark-circle"></i>Can add students (volume discount)</li>
                                         <li><i class="lni-star" style="color: #ff9800;"></i>Early bird ends June 6</li>
@@ -363,12 +374,14 @@
                             <div class="col-lg-4 col-md-6 mb-4">
                                 <div class="registration-option card-turquoise">
                                     <h5>Student</h5>
-                                    <div class="registration-price" id="card-price-student">€380 <span style="font-size: 16px; color: #777; text-decoration: line-through;">€450</span></div>
+                                    <div class="registration-price" id="card-price-student">€400 <span
+                                            style="font-size: 16px; color: #777; text-decoration: line-through;">€470</span>
+                                    </div>
 
                                     <ul class="registration-list">
                                         <li><i class="lni-check-mark-circle"></i>Student</li>
-                                        <li><i class="lni-check-mark-circle"></i>Valid for paper coverage</li>
-                                        <li><i class="lni-check-mark-circle"></i>Lunch + Coffee Break + Conference Dinner
+                                        <li><i class="lni-check-mark-circle"></i>Lunch + Coffee Break + Conference
+                                            Dinner
                                             included</li>
                                         <li><i class="lni-star" style="color: #ff9800;"></i>Early bird ends June 6</li>
                                     </ul>
@@ -377,13 +390,18 @@
                             <div class="col-lg-4 col-md-12 mb-4">
                                 <div class="registration-option card-red">
                                     <h5>Daily Pass</h5>
-                                    <div class="registration-price" id="card-price-daily">€150<small
-                                            style="font-size: 14px; color: #555;">/day</small> <span style="font-size: 16px; color: #777; text-decoration: line-through;">€180</span></div>
+                                    <div class="registration-price" id="card-price-daily">€200<small
+                                            style="font-size: 14px; color: #555;">/day</small> <span
+                                            style="font-size: 16px; color: #777; text-decoration: line-through;">€250</span>
+                                    </div>
 
                                     <ul class="registration-list">
                                         <li><i class="lni-check-mark-circle"></i>Select 1 to 4 conference days</li>
                                         <li><i class="lni-check-mark-circle"></i>Lunch + Coffee Break included</li>
-                                        <li id="card-price-dinner-addon"><i class="lni-check-mark-circle"></i>Conference Dinner (+€150 <span style="font-size: 13px; color: #777; text-decoration: line-through;">/ €200</span>)</li>
+                                        <li id="card-price-dinner-addon"><i class="lni-check-mark-circle"></i>Conference
+                                            Dinner (+€200 <span
+                                                style="font-size: 13px; color: #777; text-decoration: line-through;">/
+                                                €250</span>)</li>
                                         <li><i class="lni-check-mark-circle"></i>Does not cover accepted papers</li>
                                         <li><i class="lni-star" style="color: #ff9800;"></i>Early bird ends June 6</li>
                                     </ul>
@@ -416,7 +434,7 @@
                                         <tr>
                                             <td class="text-left">Accepted paper coverage</td>
                                             <td><span class="checkmark">Yes</span></td>
-                                            <td><span class="checkmark">Yes</span></td>
+                                            <td><span class="dashmark">No</span></td>
                                             <td><span class="dashmark">-</span></td>
                                             <td><span class="dashmark">-</span></td>
                                             <td><span class="dashmark">-</span></td>
@@ -479,44 +497,38 @@
                                     <tbody>
                                         <tr>
                                             <td>Full</td>
-                                            <td><strong>€570</strong></td>
-                                            <td><strong>€670</strong></td>
+                                            <td><strong>€600</strong></td>
+                                            <td><strong>€700</strong></td>
                                             <td>Required for non-student authors with an accepted paper.</td>
                                         </tr>
                                         <tr>
                                             <td>Student</td>
-                                            <td><strong>€380</strong></td>
-                                            <td><strong>€450</strong></td>
-                                            <td>Covers an accepted paper when the registering author is a student.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Additional Student (1st)</td>
-                                            <td><strong>€380/student</strong></td>
-                                            <td><strong>€450/student</strong></td>
-                                            <td>Can be added to a Full.</td>
+                                            <td><strong>€400</strong></td>
+                                            <td><strong>€470</strong></td>
+                                            <td>Attendance only. Does not cover accepted papers.</td>
                                         </tr>
                                         <tr>
                                             <td>Additional Students (up to 2)</td>
-                                            <td><strong>€290/student</strong></td>
-                                            <td><strong>€350/student</strong></td>
+                                            <td><strong>€310/student</strong></td>
+                                            <td><strong>€370/student</strong></td>
                                             <td>Volume discount for 2 students.</td>
                                         </tr>
                                         <tr>
                                             <td>Additional Students (3 or more)</td>
-                                            <td><strong>€250/student</strong></td>
-                                            <td><strong>€300/student</strong></td>
+                                            <td><strong>€270/student</strong></td>
+                                            <td><strong>€320/student</strong></td>
                                             <td>Volume discount for 3+ students.</td>
                                         </tr>
                                         <tr>
                                             <td>Daily Pass</td>
-                                            <td><strong>€150/day</strong></td>
-                                            <td><strong>€180/day</strong></td>
+                                            <td><strong>€200/day</strong></td>
+                                            <td><strong>€250/day</strong></td>
                                             <td>Select 1–4 days. Does not cover accepted papers.</td>
                                         </tr>
                                         <tr>
                                             <td>Conference Dinner</td>
-                                            <td><strong>€150</strong></td>
                                             <td><strong>€200</strong></td>
+                                            <td><strong>€250</strong></td>
                                             <td>Add-on for Daily Pass or standalone for accompanying persons.</td>
                                         </tr>
                                     </tbody>
@@ -530,24 +542,20 @@
                                     Payment Guidelines</div>
                                 <div style="margin-bottom: 8px;"><strong style="color: #bf360c;">Base Registration
                                         Requirement:</strong> Every accepted paper must be
-                                    covered by at least 1 Full or 1 Student.</div>
+                                    covered by at least 1 Full registration.</div>
                                 <div style="margin-bottom: 8px;"><strong style="color: #bf360c;">Scope of the Additional
                                         Student Discount:</strong>
-                                    The additional student discounts (Additional Student 1st, 2, or 3+) are
+                                    The additional student discounts (Additional Students 2, or 3+) are
                                     exclusively applicable to a single accepted paper or to registrations without a
-                                    paper. They cannot be combined across multiple papers or used to cover additional
-                                    accepted papers.
+                                    paper.
                                 </div>
                                 <div style="margin-bottom: 8px;"><strong style="color: #bf360c;">Multiple Paper
                                         Policy:</strong> If a research group (e.g., an advisor and their
                                     students) has more than one accepted paper, an independent primary registration
-                                    (Full or Student) is required for each paper.</div>
+                                    (Full) is required for each paper.</div>
                                 <div><strong style="color: #bf360c;">Example Scenario:</strong> If 1 professor and 3
-                                    students have 2 accepted papers, they must purchase 1 Full and 1
-                                    Student to cover both papers, rather than applying the Additional
-                                    Students (3 or more) discount. Alternatively, they can use 1 Student
-                                    alongside the Additional Students (up to 2) package to cover their
-                                    accepted papers.</div>
+                                    students have 2 accepted papers, they must purchase 2 Full
+                                    registrations to cover both papers.</div>
                             </div>
 
                         </div>
@@ -569,7 +577,8 @@
                                     your registration.
                                 </p>
                             </div>
-                            <div id="earlyBirdBadge" style="position: absolute; top: -10px; right: -10px; background: linear-gradient(135deg, #ff9800, #f57c00); color: #fff; font-size: 12px; font-weight: 700; padding: 5px 14px; border-radius: 20px; box-shadow: 0 2px 8px rgba(255,152,0,0.4); letter-spacing: 0.03em; display: none;">
+                            <div id="earlyBirdBadge"
+                                style="position: absolute; top: -10px; right: -10px; background: linear-gradient(135deg, #ff9800, #f57c00); color: #fff; font-size: 12px; font-weight: 700; padding: 5px 14px; border-radius: 20px; box-shadow: 0 2px 8px rgba(255,152,0,0.4); letter-spacing: 0.03em; display: none;">
                                 <i class="lni-star" style="margin-right: 4px;"></i>Early Bird Active
                             </div>
                         </div>
@@ -614,13 +623,14 @@
                                         <option value="DAILY">Daily Pass</option>
                                         <option value="DINNER_ONLY">Conference Dinner Only</option>
                                     </select>
+                                    <div id="packageNotice" class="mt-2 p-2 rounded" style="font-size: 13px; font-weight: 600; display: none; border: 1px solid transparent;"></div>
                                 </div>
                             </div>
 
                             <div class="row" id="studentNamesRow" style="display: none;">
                                 <div class="col-12 form-group mb-3">
                                     <label class="font-weight-bold" style="color: #444;" id="studentNamesLabel">Add
-                                        Students (€380/student):</label>
+                                        Students (€400/student):</label>
                                     <div id="studentInputsContainer"></div>
                                     <button type="button" id="addStudentBtn" class="btn btn-sm mt-2"
                                         style="background-color: #f1f6f8; color: #097a7d; border: 1px dashed #097a7d; border-radius: 6px; font-weight: 600;">
@@ -688,7 +698,7 @@
                                                 style="color: #097a7d; font-size: 16px;">
                                                 <i class="lni-check-mark-circle mr-1"
                                                     style="transition: color 200ms;"></i>
-                                                Include Conference Dinner Access (+€180)
+                                                Include Conference Dinner Access (+€200)
                                             </span>
                                             <small class="form-text text-muted mt-1">
                                                 Select this option if you would like to add conference dinner access to
@@ -894,7 +904,7 @@
 
     <script>
         const isEarlyBird = new Date() <= new Date('2026-06-06T23:59:59+03:00');
-        const BANQUET_ADDON_PRICE = isEarlyBird ? 150 : 200;
+        const BANQUET_ADDON_PRICE = isEarlyBird ? 200 : 250;
 
         document.addEventListener("DOMContentLoaded", function () {
             fetch("navbar.html")
@@ -910,10 +920,10 @@
             const packageSelect = document.getElementById('registrationPackage');
             if (packageSelect) {
                 Array.from(packageSelect.options).forEach(opt => {
-                    if (opt.value === 'FULL') opt.text = `Full (€${isEarlyBird ? 570 : 670})`;
-                    if (opt.value === 'STUDENT') opt.text = `Student (€${isEarlyBird ? 380 : 450})`;
-                    if (opt.value === 'DAILY') opt.text = `Daily Pass (€${isEarlyBird ? 150 : 180}/day)`;
-                    if (opt.value === 'DINNER_ONLY') opt.text = `Conference Dinner Only (€${isEarlyBird ? 150 : 200})`;
+                    if (opt.value === 'FULL') opt.text = `Full (€${isEarlyBird ? 600 : 700})`;
+                    if (opt.value === 'STUDENT') opt.text = `Student (€${isEarlyBird ? 400 : 470})`;
+                    if (opt.value === 'DAILY') opt.text = `Daily Pass (€${isEarlyBird ? 200 : 250}/day)`;
+                    if (opt.value === 'DINNER_ONLY') opt.text = `Conference Dinner Only (€${isEarlyBird ? 200 : 250})`;
                 });
             }
 
@@ -936,11 +946,11 @@
                 const dailyPrice = document.getElementById('card-price-daily');
                 const dinnerAddon = document.getElementById('card-price-dinner-addon');
 
-                if (fullPrice) fullPrice.innerHTML = '€670';
-                if (studentPrice) studentPrice.innerHTML = '€450';
-                if (dailyPrice) dailyPrice.innerHTML = '€180<small style="font-size: 14px; color: #555;">/day</small>';
+                if (fullPrice) fullPrice.innerHTML = '€700';
+                if (studentPrice) studentPrice.innerHTML = '€470';
+                if (dailyPrice) dailyPrice.innerHTML = '€250<small style="font-size: 14px; color: #555;">/day</small>';
                 if (dinnerAddon) dinnerAddon.innerHTML = '<i class="lni-check-mark-circle"></i>Conference Dinner (+€200)';
-                
+
                 // Hide early bird end notice
                 document.querySelectorAll('.lni-star').forEach(el => {
                     if (el.parentElement.innerText.includes('Early bird ends')) {
@@ -953,7 +963,7 @@
         const registrationPackages = {
             "FULL": {
                 label: "Full",
-                price: isEarlyBird ? 570 : 670,
+                price: isEarlyBird ? 600 : 700,
                 banquetIncluded: true,
                 paperCoverage: true,
                 canAddStudents: true,
@@ -961,15 +971,15 @@
             },
             "STUDENT": {
                 label: "Student",
-                price: isEarlyBird ? 380 : 450,
+                price: isEarlyBird ? 400 : 470,
                 banquetIncluded: true,
-                paperCoverage: true,
+                paperCoverage: false,
                 defaultDays: 'Full'
             },
             "DAILY": {
                 label: "Daily Pass",
-                pricePerDay: isEarlyBird ? 150 : 180,
-                price: isEarlyBird ? 150 : 180,
+                pricePerDay: isEarlyBird ? 200 : 250,
+                price: isEarlyBird ? 200 : 250,
                 banquetIncluded: false,
                 paperCoverage: false,
                 externalOnly: true,
@@ -978,7 +988,7 @@
             },
             "DINNER_ONLY": {
                 label: "Conference Dinner Only",
-                price: isEarlyBird ? 150 : 200,
+                price: isEarlyBird ? 200 : 250,
                 banquetIncluded: true,
                 paperCoverage: false,
                 externalOnly: true,
@@ -991,17 +1001,17 @@
         // Volume discount: per-student price applies to ALL students at that tier
         function getStudentTotalCost(count) {
             if (count <= 0) return 0;
-            const base1 = isEarlyBird ? 380 : 450;
-            const base2 = isEarlyBird ? 290 : 350;
-            const base3 = isEarlyBird ? 250 : 300;
-            if (count === 1) return base1;       
-            if (count === 2) return base2 * 2;   
-            return base3 * count;                
+            const base1 = isEarlyBird ? 400 : 470;
+            const base2 = isEarlyBird ? 310 : 370;
+            const base3 = isEarlyBird ? 270 : 320;
+            if (count === 1) return base1;
+            if (count === 2) return base2 * 2;
+            return base3 * count;
         }
         function getStudentPerRate(count) {
-            if (count <= 1) return isEarlyBird ? 380 : 450;
-            if (count === 2) return isEarlyBird ? 290 : 350;
-            return isEarlyBird ? 250 : 300;
+            if (count <= 1) return isEarlyBird ? 400 : 470;
+            if (count === 2) return isEarlyBird ? 310 : 370;
+            return isEarlyBird ? 270 : 320;
         }
 
         const uploadForm = document.getElementById('uploadForm');
@@ -1434,8 +1444,29 @@
             document.getElementById('bankTransferPanel').style.display = 'none';
             document.getElementById('generateWarning').style.display = 'none';
             configureSubmissionFields();
+            updatePackageNotice();
             checkGenerateBtn();
         });
+
+        function updatePackageNotice() {
+            const notice = document.getElementById('packageNotice');
+            if (!packageSelect.value) {
+                notice.style.display = 'none';
+                return;
+            }
+            notice.style.display = 'block';
+            if (packageSelect.value === 'FULL') {
+                notice.style.color = '#155724';
+                notice.style.backgroundColor = '#d4edda';
+                notice.style.borderColor = '#c3e6cb';
+                notice.innerHTML = '<i class="lni-check-mark-circle mr-1"></i> Valid for paper coverage. (OK)';
+            } else {
+                notice.style.color = '#721c24';
+                notice.style.backgroundColor = '#f8d7da';
+                notice.style.borderColor = '#f5c6cb';
+                notice.innerHTML = '<i class="lni-warning mr-1"></i> Not a valid option for paper coverage. (NO)';
+            }
+        }
         nameInput.addEventListener('input', function () { updatePaymentSummary(); checkGenerateBtn(); });
         document.getElementById('contactEmail').addEventListener('input', checkGenerateBtn);
         document.getElementById('affiliation').addEventListener('input', checkGenerateBtn);
@@ -1467,6 +1498,7 @@
         });
 
         configureSubmissionFields();
+        updatePackageNotice();
         checkGenerateBtn();
 
         uploadForm.addEventListener('submit', function (event) {
