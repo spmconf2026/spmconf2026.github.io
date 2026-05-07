@@ -2,7 +2,14 @@
 <nav class="navbar navbar-expand-lg bg-inverse fixed-top scrolling-navbar">
     <div class="container">
         <a href="index.html" class="navbar-brand"><img src="assets/img/spm.png" alt=""></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+        <div class="navbar-mobile-right d-lg-none ml-auto">
+            <a href="registration.html" class="btn2 btn2-common">Register Now</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="lni-menu"></i>
+            </button>
+        </div>
+        <button class="navbar-toggler d-none" type="button" data-toggle="collapse" data-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <i class="lni-menu"></i>
         </button>
@@ -30,13 +37,13 @@
                             Engineering?</a>
                     </div>
                 </li>
-                <li class="nav-item"><a class="nav-link" href="http://solidmodeling.org/spm-conferences/"> Previous
+                <li class="nav-item"><a class="nav-link nav-link-nowrap" href="http://solidmodeling.org/spm-conferences/">Previous
                         Conferences</a></li>
                 <li class="nav-item"> <a class="nav-link" href="index.html#sponsors"> Sponsors </a> </li>
             </ul>
         </div>
-        <div class="button">
-            <a href="submit.html" class="btn2 btn2-common"> Submit Now</a>
+        <div class="button d-none d-lg-block">
+            <a href="registration.html" class="btn2 btn2-common">Register Now</a>
         </div>
     </div>
 </nav>

@@ -8,10 +8,18 @@
 
     // 2) Sticky Nav + immediate trigger
     $(window).on('scroll', function () {
-      if ($(window).scrollTop() > 200) {
+      const scroll = $(window).scrollTop();
+      if (scroll > 200) {
         $('.scrolling-navbar').addClass('top-nav-collapse');
       } else {
         $('.scrolling-navbar').removeClass('top-nav-collapse');
+      }
+
+      // Add class when scrolled past the announcement banner
+      if (scroll > 40) {
+        $('.scrolling-navbar').addClass('past-banner');
+      } else {
+        $('.scrolling-navbar').removeClass('past-banner');
       }
     });
     $(window).trigger('scroll');
@@ -125,6 +133,48 @@
       }, 600);
       return false;
     });
+
+    // —— REGISTRATION BANNER LOGIC ——
+    (function () {
+      // Define dismissal function globally
+      window.dismissBanner = function () {
+        const banner = document.getElementById('registration-banner');
+        if (banner) {
+          banner.style.display = 'none';
+          document.body.classList.remove('has-banner');
+          localStorage.setItem('registrationBannerDismissed', 'true');
+        }
+      };
+
+      const isRegistrationPage = window.location.pathname.toLowerCase().includes('registration.html');
+      if (isRegistrationPage) return;
+
+      const now = new Date();
+      const deadline = new Date('2026-06-06T23:59:59+03:00');
+      const isDismissed = localStorage.getItem('registrationBannerDismissed');
+
+      if (now <= deadline && !isDismissed) {
+        const bannerHtml = `
+          <div id="registration-banner" class="announcement-banner">
+            <div class="container">
+              <div class="banner-content">
+                <span class="banner-text">
+                  <i class="lni-star-filled mr-1" style="color: #ffca28;"></i>
+                  <strong>Registration is now open!</strong> Early-bird pricing is valid until June 6, 2026.
+                </span>
+                <a href="registration.html" class="btn-banner">Register Now</a>
+                <button class="banner-close" onclick="dismissBanner()" title="Dismiss">
+                  <i class="lni-close"></i>
+                </button>
+              </div>
+            </div>
+          </div>`;
+        
+        // Inject at the very beginning of body
+        document.body.insertAdjacentHTML('afterbegin', bannerHtml);
+        document.body.classList.add('has-banner');
+      }
+    })();
 
   });
 

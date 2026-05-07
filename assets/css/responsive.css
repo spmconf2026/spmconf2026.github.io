@@ -4,7 +4,13 @@
     font-size: 40px;
   }
   .navbar-expand-lg .navbar-nav .nav-link {
-    padding: 0 10px;
+    padding: 0 7px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+  .btn2 {
+    padding: 7px 20px;
+    font-size: 13px;
   }
   .single-intro-text h3 {
     font-size: 18px;
@@ -20,6 +26,10 @@
   }
   .blog-item .descr h3 a {
     font-size: 16px;
+  }
+  /* Prevent Previous Conferences from wrapping on small desktops */
+  .nav-link-nowrap {
+    white-space: nowrap;
   }
 }
 
@@ -53,6 +63,10 @@
   }
   #sponsors .spnsors-logo img {
     width: 80%;
+  }
+  /* Previous Conferences nowrap on tablets */
+  .nav-link-nowrap {
+    white-space: nowrap;
   }
 }
 
@@ -123,6 +137,9 @@
   .section-sub {
     font-size: 16px;
   }
+  .navbar-brand img {
+    max-width: 130px;
+  }
   #hero-area .contents {
     padding: 100px 0;
   }
@@ -166,27 +183,71 @@
   .counter-section .counter {
     margin-bottom: 30px;
   }
+
+  /* ===== Program / Schedule Table - Mobile Fix ===== */
   .schedule .nav-tabs .nav-item {
-    margin: 15px 0px;
+    margin: 5px 0px;
+    flex: 1 1 48%;
+  }
+  .schedule .nav-tabs {
+    flex-wrap: wrap;
+    gap: 6px;
   }
   .schedule .nav-tabs .nav-link {
-    padding: 12px 10px;
+    padding: 10px 8px;
+    text-align: center;
+  }
+  .schedule .item-text h4 {
+    font-size: 13px;
   }
   .schedule .item-text h5 {
-    font-size: 12px;
+    font-size: 11px;
+  }
+  /* Show the time slot on mobile as a horizontal bar instead of hiding it */
+  .schedule .card .schedule-slot-time {
+    display: block;
+    float: none;
+    max-width: 100%;
+    flex: none;
+    padding: 12px 15px;
+    font-size: 14px;
+    text-align: center;
+    border-radius: 0;
+  }
+  .schedule .card .schedule-slot-time span {
+    display: inline;
+  }
+  .schedule .card-header {
+    padding: 15px 15px 15px 15px;
+  }
+  .schedule .card-header .images-box {
+    width: 50px;
+    height: 50px;
+    margin-right: 12px;
+  }
+  .schedule .card-header h4 {
+    font-size: 14px;
+    line-height: 20px;
   }
   .schedule .card-body {
     padding: 15px;
   }
-  .schedule .card .schedule-slot-time {
-    display: none;
-  }
-  .schedule .card-header {
-    padding: 30px;
-  }
   .schedule .schedule-tab-title .nav-tabs .nav-link {
-    width: 288px;
+    width: 100%;
   }
+
+  .navbar-mobile-right {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .navbar-mobile-right .btn2 {
+    font-size: 11px;
+    padding: 6px 12px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
   #event-up .event-item {
     margin-bottom: 30px;
   }
@@ -229,5 +290,13 @@
   .btn {
     padding: 5px 7px;
     font-size: 13px;
+  }
+  /* Even smaller button on very small phones */
+  .navbar-mobile-right .btn2 {
+    font-size: 10px;
+    padding: 5px 8px;
+  }
+  .navbar-brand img {
+    max-width: 110px;
   }
 }
