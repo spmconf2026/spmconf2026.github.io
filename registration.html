@@ -735,6 +735,7 @@
                                         style="color: #444;">Submission Number:</label>
                                     <input type="text" class="form-control" id="submissionNumber"
                                         name="submissionNumber" placeholder="e.g., 123" required
+                                        inputmode="numeric" pattern="[0-9]*"
                                         style="border-radius: 6px; border: 1px solid #ced4da;">
                                     <small id="submissionNumberHelp" class="form-text text-muted">
                                         Use the accepted paper ID when applicable.
@@ -1465,7 +1466,11 @@
         nameInput.addEventListener('input', function () { updatePaymentSummary(); checkGenerateBtn(); });
         document.getElementById('contactEmail').addEventListener('input', checkGenerateBtn);
         document.getElementById('affiliation').addEventListener('input', checkGenerateBtn);
-        submissionNumInput.addEventListener('input', function () { updatePaymentSummary(); checkGenerateBtn(); });
+        submissionNumInput.addEventListener('input', function () {
+            this.value = this.value.replace(/[^0-9]/g, '');
+            updatePaymentSummary();
+            checkGenerateBtn();
+        });
         submissionTitleInput.addEventListener('input', checkGenerateBtn);
         submissionTypeSelect.addEventListener('change', function () { handleSubmissionTypeChange(); checkGenerateBtn(); });
         document.getElementById('conferenceType').addEventListener('change', function () { updatePaymentSummary(); checkGenerateBtn(); });
