@@ -6,5 +6,27 @@
             "packageManager": "ms-python.python:conda"
         }
     ],
-    "liveServer.settings.port": 5502
+    "liveServer.settings.port": 5502,
+    "latex-workshop.latex.tools": [
+        {
+            "name": "latexmk",
+            "command": "C:\\texlive\\2026\\bin\\windows\\latexmk.exe",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-xelatex",
+                "%DOC%"
+            ]
+        }
+    ],
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "latexmk",
+            "tools": [
+                "latexmk"
+            ]
+        }
+    ],
+    "latex-workshop.latex.autoBuild.run": "never"
 }
