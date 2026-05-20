@@ -132,7 +132,7 @@
                 href = link.attr('href'),
                 video = href.match(/(youtube|youtube-nocookie|youtu|vimeo)\.(com|be)\/(watch\?v=([\w-]+)|([\w-]+))/);
 
-            if(href.match(/\.(jpeg|jpg|gif|png)$/i) !== null){
+            if(href.match(/\.(jpeg|jpg|jfif|pjpeg|pjp|gif|png|webp|avif|svg)(\?.*)?(#.*)?$/i) !== null){
 				return true;
 			}
 			// Video (Youtube/Vimeo)
@@ -168,7 +168,7 @@
             }
 
             // Image
-            if(href.match(/\.(jpeg|jpg|gif|png)$/i) !== null){
+            if(href.match(/\.(jpeg|jpg|jfif|pjpeg|pjp|gif|png|webp|avif|svg)(\?.*)?(#.*)?$/i) !== null){
                 var img = $('<img>', { src: href, 'class': 'nivo-lightbox-image-display' });
                 img.one('load', function() {
 					var wrap = $('<div class="nivo-lightbox-image" />');
@@ -310,7 +310,11 @@
 			}
 
             // Set the title
-            if(link.attr('title')){
+            if(link.attr('data-lightbox-title-html')){
+                var titleWrap = $('<span>', { 'class': 'nivo-lightbox-title' });
+                titleWrap.html(link.attr('data-lightbox-title-html'));
+                $('.nivo-lightbox-title-wrap').html(titleWrap);
+            } else if(link.attr('title')){
                 var titleWrap = $('<span>', { 'class': 'nivo-lightbox-title' });
                 titleWrap.text(link.attr('title'));
                 $('.nivo-lightbox-title-wrap').html(titleWrap);

@@ -69,6 +69,36 @@
       font-size: 0 !important;
     }
 
+    .nivo-lightbox-title-wrap {
+      bottom: 18px;
+      padding: 0 16px;
+      text-align: center;
+      pointer-events: none;
+    }
+
+    .nivo-lightbox-title {
+      display: inline-block;
+      max-width: min(720px, 90vw);
+      padding: 10px 16px;
+      background: rgba(0, 0, 0, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 10px;
+      color: #fff;
+      line-height: 1.4;
+    }
+
+    .nivo-lightbox-title a {
+      color: #80ffff;
+      font-weight: 600;
+      pointer-events: auto;
+      text-decoration: none;
+    }
+
+    .nivo-lightbox-title a:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+
     /* Keynote Detail Styles */
     .keynote-details-box {
       background: #ffffff;
@@ -80,15 +110,18 @@
     }
 
     .keynote-details-box .close-btn {
-      position: absolute;
-      right: 25px;
-      top: 20px;
-      z-index: 10;
-      background: #f0f0f0;
-      border: none;
-      width: 40px;
-      height: 40px;
+      position: fixed;
+      right: clamp(14px, 3vw, 30px);
+      top: 88px;
+      z-index: 995;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid rgba(0, 107, 139, 0.18);
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
+      box-shadow: 0 8px 22px rgba(0, 107, 139, 0.16);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       color: #006b8b;
       font-size: 24px;
       line-height: 40px;
@@ -97,12 +130,154 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-8px);
+      visibility: hidden;
+    }
+
+    .keynote-details-box .close-btn.floating-close-active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+      visibility: visible;
     }
 
     .keynote-details-box .close-btn:hover {
       background: #006b8b;
       color: #fff;
-      transform: rotate(90deg);
+      transform: translateY(0);
+    }
+
+    #team .team-item,
+    #Keynotes .team-item {
+      height: calc(100% - 30px);
+      display: flex;
+      flex-direction: column;
+      max-width: 360px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    #team .team-img,
+    #Keynotes .team-img {
+      aspect-ratio: 3 / 4;
+      background: #fff;
+    }
+
+    #team .team-img>img,
+    #Keynotes .team-img>a,
+    #Keynotes .team-img>img {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    #team .team-img img,
+    #Keynotes .team-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    #team .info-text,
+    #Keynotes .info-text {
+      min-height: 84px;
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .work-mosaic {
+      display: flex;
+      gap: 28px;
+      align-items: flex-start;
+    }
+
+    .work-mosaic-column {
+      display: flex;
+      flex: 1 1 0;
+      min-width: 0;
+      flex-direction: column;
+      gap: 26px;
+    }
+
+    .work-mosaic-item {
+      width: 100%;
+      margin-bottom: 0;
+    }
+
+    .work-mosaic-item a.lightbox {
+      display: block;
+      width: 100%;
+    }
+
+    .work-mosaic-item img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .work-mosaic-item p {
+      margin-bottom: 0;
+    }
+
+    .work-mosaic-wyvill {
+      max-width: 740px;
+      margin: 0 auto;
+    }
+
+    .speaker-award-banner {
+      max-width: 680px;
+      margin: 0 auto 32px;
+      padding: 12px 24px;
+      background: linear-gradient(135deg, rgba(0, 107, 139, 0.11), rgba(128, 255, 255, 0.12));
+      border: 1px solid rgba(0, 107, 139, 0.28);
+      border-radius: 999px;
+      box-shadow: 0 8px 22px rgba(0, 107, 139, 0.08);
+      color: #005a73;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.45;
+      text-align: center;
+    }
+
+    @media (max-width: 767.98px) {
+      .work-mosaic {
+        flex-direction: column;
+      }
+
+      #Keynotes .keynote-speaker-row>[class*="col-"] {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
+
+      #Keynotes .keynote-speaker-row>.collapse,
+      #Keynotes .keynote-speaker-row>.collapsing {
+        flex: 0 0 100%;
+        max-width: 100%;
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+
+      #Keynotes .keynote-speaker-row>.collapse .keynote-details-box,
+      #Keynotes .keynote-speaker-row>.collapsing .keynote-details-box {
+        margin-top: 10px !important;
+        margin-bottom: 28px;
+        padding: 24px 18px !important;
+      }
+
+      #Keynotes .collapsing {
+        transition: none !important;
+      }
+
+      .speaker-award-banner {
+        border-radius: 16px;
+        margin-top: 22px;
+        padding: 12px 16px;
+      }
     }
 
     /* Click Indicator for Keynotes */
@@ -326,7 +501,7 @@
           <!-- Team Item Starts -->
           <div class="team-item wow fadeInUp" data-wow-delay="0.6s">
             <div class="team-img">
-              <img class="img-fluid" src="assets/img/team/Charlie Wang.png" alt="">
+              <img class="img-fluid" src="assets/img/team/Charlie Wang.jpg" alt="">
             </div>
             <div class="info-text">
               <h3>Charlie C.L. Wang</h3>
@@ -368,7 +543,7 @@
               <!-- Team Item Starts -->
               <div class="team-item wow fadeInUp" data-wow-delay="0.2s">
                 <div class="team-img">
-                  <img class="img-fluid" src="assets/img/team/Guo.png" alt="">
+                  <img class="img-fluid" src="assets/img/team/Guo.jpg" alt="">
                 </div>
                 <div class="info-text">
                   <h3>Xiaohu Guo</h3>
@@ -422,7 +597,7 @@
           </div>
         </div>
       </div>
-      <div class="row justify-content-center">
+      <div class="row justify-content-center keynote-speaker-row">
         <div class="col-lg-3 col-md-6 col-xs-12">
           <!-- Team Item Starts -->
           <div class="team-item wow fadeInUp" data-wow-delay="0.2s">
@@ -475,7 +650,32 @@
 
         <div class="col-lg-3 col-md-6 col-xs-12">
           <!-- Team Item Starts -->
-          <div class="team-item wow fadeInUp" data-wow-delay="1s">
+          <div class="team-item wow fadeInUp" data-wow-delay="0.6s">
+            <div class="team-img">
+              <a href="#wyvill-details" data-toggle="collapse" role="button" aria-expanded="false"
+                aria-controls="wyvill-details">
+                <img class="img-fluid" src="assets/img/Keynote/brian wyvill/BrianWyvill.jpeg" alt="Brian Wyvill">
+                <div class="team-overlay">
+                  <div class="overlay-social-icon text-center">
+                    <span style="color: white; font-weight: bold; font-size: 14px;">Click for detailed info</span>
+                  </div>
+                </div>
+                <div class="click-indicator">
+                  <i class="lni-pointer-up"></i>
+                </div>
+              </a>
+            </div>
+            <div class="info-text">
+              <h3><a href="#wyvill-details" data-toggle="collapse">Brian Wyvill</a></h3>
+              <p>University of Victoria, BC, Canada</p>
+            </div>
+          </div>
+          <!-- Team Item Ends -->
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-xs-12">
+          <!-- Team Item Starts -->
+          <div class="team-item wow fadeInUp" data-wow-delay="0.8s">
             <div class="team-img">
               <img class="img-fluid" src="assets/img/team/white.jpg" alt="">
               <div class="team-overlay">
@@ -563,52 +763,64 @@
               <!-- Gallery Section -->
               <div class="work-gallery mt-5 pt-4" style="border-top: 1px solid #eee;">
                 <h4 style="color: #006b8b; font-weight: bold; margin-bottom: 25px;">Works & Research</h4>
-                <div class="row">
-                  <div class="col-sm-6 mb-4 d-flex flex-column align-items-center">
-                    <a href="assets/img/Keynote/Mathieu_Desbrun/Picture1.jpg" class="lightbox"
-                      data-lightbox-gallery="keynote-gallery-inline">
-                      <img class="img-fluid" src="assets/img/Keynote/Mathieu_Desbrun/Picture1.jpg" alt="Work 1"
-                        style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
-                    </a>
-                    <p class="mt-2 text-center" style="font-size: 11px; color: #666; line-height: 1.4;">
-                      <a href="https://dl.acm.org/doi/10.1145/3386569.3392389" target="_blank" rel="noopener noreferrer"
-                        style="color: #006b8b; font-weight: 500;">Discrete Differential Operators on Polygonal
-                        Meshes</a>
-                    </p>
+                <div class="work-mosaic">
+                  <div class="work-mosaic-column">
+                    <div class="work-mosaic-item d-flex flex-column align-items-center">
+                      <a href="assets/img/Keynote/Mathieu_Desbrun/Picture1.jpg" class="lightbox"
+                        data-lightbox-gallery="keynote-gallery-inline"
+                        title="Discrete Differential Operators on Polygonal Meshes"
+                        data-lightbox-title-html="<a href=&quot;https://dl.acm.org/doi/10.1145/3386569.3392389&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;>Discrete Differential Operators on Polygonal Meshes</a>">
+                        <img class="img-fluid" src="assets/img/Keynote/Mathieu_Desbrun/Picture1.jpg" alt="Work 1"
+                          style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+                      </a>
+                      <p class="mt-2 text-center" style="font-size: 11px; color: #666; line-height: 1.4;">
+                        <a href="https://dl.acm.org/doi/10.1145/3386569.3392389" target="_blank"
+                          rel="noopener noreferrer" style="color: #006b8b; font-weight: 500;">Discrete Differential
+                          Operators on Polygonal Meshes</a>
+                      </p>
+                    </div>
+                    <div class="work-mosaic-item d-flex flex-column align-items-center">
+                      <a href="assets/img/Keynote/Mathieu_Desbrun/Picture3.jpg" class="lightbox"
+                        data-lightbox-gallery="keynote-gallery-inline" title="3D Hodge Decompositions of Vector Fields"
+                        data-lightbox-title-html="<a href=&quot;https://doi.org/10.1145/3355089.3356546&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;>3D Hodge Decompositions of Vector Fields</a>">
+                        <img class="img-fluid" src="assets/img/Keynote/Mathieu_Desbrun/Picture3.jpg" alt="Work 3"
+                          style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+                      </a>
+                      <p class="mt-2 text-center" style="font-size: 11px; color: #666; line-height: 1.4;">
+                        <a href="https://doi.org/10.1145/3355089.3356546" target="_blank" rel="noopener noreferrer"
+                          style="color: #006b8b; font-weight: 500;">3D Hodge Decompositions of Vector Fields</a>
+                      </p>
+                    </div>
                   </div>
-                  <div class="col-sm-6 mb-4 d-flex flex-column align-items-center">
-                    <a href="assets/img/Keynote/Mathieu_Desbrun/Picture2.jpg" class="lightbox"
-                      data-lightbox-gallery="keynote-gallery-inline">
-                      <img class="img-fluid" src="assets/img/Keynote/Mathieu_Desbrun/Picture2.jpg" alt="Work 2"
-                        style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
-                    </a>
-                    <p class="mt-2 text-center" style="font-size: 11px; color: #666; line-height: 1.4;">
-                      <a href="https://geometry.caltech.edu/pubs/PMLDA26.pdf" target="_blank" rel="noopener noreferrer"
-                        style="color: #006b8b; font-weight: 500;">SuperSDF: Sparse SDF Super-Resolution for Surface
-                        Extraction</a>
-                    </p>
-                  </div>
-                  <div class="col-sm-6 mb-4 d-flex flex-column align-items-center">
-                    <a href="assets/img/Keynote/Mathieu_Desbrun/Picture3.jpg" class="lightbox"
-                      data-lightbox-gallery="keynote-gallery-inline">
-                      <img class="img-fluid" src="assets/img/Keynote/Mathieu_Desbrun/Picture3.jpg" alt="Work 3"
-                        style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
-                    </a>
-                    <p class="mt-2 text-center" style="font-size: 11px; color: #666; line-height: 1.4;">
-                      <a href="https://doi.org/10.1145/3355089.3356546" target="_blank" rel="noopener noreferrer"
-                        style="color: #006b8b; font-weight: 500;">3D Hodge Decompositions of Vector Fields</a>
-                    </p>
-                  </div>
-                  <div class="col-sm-6 mb-4 d-flex flex-column align-items-center">
-                    <a href="assets/img/Keynote/Mathieu_Desbrun/Picture4.jpg" class="lightbox"
-                      data-lightbox-gallery="keynote-gallery-inline">
-                      <img class="img-fluid" src="assets/img/Keynote/Mathieu_Desbrun/Picture4.jpg" alt="Work 4"
-                        style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
-                    </a>
-                    <p class="mt-2 text-center" style="font-size: 11px; color: #666; line-height: 1.4;">
-                      <a href="https://geometry.caltech.edu/pubs/XWYDL26.pdf" target="_blank" rel="noopener noreferrer"
-                        style="color: #006b8b; font-weight: 500;">LBM-MPM Coupling for Air-Water-Sand Mixtures</a>
-                    </p>
+                  <div class="work-mosaic-column">
+                    <div class="work-mosaic-item d-flex flex-column align-items-center">
+                      <a href="assets/img/Keynote/Mathieu_Desbrun/Picture2.jpg" class="lightbox"
+                        data-lightbox-gallery="keynote-gallery-inline"
+                        title="SuperSDF: Sparse SDF Super-Resolution for Surface Extraction"
+                        data-lightbox-title-html="<a href=&quot;https://geometry.caltech.edu/pubs/PMLDA26.pdf&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;>SuperSDF: Sparse SDF Super-Resolution for Surface Extraction</a>">
+                        <img class="img-fluid" src="assets/img/Keynote/Mathieu_Desbrun/Picture2.jpg" alt="Work 2"
+                          style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+                      </a>
+                      <p class="mt-2 text-center" style="font-size: 11px; color: #666; line-height: 1.4;">
+                        <a href="https://geometry.caltech.edu/pubs/PMLDA26.pdf" target="_blank"
+                          rel="noopener noreferrer" style="color: #006b8b; font-weight: 500;">SuperSDF: Sparse SDF
+                          Super-Resolution for Surface Extraction</a>
+                      </p>
+                    </div>
+                    <div class="work-mosaic-item d-flex flex-column align-items-center">
+                      <a href="assets/img/Keynote/Mathieu_Desbrun/Picture4.jpg" class="lightbox"
+                        data-lightbox-gallery="keynote-gallery-inline"
+                        title="LBM-MPM Coupling for Air-Water-Sand Mixtures"
+                        data-lightbox-title-html="<a href=&quot;https://geometry.caltech.edu/pubs/XWYDL26.pdf&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;>LBM-MPM Coupling for Air-Water-Sand Mixtures</a>">
+                        <img class="img-fluid" src="assets/img/Keynote/Mathieu_Desbrun/Picture4.jpg" alt="Work 4"
+                          style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+                      </a>
+                      <p class="mt-2 text-center" style="font-size: 11px; color: #666; line-height: 1.4;">
+                        <a href="https://geometry.caltech.edu/pubs/XWYDL26.pdf" target="_blank"
+                          rel="noopener noreferrer" style="color: #006b8b; font-weight: 500;">LBM-MPM Coupling for
+                          Air-Water-Sand Mixtures</a>
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -678,6 +890,128 @@
           </div>
         </div>
       </div>
+
+      <!-- Brian Wyvill Details Start -->
+      <div class="collapse" id="wyvill-details" data-parent="#keynote-accordion">
+          <div class="keynote-details-box mt-5 p-4 p-lg-5 text-left">
+            <button type="button" class="close-btn" data-toggle="collapse" data-target="#wyvill-details"
+              aria-label="Close">
+              <i class="lni-close"></i>
+            </button>
+
+            <div class="speaker-award-banner">
+              Recipient of the 2025 Tosiyasu L. Kunii Distinguished Researcher Award
+            </div>
+
+            <div class="row">
+              <div class="col-lg-4 col-md-12">
+                <div class="speaker-image-box text-center mb-4">
+                  <a href="assets/img/Keynote/brian wyvill/BrianWyvill.jpeg" class="lightbox">
+                    <img class="img-fluid" src="assets/img/Keynote/brian wyvill/BrianWyvill.jpeg" alt="Brian Wyvill"
+                      style="border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); max-width: 220px;">
+                  </a>
+                </div>
+                <div class="speaker-info-box">
+                  <h4
+                    style="color: #006b8b; font-weight: bold; margin-bottom: 15px; border-bottom: 2px solid #006b8b; display: inline-block;">
+                    Brian Wyvill</h4>
+                  <p style="text-align: justify; line-height: 1.6; font-size: 14px; color: #444;">
+                    Brian Wyvill is a professor emeritus at the University of Victoria, BC, Canada. Along with the late
+                    Prof. Ray Earnshaw, he was one of the first to gain his PhD in computer graphics in the UK in 1975.
+                    As a post-doc at London's Royal College of Art, he worked on computer animated sequences for the
+                    original Alien movie, the first Hollywood film to contain significant computer generated scenes.
+                    Brian joined the University of Calgary faculty in 1981. His work focused on developing algorithms
+                    for implicit modeling and animation. In 1986, with his brother, Geoff Wyvill, he pioneered the first
+                    iso-surface polygonizer, followed by implicit texturing, and the BlobTree. In 2006 he joined the
+                    computer science department at the University of Victoria in British Columbia with a Canada Research
+                    Chair.
+                  </p>
+                  <p style="text-align: justify; line-height: 1.6; font-size: 14px; color: #444;">
+                    With Marie-Paule Cani, Brian started the Implicit Modeling series of conferences in 1995, which
+                    merged with Shape Modeling International in 2001. The late Professor Kunii was Brian's mentor for
+                    many years. Brian has been active in organizing conferences inspired by Prof. Kunii, such as CGI and
+                    SMI. He also served on the executive committees for Eurographics and ACM SIGGRAPH, later as SIGGRAPH
+                    VP for seven years. Brian retired from the University at the end of 2018 and spends his time rock
+                    climbing, writing novels, developing software for visualizing timelines of a novel, and composing
+                    and arranging music. His piece for strings, The West Coast Trail Lament, was recently performed in
+                    Victoria by the DieMahler Ensemble led by violinist Pablo Dimeckie.
+                  </p>
+                </div>
+              </div>
+
+              <div class="col-lg-8 col-md-12 mt-4 mt-lg-0">
+                <div class="talk-content">
+                  <h3 style="color: #212121; font-weight: 700; margin-bottom: 20px; line-height: 1.3;">Implicit
+                    Modeling: From Dreams to Industry and Back to Dreams</h3>
+                  <p style="text-align: justify; line-height: 1.7; font-size: 15px; color: #333;">
+                    Italian mathematician Alessandro Ricci laid foundational groundwork for implicit surface blending in
+                    his 1973 Ph.D. dissertation, which pioneered the use of continuous scalar fields and Boolean
+                    operations, such as union and intersection, to define complex solid shapes. Since Ricci's early work,
+                    implicit modeling has moved from being a fringe academic concept to a widely accepted and rapidly
+                    growing technique in the Computer-Aided Design (CAD) industry. While it has not replaced traditional
+                    CAD methods, it has become the industry standard for specific, highly complex engineering and
+                    advanced manufacturing workflows.
+                  </p>
+                  <p style="text-align: justify; line-height: 1.7; font-size: 15px; color: #333;">
+                    In 1985 my brother, Geoff Wyvill, visited me on sabbatical and we worked on a polygonizer for what
+                    would be known as implicit surfaces and modeling. After publication, Alessandro Ricci sent me a copy
+                    of his 1973 paper, opening up a window into what would become the direction of my research for most
+                    of my career. The trend at the time was to pursue mesh representations, whereas my contributions to
+                    computer graphics are in the general area of modelling techniques that do not use polygons. Moreover,
+                    there was a period of around 30 years when researchers interested in implicit modeling were
+                    considered unimportant by an anonymous ACM SIGGRAPH reviewer, or even to be "wasting valuable
+                    computer time," as David Parnas and Edsger Dijkstra commented to me at a talk on implicit modeling I
+                    gave at Memorial University in 1990.
+                  </p>
+                  <p style="text-align: justify; line-height: 1.7; font-size: 15px; color: #333;">
+                    My talk focuses on the development of implicit modelling and an encouragement to young researchers
+                    to stick with their original ideas even if, especially if, these ideas do not match mainstream
+                    research. I also delve into a few projects in the realm of computers in the arts, which leave the
+                    human as the artist without replacing a person with AI. My recent work on visualizing timelines for
+                    authors of novels with complex plots is similarly directed at facilitating the author as an artist
+                    rather than allowing AI to interfere in the creative process.
+                  </p>
+                </div>
+
+                <!-- Gallery Section -->
+                <div class="work-gallery mt-5 pt-4" style="border-top: 1px solid #eee;">
+                  <h4 style="color: #006b8b; font-weight: bold; margin-bottom: 25px;">Works & Research</h4>
+                  <div class="work-mosaic work-mosaic-wyvill">
+                    <div class="work-mosaic-column">
+                      <div class="work-mosaic-item d-flex flex-column align-items-center">
+                        <a href="assets/img/Keynote/brian wyvill/abstract-image1.jpeg" class="lightbox"
+                          data-lightbox-gallery="wyvill-gallery-inline">
+                          <img class="img-fluid" src="assets/img/Keynote/brian wyvill/abstract-image1.jpeg"
+                            alt="Implicit modeling work 1"
+                            style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+                        </a>
+                      </div>
+                      <div class="work-mosaic-item d-flex flex-column align-items-center">
+                        <a href="assets/img/Keynote/brian wyvill/abstract-image2.jpeg" class="lightbox"
+                          data-lightbox-gallery="wyvill-gallery-inline">
+                          <img class="img-fluid" src="assets/img/Keynote/brian wyvill/abstract-image2.jpeg"
+                            alt="Implicit modeling work 2"
+                            style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+                        </a>
+                      </div>
+                    </div>
+                    <div class="work-mosaic-column">
+                      <div class="work-mosaic-item d-flex flex-column align-items-center">
+                        <a href="assets/img/Keynote/brian wyvill/abstract-image3.jpeg" class="lightbox"
+                          data-lightbox-gallery="wyvill-gallery-inline">
+                          <img class="img-fluid" src="assets/img/Keynote/brian wyvill/abstract-image3.jpeg"
+                            alt="Implicit modeling work 3"
+                            style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Brian Wyvill Details End -->
       </div>
     </div>
   </section>
@@ -1560,12 +1894,179 @@
           console.error("Navbar yüklenirken hata:", err);
         });
 
-      // Smooth scroll when keynote details are shown
-      $('#keynote-accordion .collapse').on('shown.bs.collapse', function () {
-        $('html, body').animate({
-          scrollTop: $(this).offset().top - 100
-        }, 500);
+      var $keynotes = $('#Keynotes');
+      var $keynoteRow = $keynotes.find('.keynote-speaker-row');
+      var $keynoteAccordion = $('#keynote-accordion');
+      var keynoteDetailSelector = '#desbrun-details, #bickel-details, #wyvill-details';
+      var pendingKeynoteTarget = null;
+      var pendingCloseTarget = null;
+      var switchingKeynotes = false;
+      var floatingCloseButtonTicking = false;
+
+      $keynotes.find('.keynote-speaker-row a[data-toggle="collapse"][href^="#"]').on('click', function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        pendingKeynoteTarget = $(this).attr('href');
+
+        var $target = $(pendingKeynoteTarget);
+        if (!$target.length || $target.hasClass('collapsing')) return;
+
+        if ($target.hasClass('show')) {
+          pendingCloseTarget = pendingKeynoteTarget;
+          $target.collapse('hide');
+        } else {
+          openKeynoteDetail(pendingKeynoteTarget);
+        }
       });
+
+      $keynotes.on('click', '.keynote-details-box .close-btn[data-target]', function () {
+        pendingCloseTarget = $(this).attr('data-target');
+        pendingKeynoteTarget = pendingCloseTarget;
+      });
+
+      function isMobileKeynoteView() {
+        return window.matchMedia('(max-width: 767.98px)').matches;
+      }
+
+      function getKeynoteSpeakerColumn(targetSelector) {
+        return $keynotes
+          .find('.keynote-speaker-row a[href="' + targetSelector + '"]')
+          .first()
+          .closest('[class*="col-"]');
+      }
+
+      function restoreKeynoteDetails() {
+        $(keynoteDetailSelector).each(function () {
+          if (this.parentNode !== $keynoteAccordion[0]) {
+            $keynoteAccordion.append(this);
+          }
+        });
+      }
+
+      function placeKeynoteDetailForViewport($target, targetSelector) {
+        if (!isMobileKeynoteView()) {
+          restoreKeynoteDetails();
+          return;
+        }
+
+        var $speakerColumn = getKeynoteSpeakerColumn(targetSelector);
+        if ($target.length && $speakerColumn.length && $target.prev()[0] !== $speakerColumn[0]) {
+          $target.detach().insertAfter($speakerColumn);
+        }
+      }
+
+      function openKeynoteDetail(targetSelector) {
+        var $target = $(targetSelector);
+        placeKeynoteDetailForViewport($target, targetSelector);
+
+        var $openPanels = $(keynoteDetailSelector).not($target).filter('.show, .collapsing');
+        if (!$openPanels.length) {
+          $target.collapse('show');
+          return;
+        }
+
+        switchingKeynotes = true;
+        var didShowTarget = false;
+        var showTarget = function () {
+          if (didShowTarget) return;
+          didShowTarget = true;
+          switchingKeynotes = false;
+          $target.collapse('show');
+        };
+
+        $openPanels.first().one('hidden.bs.collapse', showTarget);
+        $openPanels.collapse('hide');
+        setTimeout(showTarget, 450);
+      }
+
+      function getScrollOffset() {
+        return isMobileKeynoteView() ? 74 : 92;
+      }
+
+      function scrollToKeynoteArea(targetSelector) {
+        var $scrollTarget = isMobileKeynoteView() ? getKeynoteSpeakerColumn(targetSelector) : $keynoteRow;
+        if (!$scrollTarget.length) return;
+
+        $('html, body').stop(true).animate({
+          scrollTop: Math.max(0, $scrollTarget.offset().top - getScrollOffset())
+        }, 300, scheduleFloatingCloseButtonUpdate);
+      }
+
+      function scrollToKeynoteDetail($target) {
+        if (!$target.length) return;
+
+        $('html, body').stop(true).animate({
+          scrollTop: Math.max(0, $target.offset().top - getScrollOffset())
+        }, 300, scheduleFloatingCloseButtonUpdate);
+      }
+
+      function updateFloatingCloseButtons() {
+        var $closeButtons = $keynotes.find('.keynote-details-box .close-btn');
+        $closeButtons.removeClass('floating-close-active');
+
+        $(keynoteDetailSelector).filter('.show').each(function () {
+          var detailBox = $(this).find('.keynote-details-box').get(0);
+          if (!detailBox) return;
+
+          var rect = detailBox.getBoundingClientRect();
+          var isDetailVisible = rect.bottom > 88 && rect.top < (window.innerHeight - 72);
+          if (isDetailVisible) {
+            $(detailBox).find('.close-btn').first().addClass('floating-close-active');
+          }
+        });
+      }
+
+      function scheduleFloatingCloseButtonUpdate() {
+        if (floatingCloseButtonTicking) return;
+        floatingCloseButtonTicking = true;
+
+        window.requestAnimationFrame(function () {
+          floatingCloseButtonTicking = false;
+          updateFloatingCloseButtons();
+        });
+      }
+
+      function scrollForKeynoteTarget($target) {
+        scrollToKeynoteDetail($target);
+      }
+
+      $('#keynote-accordion .collapse').on('shown.bs.collapse', function () {
+        var activeId = this.id;
+        setTimeout(function () {
+          scrollForKeynoteTarget($(pendingKeynoteTarget || ('#' + activeId)));
+          scheduleFloatingCloseButtonUpdate();
+        }, isMobileKeynoteView() ? 0 : 40);
+      });
+
+      $('#keynote-accordion .collapse').on('hidden.bs.collapse', function () {
+        var targetSelector = '#' + this.id;
+        var shouldScrollBack = pendingCloseTarget === targetSelector && !switchingKeynotes;
+
+        if (this.parentNode !== $keynoteAccordion[0]) {
+          $keynoteAccordion.append(this);
+        }
+
+        if (shouldScrollBack) {
+          setTimeout(function () {
+            scrollToKeynoteArea(targetSelector);
+          }, 0);
+        }
+
+        if (pendingCloseTarget === targetSelector) {
+          pendingCloseTarget = null;
+        }
+
+        scheduleFloatingCloseButtonUpdate();
+      });
+
+      $(window).on('resize', function () {
+        if (!isMobileKeynoteView()) {
+          restoreKeynoteDetails();
+        }
+        scheduleFloatingCloseButtonUpdate();
+      });
+
+      $(window).on('scroll orientationchange', scheduleFloatingCloseButtonUpdate);
     });
   </script>
   <script>
