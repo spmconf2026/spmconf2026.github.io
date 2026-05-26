@@ -495,7 +495,7 @@
                                             <td>Full</td>
                                             <td><strong>€600</strong></td>
                                             <td><strong>€700</strong></td>
-                                            <td>Required for non-student authors with an accepted paper.</td>
+                                            <td>Required for authors with an accepted/invited paper or external attendees.</td>
                                         </tr>
                                         <tr>
                                             <td>Student</td>
@@ -848,7 +848,7 @@
                                                     style="vertical-align: top !important; padding-top: 15px !important;">
                                                     <p style="margin-top: 0; margin-bottom: 5px;">
                                                         <strong
-                                                            id="bankNoteExample">Conditional-donation-Conference-SPM-000-101</strong>
+                                                            id="bankNoteExample">Conference-fee-as-Conditional-donation-SPM-000-101</strong>
                                                     </p>
                                                 </td>
                                             </tr>
@@ -1345,7 +1345,7 @@
                 Z = '1';
             }
 
-            return 'Conditional-donation-Conference-' + confType + '-' + paperId + '-' + X + Y + Z;
+            return 'Conference-fee-as-Conditional-donation-' + confType + '-' + paperId + '-' + X + Y + Z;
         }
 
         function updatePaymentSummary() {
@@ -1359,7 +1359,7 @@
                 calculatedPaymentCode.value = '';
                 calculatedPaymentTotal.value = '';
                 recommendedTransferNote.value = '';
-                bankNoteExample.innerText = 'Conditional-donation-Conference-SPM-000-101';
+                bankNoteExample.innerText = 'Conference-fee-as-Conditional-donation-SPM-000-101';
                 return;
             }
 
