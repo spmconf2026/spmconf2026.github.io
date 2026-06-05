@@ -150,7 +150,8 @@
     }
 
     #team .team-item,
-    #Keynotes .team-item {
+    #Keynotes .team-item,
+    #InvitedSpeakers .team-item {
       height: calc(100% - 30px);
       display: flex;
       flex-direction: column;
@@ -160,21 +161,25 @@
     }
 
     #team .team-img,
-    #Keynotes .team-img {
+    #Keynotes .team-img,
+    #InvitedSpeakers .team-img {
       aspect-ratio: 3 / 4;
       background: #fff;
     }
 
     #team .team-img>img,
     #Keynotes .team-img>a,
-    #Keynotes .team-img>img {
+    #Keynotes .team-img>img,
+    #InvitedSpeakers .team-img>a,
+    #InvitedSpeakers .team-img>img {
       display: block;
       width: 100%;
       height: 100%;
     }
 
     #team .team-img img,
-    #Keynotes .team-img img {
+    #Keynotes .team-img img,
+    #InvitedSpeakers .team-img img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -182,7 +187,8 @@
     }
 
     #team .info-text,
-    #Keynotes .info-text {
+    #Keynotes .info-text,
+    #InvitedSpeakers .info-text {
       min-height: 84px;
       display: flex;
       flex: 1;
@@ -249,13 +255,16 @@
         flex-direction: column;
       }
 
-      #Keynotes .keynote-speaker-row>[class*="col-"] {
+      #Keynotes .keynote-speaker-row>[class*="col-"],
+      #InvitedSpeakers .keynote-speaker-row>[class*="col-"] {
         flex: 0 0 100%;
         max-width: 100%;
       }
 
       #Keynotes .keynote-speaker-row>.collapse,
-      #Keynotes .keynote-speaker-row>.collapsing {
+      #Keynotes .keynote-speaker-row>.collapsing,
+      #InvitedSpeakers .keynote-speaker-row>.collapse,
+      #InvitedSpeakers .keynote-speaker-row>.collapsing {
         flex: 0 0 100%;
         max-width: 100%;
         padding-left: 15px;
@@ -263,13 +272,16 @@
       }
 
       #Keynotes .keynote-speaker-row>.collapse .keynote-details-box,
-      #Keynotes .keynote-speaker-row>.collapsing .keynote-details-box {
+      #Keynotes .keynote-speaker-row>.collapsing .keynote-details-box,
+      #InvitedSpeakers .keynote-speaker-row>.collapse .keynote-details-box,
+      #InvitedSpeakers .keynote-speaker-row>.collapsing .keynote-details-box {
         margin-top: 10px !important;
         margin-bottom: 28px;
         padding: 24px 18px !important;
       }
 
-      #Keynotes .collapsing {
+      #Keynotes .collapsing,
+      #InvitedSpeakers .collapsing {
         transition: none !important;
       }
 
@@ -1022,6 +1034,110 @@
     </div>
   </section>
   <!-- Keynotes Section End -->
+
+  <!-- Invited Speakers Section Start -->
+  <section id="InvitedSpeakers" class="section-padding text-center pt-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="section-title-header text-center">
+            <h2 class="section-title wow fadeInUp" data-wow-delay="0.2s">Invited Speakers</h2>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center keynote-speaker-row">
+        <div class="col-lg-3 col-md-6 col-xs-12">
+          <!-- Team Item Starts -->
+          <div class="team-item wow fadeInUp" data-wow-delay="0.2s">
+            <div class="team-img">
+              <a href="#rossignac-details" data-toggle="collapse" role="button" aria-expanded="false"
+                aria-controls="rossignac-details">
+                <img class="img-fluid" src="assets/img/Keynote/Jarek Rossignac/JarekRossignac.jpg"
+                  alt="Jarek Rossignac">
+                <div class="team-overlay">
+                  <div class="overlay-social-icon text-center">
+                    <span style="color: white; font-weight: bold; font-size: 14px;">Click for detailed info</span>
+                  </div>
+                </div>
+                <div class="click-indicator">
+                  <i class="lni-pointer-up"></i>
+                </div>
+              </a>
+            </div>
+            <div class="info-text">
+              <h3><a href="#rossignac-details" data-toggle="collapse">Jarek Rossignac</a></h3>
+              <p>Georgia Tech, USA</p>
+            </div>
+          </div>
+          <!-- Team Item Ends -->
+        </div>
+      </div>
+
+      <div id="invited-speaker-accordion">
+        <!-- Jarek Rossignac Details Start -->
+        <div class="collapse" id="rossignac-details" data-parent="#invited-speaker-accordion">
+          <div class="keynote-details-box mt-5 p-4 p-lg-5 text-left">
+            <button type="button" class="close-btn" data-toggle="collapse" data-target="#rossignac-details"
+              aria-label="Close">
+              <i class="lni-close"></i>
+            </button>
+
+            <div class="speaker-award-banner">
+              Recipient of the 2026 Tosiyasu L. Kunii Distinguished Researcher Award
+            </div>
+
+            <div class="row">
+              <div class="col-lg-4 col-md-12">
+                <div class="speaker-image-box text-center mb-4">
+                  <a href="assets/img/Keynote/Jarek Rossignac/JarekRossignac.jpg" class="lightbox">
+                    <img class="img-fluid" src="assets/img/Keynote/Jarek Rossignac/JarekRossignac.jpg"
+                      alt="Jarek Rossignac"
+                      style="border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); max-width: 220px;">
+                  </a>
+                </div>
+                <div class="speaker-info-box">
+                  <h4
+                    style="color: #006b8b; font-weight: bold; margin-bottom: 15px; border-bottom: 2px solid #006b8b; display: inline-block;">
+                    Jarek Rossignac
+                  </h4>
+                  <p style="text-align: justify; line-height: 1.6; font-size: 14px; color: #444;">
+                    Jarek Rossignac was born in Poland. He was educated in France (Lakanal, then ENSEM and U. Nancy)
+                    and later in the US (U. of Rochester). He was employed at IBM Research (as Research Staff Member
+                    and then as Manager) and later at Georgia Tech (as Director and later as Professor in Interactive
+                    Computing). He co-chaired 22 conferences (including 5 SMI) and 13 committees (Including one SMI
+                    PC). He coauthored about 35 patents and 200 papers. He received 26 Research or Best Paper awards
+                    (the Bezier award and the Eurographics and the Solid Modeling Fellow awards).
+                  </p>
+                  <p style="text-align: justify; line-height: 1.6; font-size: 14px; color: #444;">
+                    The key foci of his research include: Triangle mesh simplification and compression; CSG model
+                    construction, simplification, evaluation, and generalization; Natural user interfaces for designing
+                    shapes and animations; and Interpolation of points, curves, and transformations.
+                  </p>
+                </div>
+              </div>
+
+              <div class="col-lg-8 col-md-12 mt-4 mt-lg-0">
+                <div class="talk-content">
+                  <h3 style="color: #212121; font-weight: 700; margin-bottom: 20px; line-height: 1.3;">Symmetry,
+                    Steadiness, and other Revelations</h3>
+                  <p style="text-align: justify; line-height: 1.7; font-size: 15px; color: #333;">
+                    The fundamental steps of inventing a solution are the revelations about the true nature of the
+                    problem or about an unexpected approach worth exploring. I am conscious of how these revelations grow
+                    in my head, even though I do not use words or images when I think. In this presentation, I attempt
+                    to share examples of such revelations that led to interesting solutions to problems of defining and
+                    computing averages and interpolations of points, curves, similarities, or tilings. Many of these
+                    revelations were inspired by two guiding principles: symmetry and steadiness.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Jarek Rossignac Details End -->
+      </div>
+    </div>
+  </section>
+  <!-- Invited Speakers Section End -->
 
   <section id="committee" class="section-padding text-center">
     <div class="container">
@@ -1900,179 +2016,181 @@
           console.error("Navbar yüklenirken hata:", err);
         });
 
-      var $keynotes = $('#Keynotes');
-      var $keynoteRow = $keynotes.find('.keynote-speaker-row');
-      var $keynoteAccordion = $('#keynote-accordion');
-      var keynoteDetailSelector = '#desbrun-details, #bickel-details, #wyvill-details';
-      var pendingKeynoteTarget = null;
-      var pendingCloseTarget = null;
-      var switchingKeynotes = false;
-      var floatingCloseButtonTicking = false;
+      function initSpeakerDetailSection(sectionSelector, detailSelector) {
+        var $section = $(sectionSelector);
+        if (!$section.length) return;
 
-      $keynotes.find('.keynote-speaker-row a[data-toggle="collapse"][href^="#"]').on('click', function (event) {
-        event.preventDefault();
-        event.stopPropagation();
-        pendingKeynoteTarget = $(this).attr('href');
+        var $speakerRow = $section.find('.keynote-speaker-row');
+        var $speakerAccordion = $section.find('[id$="-accordion"]').first();
+        var pendingSpeakerTarget = null;
+        var pendingCloseTarget = null;
+        var switchingSpeakers = false;
+        var floatingCloseButtonTicking = false;
 
-        var $target = $(pendingKeynoteTarget);
-        if (!$target.length || $target.hasClass('collapsing')) return;
+        $section.find('.keynote-speaker-row a[data-toggle="collapse"][href^="#"]').on('click', function (event) {
+          event.preventDefault();
+          event.stopPropagation();
+          pendingSpeakerTarget = $(this).attr('href');
 
-        if ($target.hasClass('show')) {
-          pendingCloseTarget = pendingKeynoteTarget;
-          $target.collapse('hide');
-        } else {
-          openKeynoteDetail(pendingKeynoteTarget);
-        }
-      });
+          var $target = $(pendingSpeakerTarget);
+          if (!$target.length || $target.hasClass('collapsing')) return;
 
-      $keynotes.on('click', '.keynote-details-box .close-btn[data-target]', function () {
-        pendingCloseTarget = $(this).attr('data-target');
-        pendingKeynoteTarget = pendingCloseTarget;
-      });
-
-      function isMobileKeynoteView() {
-        return window.matchMedia('(max-width: 767.98px)').matches;
-      }
-
-      function getKeynoteSpeakerColumn(targetSelector) {
-        return $keynotes
-          .find('.keynote-speaker-row a[href="' + targetSelector + '"]')
-          .first()
-          .closest('[class*="col-"]');
-      }
-
-      function restoreKeynoteDetails() {
-        $(keynoteDetailSelector).each(function () {
-          if (this.parentNode !== $keynoteAccordion[0]) {
-            $keynoteAccordion.append(this);
+          if ($target.hasClass('show')) {
+            pendingCloseTarget = pendingSpeakerTarget;
+            $target.collapse('hide');
+          } else {
+            openSpeakerDetail(pendingSpeakerTarget);
           }
         });
-      }
 
-      function placeKeynoteDetailForViewport($target, targetSelector) {
-        if (!isMobileKeynoteView()) {
-          restoreKeynoteDetails();
-          return;
+        $section.on('click', '.keynote-details-box .close-btn[data-target]', function () {
+          pendingCloseTarget = $(this).attr('data-target');
+          pendingSpeakerTarget = pendingCloseTarget;
+        });
+
+        function isMobileSpeakerView() {
+          return window.matchMedia('(max-width: 767.98px)').matches;
         }
 
-        var $speakerColumn = getKeynoteSpeakerColumn(targetSelector);
-        if ($target.length && $speakerColumn.length && $target.prev()[0] !== $speakerColumn[0]) {
-          $target.detach().insertAfter($speakerColumn);
-        }
-      }
-
-      function openKeynoteDetail(targetSelector) {
-        var $target = $(targetSelector);
-        placeKeynoteDetailForViewport($target, targetSelector);
-
-        var $openPanels = $(keynoteDetailSelector).not($target).filter('.show, .collapsing');
-        if (!$openPanels.length) {
-          $target.collapse('show');
-          return;
+        function getSpeakerColumn(targetSelector) {
+          return $section
+            .find('.keynote-speaker-row a[href="' + targetSelector + '"]')
+            .first()
+            .closest('[class*="col-"]');
         }
 
-        switchingKeynotes = true;
-        var didShowTarget = false;
-        var showTarget = function () {
-          if (didShowTarget) return;
-          didShowTarget = true;
-          switchingKeynotes = false;
-          $target.collapse('show');
-        };
+        function restoreSpeakerDetails() {
+          $(detailSelector).each(function () {
+            if (this.parentNode !== $speakerAccordion[0]) {
+              $speakerAccordion.append(this);
+            }
+          });
+        }
 
-        $openPanels.first().one('hidden.bs.collapse', showTarget);
-        $openPanels.collapse('hide');
-        setTimeout(showTarget, 450);
-      }
-
-      function getScrollOffset() {
-        return isMobileKeynoteView() ? 74 : 92;
-      }
-
-      function scrollToKeynoteArea(targetSelector) {
-        var $scrollTarget = isMobileKeynoteView() ? getKeynoteSpeakerColumn(targetSelector) : $keynoteRow;
-        if (!$scrollTarget.length) return;
-
-        $('html, body').stop(true).animate({
-          scrollTop: Math.max(0, $scrollTarget.offset().top - getScrollOffset())
-        }, 300, scheduleFloatingCloseButtonUpdate);
-      }
-
-      function scrollToKeynoteDetail($target) {
-        if (!$target.length) return;
-
-        $('html, body').stop(true).animate({
-          scrollTop: Math.max(0, $target.offset().top - getScrollOffset())
-        }, 300, scheduleFloatingCloseButtonUpdate);
-      }
-
-      function updateFloatingCloseButtons() {
-        var $closeButtons = $keynotes.find('.keynote-details-box .close-btn');
-        $closeButtons.removeClass('floating-close-active');
-
-        $(keynoteDetailSelector).filter('.show').each(function () {
-          var detailBox = $(this).find('.keynote-details-box').get(0);
-          if (!detailBox) return;
-
-          var rect = detailBox.getBoundingClientRect();
-          var isDetailVisible = rect.bottom > 88 && rect.top < (window.innerHeight - 72);
-          if (isDetailVisible) {
-            $(detailBox).find('.close-btn').first().addClass('floating-close-active');
+        function placeSpeakerDetailForViewport($target, targetSelector) {
+          if (!isMobileSpeakerView()) {
+            restoreSpeakerDetails();
+            return;
           }
-        });
-      }
 
-      function scheduleFloatingCloseButtonUpdate() {
-        if (floatingCloseButtonTicking) return;
-        floatingCloseButtonTicking = true;
-
-        window.requestAnimationFrame(function () {
-          floatingCloseButtonTicking = false;
-          updateFloatingCloseButtons();
-        });
-      }
-
-      function scrollForKeynoteTarget($target) {
-        scrollToKeynoteDetail($target);
-      }
-
-      $('#keynote-accordion .collapse').on('shown.bs.collapse', function () {
-        var activeId = this.id;
-        setTimeout(function () {
-          scrollForKeynoteTarget($(pendingKeynoteTarget || ('#' + activeId)));
-          scheduleFloatingCloseButtonUpdate();
-        }, isMobileKeynoteView() ? 0 : 40);
-      });
-
-      $('#keynote-accordion .collapse').on('hidden.bs.collapse', function () {
-        var targetSelector = '#' + this.id;
-        var shouldScrollBack = pendingCloseTarget === targetSelector && !switchingKeynotes;
-
-        if (this.parentNode !== $keynoteAccordion[0]) {
-          $keynoteAccordion.append(this);
+          var $speakerColumn = getSpeakerColumn(targetSelector);
+          if ($target.length && $speakerColumn.length && $target.prev()[0] !== $speakerColumn[0]) {
+            $target.detach().insertAfter($speakerColumn);
+          }
         }
 
-        if (shouldScrollBack) {
+        function openSpeakerDetail(targetSelector) {
+          var $target = $(targetSelector);
+          placeSpeakerDetailForViewport($target, targetSelector);
+
+          var $openPanels = $(detailSelector).not($target).filter('.show, .collapsing');
+          if (!$openPanels.length) {
+            $target.collapse('show');
+            return;
+          }
+
+          switchingSpeakers = true;
+          var didShowTarget = false;
+          var showTarget = function () {
+            if (didShowTarget) return;
+            didShowTarget = true;
+            switchingSpeakers = false;
+            $target.collapse('show');
+          };
+
+          $openPanels.first().one('hidden.bs.collapse', showTarget);
+          $openPanels.collapse('hide');
+          setTimeout(showTarget, 450);
+        }
+
+        function getScrollOffset() {
+          return isMobileSpeakerView() ? 74 : 92;
+        }
+
+        function scrollToSpeakerArea(targetSelector) {
+          var $scrollTarget = isMobileSpeakerView() ? getSpeakerColumn(targetSelector) : $speakerRow;
+          if (!$scrollTarget.length) return;
+
+          $('html, body').stop(true).animate({
+            scrollTop: Math.max(0, $scrollTarget.offset().top - getScrollOffset())
+          }, 300, scheduleFloatingCloseButtonUpdate);
+        }
+
+        function scrollToSpeakerDetail($target) {
+          if (!$target.length) return;
+
+          $('html, body').stop(true).animate({
+            scrollTop: Math.max(0, $target.offset().top - getScrollOffset())
+          }, 300, scheduleFloatingCloseButtonUpdate);
+        }
+
+        function updateFloatingCloseButtons() {
+          var $closeButtons = $section.find('.keynote-details-box .close-btn');
+          $closeButtons.removeClass('floating-close-active');
+
+          $(detailSelector).filter('.show').each(function () {
+            var detailBox = $(this).find('.keynote-details-box').get(0);
+            if (!detailBox) return;
+
+            var rect = detailBox.getBoundingClientRect();
+            var isDetailVisible = rect.bottom > 88 && rect.top < (window.innerHeight - 72);
+            if (isDetailVisible) {
+              $(detailBox).find('.close-btn').first().addClass('floating-close-active');
+            }
+          });
+        }
+
+        function scheduleFloatingCloseButtonUpdate() {
+          if (floatingCloseButtonTicking) return;
+          floatingCloseButtonTicking = true;
+
+          window.requestAnimationFrame(function () {
+            floatingCloseButtonTicking = false;
+            updateFloatingCloseButtons();
+          });
+        }
+
+        $(detailSelector).on('shown.bs.collapse', function () {
+          var activeId = this.id;
           setTimeout(function () {
-            scrollToKeynoteArea(targetSelector);
-          }, 0);
-        }
+            scrollToSpeakerDetail($(pendingSpeakerTarget || ('#' + activeId)));
+            scheduleFloatingCloseButtonUpdate();
+          }, isMobileSpeakerView() ? 0 : 40);
+        });
 
-        if (pendingCloseTarget === targetSelector) {
-          pendingCloseTarget = null;
-        }
+        $(detailSelector).on('hidden.bs.collapse', function () {
+          var targetSelector = '#' + this.id;
+          var shouldScrollBack = pendingCloseTarget === targetSelector && !switchingSpeakers;
 
-        scheduleFloatingCloseButtonUpdate();
-      });
+          if (this.parentNode !== $speakerAccordion[0]) {
+            $speakerAccordion.append(this);
+          }
 
-      $(window).on('resize', function () {
-        if (!isMobileKeynoteView()) {
-          restoreKeynoteDetails();
-        }
-        scheduleFloatingCloseButtonUpdate();
-      });
+          if (shouldScrollBack) {
+            setTimeout(function () {
+              scrollToSpeakerArea(targetSelector);
+            }, 0);
+          }
 
-      $(window).on('scroll orientationchange', scheduleFloatingCloseButtonUpdate);
+          if (pendingCloseTarget === targetSelector) {
+            pendingCloseTarget = null;
+          }
+
+          scheduleFloatingCloseButtonUpdate();
+        });
+
+        $(window).on('resize', function () {
+          if (!isMobileSpeakerView()) {
+            restoreSpeakerDetails();
+          }
+          scheduleFloatingCloseButtonUpdate();
+        });
+
+        $(window).on('scroll orientationchange', scheduleFloatingCloseButtonUpdate);
+      }
+
+      initSpeakerDetailSection('#Keynotes', '#desbrun-details, #bickel-details, #wyvill-details');
+      initSpeakerDetailSection('#InvitedSpeakers', '#rossignac-details');
     });
   </script>
   <script>
