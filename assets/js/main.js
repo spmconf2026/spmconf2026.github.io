@@ -142,7 +142,7 @@
         if (banner) {
           banner.style.display = 'none';
           document.body.classList.remove('has-banner');
-          localStorage.setItem('registrationBannerDismissed', 'true');
+          localStorage.setItem('registrationExtensionBannerDismissed', 'true');
         }
       };
 
@@ -150,8 +150,8 @@
       if (isRegistrationPage) return;
 
       const now = new Date();
-      const deadline = new Date('2026-06-06T23:59:59+03:00');
-      const isDismissed = localStorage.getItem('registrationBannerDismissed');
+      const deadline = new Date('2026-06-15T23:59:59+03:00');
+      const isDismissed = localStorage.getItem('registrationExtensionBannerDismissed');
 
       if (now <= deadline && !isDismissed) {
         const bannerHtml = `
@@ -160,7 +160,7 @@
               <div class="banner-content">
                 <span class="banner-text">
                   <i class="lni-star-filled mr-1" style="color: #ffca28;"></i>
-                  <strong>Registration is now open!</strong> Early-bird pricing is valid until June 6, 2026.
+                  <strong>Early-bird registration extended!</strong> Early-bird pricing is now valid until June 15, 2026.
                 </span>
                 <a href="registration.html" class="btn-banner">Register Now</a>
                 <button class="banner-close" onclick="dismissBanner()" title="Dismiss">

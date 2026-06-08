@@ -375,7 +375,7 @@
                             complete
                             your registration.<br>
                             <strong>Conference Dates:</strong> 6-9 July 2026 <br>
-                            <strong style="color: #ed3537;">Early Bird Registration Deadline:</strong> June 6, 2026
+                            <strong style="color: #ed3537;">Early Bird Registration Deadline:</strong> June 15, 2026
                         </p>
                     </div>
 
@@ -452,7 +452,7 @@
                                             Dinner
                                             included</li>
                                         <li><i class="lni-check-mark-circle"></i>Can add students (volume discount)</li>
-                                        <li><i class="lni-star" style="color: #ff9800;"></i>Early bird ends June 6</li>
+                                        <li><i class="lni-star" style="color: #ff9800;"></i>Early bird ends June 15</li>
                                     </ul>
                                 </div>
                             </div>
@@ -470,7 +470,7 @@
                                             included</li>
                                         <!-- <li><i class="lni-cross-circle" style="color: #d32f2f;"></i>Cannot be used to
                                             cover an accepted paper</li> -->
-                                        <li><i class="lni-star" style="color: #ff9800;"></i>Early bird ends June 6</li>
+                                        <li><i class="lni-star" style="color: #ff9800;"></i>Early bird ends June 15</li>
                                     </ul>
                                 </div>
                             </div>
@@ -491,7 +491,7 @@
                                                 €180</span>)</li>
                                         <!-- <li><i class="lni-cross-circle" style="color: #d32f2f;"></i>Does not cover
                                             accepted papers</li> -->
-                                        <li><i class="lni-star" style="color: #ff9800;"></i>Early bird ends June 6</li>
+                                        <li><i class="lni-star" style="color: #ff9800;"></i>Early bird ends June 15</li>
                                     </ul>
                                 </div>
                             </div>
@@ -571,7 +571,7 @@
                                     <thead>
                                         <tr>
                                             <th style="white-space: nowrap; width: 20%;">Registration Type</th>
-                                            <th style="white-space: nowrap; width: 18%;">Early Bird (Until June 6)</th>
+                                            <th style="white-space: nowrap; width: 18%;">Early Bird (Until June 15)</th>
                                             <th style="white-space: nowrap; width: 18%;">Regular Price</th>
                                             <th style="width: 40%;">Notes</th>
                                         </tr>
@@ -1032,7 +1032,7 @@
             });
         }());
 
-        const isEarlyBird = new Date() <= new Date('2026-06-06T23:59:59+03:00');
+        const isEarlyBird = new Date() <= new Date('2026-06-15T23:59:59+03:00');
         const BANQUET_ADDON_PRICE = isEarlyBird ? 150 : 180;
 
         document.addEventListener("DOMContentLoaded", function () {
@@ -1078,7 +1078,7 @@
                 if (fullPrice) fullPrice.innerHTML = '€700';
                 if (studentPrice) studentPrice.innerHTML = '€350';
                 if (dailyPrice) dailyPrice.innerHTML = '€180<small style="font-size: 14px; color: #555;">/day</small>';
-                if (dinnerAddon) dinnerAddon.innerHTML = '<i class="lni-check-mark-circle"></i>Conference Dinner (+€150)';
+                if (dinnerAddon) dinnerAddon.innerHTML = '<i class="lni-check-mark-circle"></i>Conference Dinner (+€180)';
 
                 // Hide early bird end notice
                 document.querySelectorAll('.lni-star').forEach(el => {
