@@ -1,0 +1,8 @@
+Talk title
+Shape Modeling for Engineering Design and Manufacturing
+
+Short bio
+Qiang Zou is an Assistant Professor at the State Key Laboratory of CAD&CG, Zhejiang University. He received his Ph.D. from UBC. He is interested in the computational principles that connect geometry, design intent, and manufacturing processes. His work has been published in leading venues such as CAD, ASME JMD, CIRP Annals, and SIGGRAPH; several of his methods have been transferred to industrial CAD/CAM modelers. His contributions have been recognized with the SMI Young Investigator Award, the Lu Zeng-Yong CAD&CG High-Tech Award (First Prize), the CCF CAD&CG Young Investigator Award, and several best paper/poster awards. He serves on the Editorial Board of Computer-Aided Design, and has served as Organizing Chair for SMI 2025, SPM 2025, and ChinaGraph 2026.
+
+Talk abstract
+Shape modeling is a fundamental computational technique in engineering design and manufacturing. Unlike visual shape modeling, engineering-oriented shape modeling must address geometric precision, topological robustness, design intent, and manufacturability altogether, making it both mathematically interesting and practically significant. In this talk, I will discuss our research on high-performance geometric computing, intuitive surface modeling, and robust solid modeling, and show how they help streamline design-to-manufacturing workflows. I will also share our recent efforts toward intelligent CAD, where geometric algorithms are integrated with data-driven strategies, engineering constraints, and domain knowledge. These explorations, hopefully, will support the development of next-generation CAD/CAM.
