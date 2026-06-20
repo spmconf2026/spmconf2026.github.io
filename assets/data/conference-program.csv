@@ -30,11 +30,11 @@ date,day,start,end,duration_min,sort_order,item_order,id,parent_id,row_type,sess
 ,,,,,,3,,,talk,3,,Accelerating Hausdorff Distance Computation between Triangle Meshes via Spatial Locality,"Wenbo Yang, Aizeng Wang, Fei Hou and Tao Ning",,,,
 ,,,,,,4,,,talk,3,,Knit2Vector: 3D Knitted Texture Reconstruction from Unconstrained Images via Differentiable Vectorization,"Yu Zhou, Lingxin Cao, Junqiu Zhu and Lin Lu",,,,
 2026-07-06,Day 01,16:50,17:05,,10,,,,event,,,Coffee Break,,,Break,,
-2026-07-06,Day 01,17:05,18:05,,11,,,,event,,,CAD SI: AI for Design and Manufacturing,,,General,,
+2026-07-06,Day 01,17:05,18:05,,11,,,,event,,,CAD SI: AI for Design and Manufacturing,,,CAD SI,,
 2026-07-07,Day 02,09:00,10:00,,1,,,,event,,,Design in the Age of AI and Spatial Computing,Bernd Bickel,,Keynote,,Keynote Talk
 2026-07-07,Day 02,10:00,10:40,,2,,,,event,,,Coffee Break,,,Break,,
 ,,,,,,1,,,talk,4,,BBSDF: Beyond the boundary generalizable neural SDF for unoriented planar pointsets and its application to medial axis extraction,Bincy Antony and Ramanathan Muthuganapathy,,,,
-,,,,,,2,,,talk,4,,Far-From-Boundary Fields for Learning Segmented Implicit Solids Yuhang Huang and Takashi Kanai,,,,,
+,,,,,,2,,,talk,4,,Far-From-Boundary Fields for Learning Segmented Implicit Solids,Yuhang Huang and Takashi Kanai,,,,
 ,,,,,,3,,,talk,4,,Extreme Continuous Level of Details for Skeleton-Based Implicit Surfaces,"Pierre Hubert-Brierre, Marie-Paule Cani and Eric Galin",,,,
 ,,,,,,4,,,talk,4,,DistillSkel: Learning pruned skeletons of 2D shapes through progressive knowledge distillation,"Bincy Antony, Anshuman Mishra, Pranav Raghuram, Dharunpathi Tamilselvan and Ramanathan Muthuganapathy",,,,
 2026-07-07,Day 02,12:00,13:30,,4,,,,event,,,Lunch,,,Lunch,,
@@ -49,7 +49,7 @@ date,day,start,end,duration_min,sort_order,item_order,id,parent_id,row_type,sess
 ,,,,,,4,,,talk,6,,An algebraic framework for precise and robust swept-volume computation,Jinesh Machchhar,,,,
 2026-07-07,Day 02,16:50,17:05,,8,,,,event,,,Coffee Break,,,Break,,
 2026-07-07,Day 02,17:05,17:45,,9,,,,event,,,SPM Award Ceremony,,,SPM,,
-2026-07-07,Day 02,18:00,,,10,,,,event,,,Meeting at the entrance,,,General,,
+2026-07-07,Day 02,18:00,,,10,,,,event,,,Meeting at the entrance,,,Social,,
 2026-07-07,Day 02,18:30,22:30,,11,,,,event,,,Banquet at Ferryboat + Bosphorus Tour,,,Social,,
 2026-07-08,Day 03,09:00,10:00,,1,,,,event,,,Constructing and reconstructing surface geometries,Tamas Varady,,Keynote,,Keynote Talk
 2026-07-08,Day 03,10:00,10:40,,2,,,,event,,,Coffee Break,,,Break,,
@@ -84,7 +84,7 @@ date,day,start,end,duration_min,sort_order,item_order,id,parent_id,row_type,sess
 ,,,,,,6,,,talk,11,,Efficient and Accurate Bernstein Polynomial Composition via Monomial-Basis Transformation,"Tong Shen, Shiqing Xin and Jieqing Feng",,,,
 ,,,,,,7,,,talk,11,,KDH-CAD: Knowledge–data hybrid CAD learning under data scarcity,"Ziqing Gao, Zhijie Yang, Yaonaiming Zhao and Qiang Zou",,,,
 2026-07-09,Day 04,14:40,15:20,,6,,,,event,,,Coffee Break,,,Break,,
-2026-07-09,Day 04,15:20,16:00,,7,,,,event,,,"Symmetry, Steadiness, and other Revelations",Jarek Rossignac (Recipient of the 2026 Tosiyasu L. Kunii Award),,Invited Talk,,Invited Talk
+2026-07-09,Day 04,15:20,16:00,,7,,,,event,,,"Symmetry, Steadiness, and other Revelations (Online)",Jarek Rossignac (Recipient of the 2026 Tosiyasu L. Kunii Award),,Invited Talk,,Invited Talk
 2026-07-09,Day 04,16:00,16:20,,8,,,,event,,,Shape Modeling for Engineering Design and Manufacturing,Qiang Zou (Recipient of the 2026 SMI Young Investigator Award),,Invited Talk,,Invited Talk
 2026-07-09,Day 04,16:20,16:40,,9,,,,event,,,Toward Compact and Structured Representations of Detailed 3D Shapes,Congyi Zhang (Recipient of the 2026 SMI Young Investigator Award),,Invited Talk,,Invited Talk
 2026-07-09,Day 04,16:40,17:00,,10,,,,event,,,Coffee Break,,,Break,,
