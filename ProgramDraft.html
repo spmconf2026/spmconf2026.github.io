@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>SPM 2026: Conference Program Draft</title>
+
+  <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/fonts/line-icons.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/nivo-lightbox.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/animate.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/responsive.css">
+
+  <style>
+    .program-tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      justify-content: flex-end;
+      margin: 10px 0 14px;
+    }
+
+    .program-controls {
+      display: flex;
+      flex: 1 1 320px;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+
+    .program-controls .form-control {
+      max-width: 340px;
+      border-radius: 4px;
+    }
+
+    .program-type-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin: 0 0 24px;
+    }
+
+    .program-type-filter {
+      border: 1px solid var(--program-accent-line, #d8e8ec);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      color: var(--program-accent-text, #465963);
+      cursor: pointer;
+      font-family: 'Roboto', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1;
+      padding: 9px 14px;
+      transition: all 0.18s ease;
+    }
+
+    .program-type-filter:hover,
+    .program-type-filter.active {
+      border-color: transparent;
+      background-image: linear-gradient(65deg, var(--program-accent, #4d59ff) 0, var(--program-accent-2, #78f5ef) 100%);
+      color: #fff;
+      box-shadow: 0 7px 18px rgba(77, 89, 255, 0.18);
+    }
+
+    .program-days {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+
+    .program-day-button {
+      border: 1px solid #dbe8ea;
+      border-radius: 4px;
+      background: #fff;
+      color: #263238;
+      cursor: pointer;
+      min-width: 160px;
+      padding: 12px 18px;
+      text-align: center;
+      transition: all 0.2s ease;
+    }
+
+    .program-day-button strong,
+    .program-day-button span {
+      display: block;
+    }
+
+    .program-day-button strong {
+      font-family: 'Roboto', sans-serif;
+      font-size: 16px;
+      margin-bottom: 3px;
+    }
+
+    .program-day-button span {
+      color: #68777d;
+      font-size: 13px;
+    }
+
+    .program-day-button.active,
+    .program-day-button:hover {
+      border-color: transparent;
+      color: #fff;
+      background-image: linear-gradient(65deg, #4d59ff 0, #78f5ef 100%);
+      box-shadow: 0 8px 24px #E2E8ED;
+    }
+
+    .program-day-button.active span,
+    .program-day-button:hover span {
+      color: #fff;
+    }
+
+    .program-list {
+      display: grid;
+      gap: 9px;
+    }
+
+    .program-card,
+    .program-session-card {
+      --program-accent: #64748b;
+      --program-accent-2: #94a3b8;
+      --program-accent-soft: #f1f5f9;
+      --program-accent-text: #334155;
+      --program-accent-line: #dbe4ea;
+      --program-card-bg: #fff;
+      display: grid;
+      grid-template-columns: minmax(104px, 136px) 1fr;
+      background: var(--program-card-bg);
+      border: 1px solid #e6eff1;
+      border-left: 4px solid var(--program-accent);
+      border-radius: 6px;
+      box-shadow: 0 4px 14px rgba(226, 232, 237, 0.75);
+      overflow: hidden;
+    }
+
+    .program-type-smi {
+      --program-accent: #2563eb;
+      --program-accent-2: #60a5fa;
+      --program-accent-soft: #eff6ff;
+      --program-accent-text: #1d4ed8;
+      --program-accent-line: #bfdbfe;
+      --program-card-bg: #eef6ff;
+    }
+
+    .program-type-spm {
+      --program-accent: #0f9f9a;
+      --program-accent-2: #5eead4;
+      --program-accent-soft: #ecfeff;
+      --program-accent-text: #0f766e;
+      --program-accent-line: #99f6e4;
+      --program-card-bg: #e8f7f3;
+    }
+
+    .program-type-spm-smi {
+      --program-accent: #0891b2;
+      --program-accent-2: #818cf8;
+      --program-accent-soft: #eef2ff;
+      --program-accent-text: #0e7490;
+      --program-accent-line: #c7d2fe;
+      --program-card-bg: #eef7fb;
+    }
+
+    .program-type-keynote {
+      --program-accent: #6d28d9;
+      --program-accent-2: #a78bfa;
+      --program-accent-soft: #f5f3ff;
+      --program-accent-text: #6d28d9;
+      --program-accent-line: #ddd6fe;
+      --program-card-bg: #f4efff;
+    }
+
+    .program-type-invited-talk {
+      --program-accent: #52677f;
+      --program-accent-2: #8ca0b6;
+      --program-accent-soft: #eef2f7;
+      --program-accent-text: #35475c;
+      --program-accent-line: #ccd6e2;
+      --program-card-bg: #eef2f7;
+    }
+
+    .program-type-registration {
+      --program-accent: #8fb2d8;
+      --program-accent-2: #b8d4ef;
+      --program-accent-soft: #eaf3fb;
+      --program-accent-text: #21466e;
+      --program-accent-line: #c7dbef;
+      --program-card-bg: #dceaf8;
+    }
+
+    .program-type-opening,
+    .program-type-general {
+      --program-accent: #8fa1b5;
+      --program-accent-2: #bac7d5;
+      --program-accent-soft: #f3f6f9;
+      --program-accent-text: #34465a;
+      --program-accent-line: #d3dce6;
+      --program-card-bg: #f1f5f9;
+    }
+
+    .program-type-break {
+      --program-accent: #f7a14b;
+      --program-accent-2: #ffc57f;
+      --program-accent-soft: #fff1df;
+      --program-accent-text: #9a4f04;
+      --program-accent-line: #fed7aa;
+      --program-card-bg: #fff3e4;
+    }
+
+    .program-type-lunch {
+      --program-accent: #d99a9a;
+      --program-accent-2: #ebbaba;
+      --program-accent-soft: #fff1f1;
+      --program-accent-text: #8f3d3d;
+      --program-accent-line: #ecc7c7;
+      --program-card-bg: #f8e1e1;
+    }
+
+    .program-type-social {
+      --program-accent: #5c95df;
+      --program-accent-2: #83b5f2;
+      --program-accent-soft: #eaf3ff;
+      --program-accent-text: #275d9f;
+      --program-accent-line: #bfd7f5;
+      --program-card-bg: #dbeafe;
+    }
+
+    .program-time {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100%;
+      padding: 12px 10px;
+      color: #fff;
+      background-image: linear-gradient(65deg, var(--program-accent) 0, var(--program-accent-2) 100%);
+      font-family: 'Roboto', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.25;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .program-session-time {
+      background-image: linear-gradient(65deg, var(--program-accent) 0, var(--program-accent-2) 100%);
+    }
+
+    .program-time span:last-child {
+      display: block;
+    }
+
+    .program-details {
+      min-width: 0;
+      padding: 13px 18px;
+    }
+
+    .program-session-details {
+      padding: 13px 18px 15px;
+    }
+
+    .program-card-topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 7px;
+    }
+
+    .program-card-date {
+      color: #809098;
+      flex: 0 0 auto;
+      font-size: 12px;
+      line-height: 1.4;
+      text-align: right;
+    }
+
+    .program-session-heading {
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #e6eff1;
+    }
+
+    .program-session-heading h3 {
+      margin-bottom: 3px;
+      color: #212121;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .program-session-heading p {
+      color: var(--program-accent-text);
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .program-session-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .program-session-item {
+      display: grid;
+      grid-template-columns: minmax(96px, 120px) 1fr;
+      gap: 12px;
+      padding-left: 10px;
+      border-left: 3px solid var(--program-accent-line);
+    }
+
+    .program-session-item-time {
+      color: var(--program-accent-text);
+      font-family: 'Roboto', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .program-session-item h4 {
+      margin-bottom: 3px;
+      color: #212121;
+      font-size: 15px;
+      line-height: 1.35;
+    }
+
+    .program-session-item p {
+      color: #68777d;
+      line-height: 1.55;
+    }
+
+    .program-type {
+      display: inline-block;
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.74);
+      background: rgba(255, 255, 255, 0.56);
+      box-shadow: 0 6px 18px rgba(23, 43, 77, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(8px);
+      color: var(--program-accent-text);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .program-details h3 {
+      margin-bottom: 4px;
+      color: #212121;
+      font-size: 17px;
+      line-height: 1.35;
+    }
+
+    .program-speaker,
+    .program-description,
+    .program-meta {
+      color: #68777d;
+      line-height: 1.6;
+    }
+
+    .program-speaker {
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+
+    .program-description {
+      margin-bottom: 5px;
+    }
+
+    .program-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 14px;
+      font-size: 13px;
+    }
+
+    .program-meta i {
+      color: #ff4a67;
+      margin-right: 5px;
+    }
+
+    .program-empty,
+    .program-status {
+      border: 1px solid #e6eff1;
+      border-radius: 6px;
+      background: #fff;
+      color: #68777d;
+      padding: 24px;
+      text-align: center;
+    }
+
+    .program-status {
+      margin-bottom: 20px;
+      display: none;
+    }
+
+    .program-status.show {
+      display: block;
+    }
+
+    @media (max-width: 767px) {
+      .program-tools,
+      .program-controls {
+        display: block;
+      }
+
+      .program-controls .form-control {
+        max-width: none;
+        margin-top: 10px;
+      }
+
+      .program-type-filters {
+        justify-content: flex-start;
+      }
+
+      .program-card {
+        grid-template-columns: 1fr;
+      }
+
+      .program-session-card {
+        grid-template-columns: 1fr;
+      }
+
+      .program-time {
+        align-items: center;
+        flex-direction: row;
+        padding: 14px 18px;
+      }
+
+      .program-session-item {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header id="header-wrap">
+    <div id="navbar-placeholder"></div>
+
+    <div id="hero-area" class="hero-area-bg">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-9 col-sm-12">
+            <div class="contents text-center">
+              <div class="icon">
+                <img class="img-fluid" src="assets/img/spm22.png" alt="">
+              </div>
+              <h2 class="head-title">Conference Program Draft</h2>
+              <p class="banner-info"><i class="lni-calendar"></i> 6-9, July 2026</p>
+              <p class="banner-desc"><i class="lni-map-marker"></i> Istanbul Technical University,<br> Gumussuyu Campus,<br>Istanbul, Turkiye</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="program" class="section-padding">
+    <div class="container">
+      <div class="section-title-header text-center">
+        <h2 class="section-title wow fadeInUp" data-wow-delay="0.2s">Conference Program</h2>
+        <p class="wow fadeInDown" data-wow-delay="0.2s">Draft schedule for SPM 2026.</p>
+      </div>
+
+      <div class="program-tools">
+        <div class="program-controls">
+          <input class="form-control" id="program-search" type="search" placeholder="Search title, session, speaker, room">
+        </div>
+      </div>
+      <div class="program-type-filters" id="program-type-filters" aria-label="Filter by session types"></div>
+
+      <div class="program-status" id="program-status"></div>
+      <div class="program-days" id="program-days"></div>
+      <div class="program-list" id="program-list"></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-12 col-xs-12">
+          <div class="site-info">
+            <p>&copy; 2026 Symposium on Solid and Physical Modeling (SPM)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top">
+    <i class="lni-chevron-up"></i>
+  </a>
+
+  <div id="preloader">
+    <div class="sk-circle">
+      <div class="sk-circle1 sk-child"></div>
+      <div class="sk-circle2 sk-child"></div>
+      <div class="sk-circle3 sk-child"></div>
+      <div class="sk-circle4 sk-child"></div>
+      <div class="sk-circle5 sk-child"></div>
+      <div class="sk-circle6 sk-child"></div>
+      <div class="sk-circle7 sk-child"></div>
+      <div class="sk-circle8 sk-child"></div>
+      <div class="sk-circle9 sk-child"></div>
+      <div class="sk-circle10 sk-child"></div>
+      <div class="sk-circle11 sk-child"></div>
+      <div class="sk-circle12 sk-child"></div>
+    </div>
+  </div>
+
+  <script src="assets/js/jquery-min.js"></script>
+  <script src="assets/js/popper.min.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/jquery.countdown.min.js"></script>
+  <script src="assets/js/waypoints.min.js"></script>
+  <script src="assets/js/jquery.counterup.min.js"></script>
+  <script src="assets/js/jquery.nav.js"></script>
+  <script src="assets/js/jquery.easing.min.js"></script>
+  <script src="assets/js/wow.js"></script>
+  <script src="assets/js/nivo-lightbox.js"></script>
+  <script src="assets/js/video.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    // Replace this with a published Google Sheets CSV URL when the program is edited externally.
+    // You can also preview another source with ProgramDraft.html?csv=ENCODED_CSV_URL.
+    const PROGRAM_CSV_URL = "assets/data/conference-program.csv";
+    const CSV_QUERY_PARAM = "csv";
+
+    document.addEventListener("DOMContentLoaded", function () {
+      fetch("navbar.html")
+        .then(function (res) { return res.text(); })
+        .then(function (html) {
+          document.getElementById("navbar-placeholder").innerHTML = html;
+        })
+        .catch(function (err) {
+          console.error("Navbar load error:", err);
+        });
+
+      initProgramPage();
+    });
+
+    function initProgramPage() {
+      const params = new URLSearchParams(window.location.search);
+      const csvUrl = params.get(CSV_QUERY_PARAM) || PROGRAM_CSV_URL;
+      const state = {
+        items: [],
+        activeDate: "",
+        defaultDurationMin: 20,
+        search: "",
+        types: []
+      };
+
+      const statusEl = document.getElementById("program-status");
+      const daysEl = document.getElementById("program-days");
+      const listEl = document.getElementById("program-list");
+      const searchEl = document.getElementById("program-search");
+      const typeFiltersEl = document.getElementById("program-type-filters");
+
+      searchEl.addEventListener("input", function () {
+        state.search = searchEl.value.trim().toLowerCase();
+        renderProgram();
+      });
+
+      fetch(csvUrl, { cache: "no-store" })
+        .then(function (res) {
+          if (!res.ok) throw new Error("CSV request failed: " + res.status);
+          return res.text();
+        })
+        .then(function (csvText) {
+          state.items = normalizeProgramRows(parseCsv(csvText));
+          state.defaultDurationMin = getProgramConfig(state.items).defaultDurationMin;
+          state.activeDate = getFirstProgramDate(state.items);
+          populateTypeFilter();
+          renderProgram();
+        })
+        .catch(function (err) {
+          console.error("Program CSV load error:", err);
+          showStatus("Could not load program data. On GitHub Pages this will work when the CSV file or published Google Sheet is reachable.");
+          listEl.innerHTML = "";
+          daysEl.innerHTML = "";
+          typeFiltersEl.innerHTML = "";
+        });
+
+      function showStatus(message) {
+        statusEl.textContent = message;
+        statusEl.classList.add("show");
+      }
+
+      function populateTypeFilter() {
+        const types = Array.from(new Set(state.items.filter(function (item) {
+          return item.rowType !== "config";
+        }).map(function (item) {
+          return item.type;
+        }).filter(Boolean))).sort(compareTypeFilters);
+
+        typeFiltersEl.innerHTML = "";
+        typeFiltersEl.appendChild(createTypeFilterButton("All session types", "", true));
+
+        types.forEach(function (type) {
+          typeFiltersEl.appendChild(createTypeFilterButton(getTypeFilterLabel(type), type, false));
+        });
+        updateTypeFilterButtons();
+      }
+
+      function createTypeFilterButton(label, value, isAllButton) {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "program-type-filter" + (value ? " " + getProgramTypeClass(value) : "");
+        button.textContent = label;
+        button.dataset.type = value;
+        button.setAttribute("aria-pressed", "false");
+        button.addEventListener("click", function () {
+          if (isAllButton) {
+            state.types = [];
+          } else if (state.types.indexOf(value) === -1) {
+            state.types.push(value);
+          } else {
+            state.types = state.types.filter(function (type) {
+              return type !== value;
+            });
+          }
+
+          updateTypeFilterButtons();
+          renderProgram();
+        });
+        return button;
+      }
+
+      function compareTypeFilters(a, b) {
+        const order = ["SPM", "SMI", "Keynote", "Invited Talk", "Coffee Break", "Lunch", "Opening", "Registration", "SPM/SMI", "General", "Social"];
+        const aLabel = getTypeFilterLabel(a);
+        const bLabel = getTypeFilterLabel(b);
+        const aIndex = order.indexOf(aLabel);
+        const bIndex = order.indexOf(bLabel);
+
+        if (aIndex !== -1 || bIndex !== -1) {
+          return (aIndex === -1 ? 999 : aIndex) - (bIndex === -1 ? 999 : bIndex);
+        }
+
+        return aLabel.localeCompare(bLabel);
+      }
+
+      function getTypeFilterLabel(type) {
+        return type === "Break" ? "Coffee Break" : type;
+      }
+
+      function updateTypeFilterButtons() {
+        Array.prototype.forEach.call(typeFiltersEl.querySelectorAll(".program-type-filter"), function (button) {
+          const isAllButton = !button.dataset.type;
+          const active = isAllButton ? state.types.length === 0 : state.types.indexOf(button.dataset.type) !== -1;
+          button.classList.toggle("active", active);
+          button.setAttribute("aria-pressed", active ? "true" : "false");
+        });
+      }
+
+      function renderProgram() {
+        renderDays();
+        renderItems();
+      }
+
+      function renderDays() {
+        const days = groupByDate(state.items);
+        daysEl.innerHTML = "";
+
+        days.forEach(function (group, index) {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = "program-day-button" + (group.date === state.activeDate ? " active" : "");
+          button.setAttribute("aria-pressed", group.date === state.activeDate ? "true" : "false");
+          button.addEventListener("click", function () {
+            state.activeDate = group.date;
+            renderProgram();
+          });
+
+          const label = document.createElement("strong");
+          label.textContent = group.day || "Day " + String(index + 1).padStart(2, "0");
+
+          const date = document.createElement("span");
+          date.textContent = formatDate(group.date);
+
+          button.appendChild(label);
+          button.appendChild(date);
+          daysEl.appendChild(button);
+        });
+      }
+
+      function renderItems() {
+        const entries = groupProgramItems(state.items, state);
+        const showDates = Boolean(state.search);
+
+        listEl.innerHTML = "";
+
+        if (!entries.length) {
+          const empty = document.createElement("div");
+          empty.className = "program-empty";
+          empty.textContent = "No sessions match the current filters.";
+          listEl.appendChild(empty);
+          return;
+        }
+
+        entries.forEach(function (entry) {
+          if (entry.kind === "session") {
+            listEl.appendChild(createSessionCard(entry, showDates));
+          } else {
+            listEl.appendChild(createProgramCard(entry.item, showDates));
+          }
+        });
+      }
+    }
+
+    function groupProgramItems(items, state) {
+      const childrenBySession = {};
+      const entries = [];
+      const searchActive = Boolean(state.search);
+
+      items.forEach(function (item) {
+        if (item.rowType !== "talk") return;
+
+        const sessionKey = getSessionKey(item);
+        if (!sessionKey) return;
+        if (!childrenBySession[sessionKey]) childrenBySession[sessionKey] = [];
+        childrenBySession[sessionKey].push(item);
+      });
+
+      Object.keys(childrenBySession).forEach(function (sessionKey) {
+        childrenBySession[sessionKey].sort(compareChildItems);
+      });
+
+      const dayItems = items.filter(function (item) {
+        return item.rowType !== "config" && item.rowType !== "talk" && (searchActive || item.date === state.activeDate);
+      }).sort(compareParentItems);
+
+      dayItems.forEach(function (item) {
+        if (item.rowType === "session") {
+          const sessionKey = getSessionKey(item);
+          const children = childrenBySession[sessionKey] || [];
+          const parentMatchesType = matchesType(item, state.types);
+          const parentMatchesSearch = matchesSearch(item, state.search, item);
+          const visibleChildren = children.filter(function (child) {
+            return matchesType(child, state.types, item) && (parentMatchesSearch || matchesSearch(child, state.search, item));
+          });
+
+          if ((parentMatchesType && parentMatchesSearch) || visibleChildren.length) {
+            entries.push({
+              kind: "session",
+              key: sessionKey,
+              date: item.date,
+              start: item.start,
+              end: item.end,
+              session: formatSessionLabel(sessionKey),
+              sessionName: item.sessionName || item.description,
+              type: item.type,
+              room: item.room,
+              sortOrder: item.sortOrder,
+              defaultDurationMin: numericValue(item.durationMin, state.defaultDurationMin),
+              items: visibleChildren
+            });
+          }
+          return;
+        }
+
+        if (matchesType(item, state.types) && matchesSearch(item, state.search)) {
+          entries.push({ kind: "item", item: item });
+        }
+      });
+
+      return entries;
+    }
+
+    function compareParentItems(a, b) {
+      const dateDiff = String(a.date || "").localeCompare(String(b.date || ""));
+      if (dateDiff) return dateDiff;
+
+      const orderDiff = numericValue(a.sortOrder, 9999) - numericValue(b.sortOrder, 9999);
+      if (orderDiff) return orderDiff;
+      return (a.start + " " + a.title).localeCompare(b.start + " " + b.title);
+    }
+
+    function compareChildItems(a, b) {
+      const orderDiff = numericValue(a.itemOrder, 9999) - numericValue(b.itemOrder, 9999);
+      if (orderDiff) return orderDiff;
+      return (a.start + " " + a.title).localeCompare(b.start + " " + b.title);
+    }
+
+    function numericValue(value, fallback) {
+      const number = Number(value);
+      return Number.isFinite(number) ? number : fallback;
+    }
+
+    function matchesType(item, activeTypes, session) {
+      const type = item.type || (session && session.type) || "";
+      return !activeTypes.length || activeTypes.indexOf(type) !== -1;
+    }
+
+    function matchesSearch(item, searchTerm, session) {
+      if (!searchTerm) return true;
+      return [
+        item.id,
+        item.parentId,
+        item.rowType,
+        item.session,
+        item.sessionName,
+        session && formatSessionLabel(getSessionKey(session)),
+        session && session.sessionName,
+        session && session.type,
+        session && session.date,
+        session && formatDate(session.date),
+        item.title,
+        item.speaker,
+        item.affiliation,
+        item.room,
+        item.description,
+        item.type
+      ].join(" ").toLowerCase().indexOf(searchTerm) !== -1;
+    }
+
+    function createProgramCard(item, showDate) {
+      const card = document.createElement("article");
+      const typeLabel = getProgramTypeLabel(item);
+      card.className = "program-card " + getProgramTypeClass(item.type);
+
+      const time = document.createElement("div");
+      time.className = "program-time";
+
+      const timeRange = document.createElement("span");
+      timeRange.textContent = formatTimeRange(item.start, item.end);
+      time.appendChild(timeRange);
+
+      const details = document.createElement("div");
+      details.className = "program-details";
+
+      const topLine = document.createElement("div");
+      topLine.className = "program-card-topline";
+
+      if (typeLabel) {
+        const type = document.createElement("span");
+        type.className = "program-type";
+        type.textContent = typeLabel;
+        topLine.appendChild(type);
+      }
+
+      if (showDate && item.date) {
+        const date = document.createElement("span");
+        date.className = "program-card-date";
+        date.textContent = formatDate(item.date);
+        topLine.appendChild(date);
+      }
+
+      details.appendChild(topLine);
+
+      if (shouldShowProgramTitle(item, typeLabel)) {
+        const title = document.createElement("h3");
+        title.textContent = item.title;
+        details.appendChild(title);
+      }
+
+      if (item.speaker || item.affiliation) {
+        const speaker = document.createElement("p");
+        speaker.className = "program-speaker";
+        speaker.textContent = [item.speaker, item.affiliation].filter(Boolean).join(" | ");
+        details.appendChild(speaker);
+      }
+
+      if (shouldShowProgramDescription(item, typeLabel)) {
+        const description = document.createElement("p");
+        description.className = "program-description";
+        description.textContent = item.description;
+        details.appendChild(description);
+      }
+
+      const meta = document.createElement("div");
+      meta.className = "program-meta";
+      if (appendMeta(meta, "lni-map-marker", item.room)) {
+        details.appendChild(meta);
+      }
+
+      card.appendChild(time);
+      card.appendChild(details);
+      return card;
+    }
+
+    function createSessionCard(session, showDate) {
+      const scheduledItems = scheduleSessionItems(session);
+      const card = document.createElement("section");
+      card.className = "program-session-card " + getProgramTypeClass(session.type);
+
+      const time = document.createElement("div");
+      time.className = "program-time program-session-time";
+
+      const sessionTime = document.createElement("span");
+      sessionTime.textContent = formatTimeRange(session.start || getSessionStart(scheduledItems), session.end || getSessionEnd(scheduledItems));
+      time.appendChild(sessionTime);
+
+      const details = document.createElement("div");
+      details.className = "program-session-details";
+
+      const heading = document.createElement("div");
+      heading.className = "program-session-heading";
+
+      const topLine = document.createElement("div");
+      topLine.className = "program-card-topline";
+
+      const type = document.createElement("span");
+      type.className = "program-type";
+      type.textContent = session.type || "Session";
+      topLine.appendChild(type);
+
+      if (showDate && session.date) {
+        const date = document.createElement("span");
+        date.className = "program-card-date";
+        date.textContent = formatDate(session.date);
+        topLine.appendChild(date);
+      }
+
+      heading.appendChild(topLine);
+
+      const title = document.createElement("h3");
+      title.textContent = session.session;
+      heading.appendChild(title);
+
+      if (session.sessionName) {
+        const subtitle = document.createElement("p");
+        subtitle.textContent = session.sessionName;
+        heading.appendChild(subtitle);
+      }
+
+      const meta = document.createElement("div");
+      meta.className = "program-meta";
+      if (appendMeta(meta, "lni-map-marker", session.room)) {
+        heading.appendChild(meta);
+      }
+
+      details.appendChild(heading);
+
+      const talks = document.createElement("div");
+      talks.className = "program-session-list";
+
+      scheduledItems.forEach(function (item) {
+        talks.appendChild(createSessionItem(item));
+      });
+
+      details.appendChild(talks);
+      card.appendChild(time);
+      card.appendChild(details);
+      return card;
+    }
+
+    function createSessionItem(item) {
+      const row = document.createElement("div");
+      row.className = "program-session-item";
+
+      const time = document.createElement("div");
+      time.className = "program-session-item-time";
+      time.textContent = [item.computedStart || item.start, item.computedEnd || item.end].filter(Boolean).join(" - ") || "TBA";
+
+      const content = document.createElement("div");
+
+      const title = document.createElement("h4");
+      title.textContent = item.title || "TBA";
+      content.appendChild(title);
+
+      if (item.speaker || item.affiliation) {
+        const speaker = document.createElement("p");
+        speaker.textContent = [item.speaker, item.affiliation].filter(Boolean).join(" | ");
+        content.appendChild(speaker);
+      }
+
+      row.appendChild(time);
+      row.appendChild(content);
+      return row;
+    }
+
+    function scheduleSessionItems(session) {
+      const items = session.items.slice().sort(compareChildItems);
+      const sessionStart = parseTimeToMinutes(session.start);
+      const sessionEnd = parseTimeToMinutes(session.end);
+      let cursor = sessionStart;
+
+      return items.map(function (item, index) {
+        const explicitStart = parseTimeToMinutes(item.start);
+        const explicitEnd = parseTimeToMinutes(item.end);
+        let start = explicitStart;
+        let end = explicitEnd;
+
+        if (start !== null && end !== null) {
+          cursor = end;
+        } else {
+          if (cursor === null) cursor = start !== null ? start : sessionStart;
+
+          const duration = getItemDuration(item, items, index, cursor, sessionEnd, session.defaultDurationMin);
+          if (cursor !== null && duration > 0) {
+            start = cursor;
+            end = cursor + duration;
+            cursor = end;
+          }
+        }
+
+        return Object.assign({}, item, {
+          computedStart: formatMinutes(start),
+          computedEnd: formatMinutes(end)
+        });
+      });
+    }
+
+    function getItemDuration(item, items, index, cursor, sessionEnd, defaultDurationMin) {
+      const duration = Number(item.durationMin);
+      if (Number.isFinite(duration) && duration > 0) return duration;
+
+      const defaultDuration = Number(defaultDurationMin);
+      if (Number.isFinite(defaultDuration) && defaultDuration > 0) return defaultDuration;
+
+      if (cursor === null || sessionEnd === null || sessionEnd <= cursor) return 0;
+
+      const remainingUnscheduled = items.slice(index).filter(function (candidate) {
+        return !candidate.durationMin && parseTimeToMinutes(candidate.start) === null && parseTimeToMinutes(candidate.end) === null;
+      }).length || 1;
+
+      return Math.floor((sessionEnd - cursor) / remainingUnscheduled);
+    }
+
+    function parseTimeToMinutes(value) {
+      const match = String(value || "").trim().match(/^(\d{1,2}):(\d{2})$/);
+      if (!match) return null;
+      return (Number(match[1]) * 60) + Number(match[2]);
+    }
+
+    function formatMinutes(value) {
+      if (!Number.isFinite(value)) return "";
+      const hours = Math.floor(value / 60);
+      const minutes = value % 60;
+      return String(hours).padStart(2, "0") + ":" + String(minutes).padStart(2, "0");
+    }
+
+    function getSessionStart(items) {
+      return items.reduce(function (earliest, item) {
+        const start = item.computedStart || item.start;
+        if (!start) return earliest;
+        if (!earliest || start < earliest) return start;
+        return earliest;
+      }, "");
+    }
+
+    function getSessionEnd(items) {
+      return items.reduce(function (latest, item) {
+        const end = item.computedEnd || item.end;
+        if (!end) return latest;
+        if (!latest || end > latest) return end;
+        return latest;
+      }, "");
+    }
+
+    function getProgramTypeLabel(item) {
+      if (item.rowType === "event" && normalizeLabel(item.type) === "break") {
+        return item.title || "Coffee Break";
+      }
+
+      return item.type || item.rowType || "";
+    }
+
+    function getProgramTypeClass(type) {
+      const slug = String(type || "general")
+        .trim()
+        .toLowerCase()
+        .replace(/&/g, " ")
+        .replace(/\//g, "-")
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-+|-+$/g, "");
+
+      return "program-type-" + (slug || "general");
+    }
+
+    function getSessionKey(item) {
+      const raw = item && (item.session || item.id || item.parentId);
+      const match = String(raw || "").match(/(\d+)/);
+      return match ? String(Number(match[1])) : value(raw);
+    }
+
+    function formatSessionLabel(sessionKey) {
+      return sessionKey ? "Session " + sessionKey : "Session";
+    }
+
+    function shouldShowProgramTitle(item, typeLabel) {
+      if (!item.title) return false;
+      if (item.rowType !== "event") return true;
+
+      const title = normalizeLabel(item.title);
+      const label = normalizeLabel(typeLabel);
+      const type = normalizeLabel(item.type);
+
+      if (title === label || title === type) return false;
+      if (type === "break" && title === "coffee break") return false;
+
+      return true;
+    }
+
+    function shouldShowProgramDescription(item, typeLabel) {
+      if (!item.description) return false;
+
+      const description = normalizeLabel(item.description);
+      const label = normalizeLabel(typeLabel);
+      const type = normalizeLabel(item.type);
+
+      if (description === label || description === type) return false;
+      if (description === label + " talk" || description === type + " talk") return false;
+
+      return true;
+    }
+
+    function normalizeLabel(input) {
+      return String(input || "").trim().toLowerCase().replace(/\s+/g, " ");
+    }
+
+    function formatTimeRange(start, end) {
+      const normalizedStart = formatTimeValue(start);
+      const normalizedEnd = formatTimeValue(end);
+
+      if (normalizedStart && normalizedEnd) return normalizedStart + " - " + normalizedEnd;
+      return normalizedStart || normalizedEnd || "TBA";
+    }
+
+    function formatTimeValue(input) {
+      const minutes = parseTimeToMinutes(input);
+      if (minutes !== null) return formatMinutes(minutes);
+      return value(input);
+    }
+
+    function appendMeta(container, iconClass, text) {
+      const cleaned = value(text);
+      if (!cleaned || cleaned.toUpperCase() === "TBA") return false;
+
+      const item = document.createElement("span");
+      const icon = document.createElement("i");
+      icon.className = iconClass;
+      item.appendChild(icon);
+      item.appendChild(document.createTextNode(cleaned));
+      container.appendChild(item);
+      return true;
+    }
+
+    function normalizeProgramRows(rows) {
+      return rows.map(function (row) {
+        return {
+          date: value(row.date),
+          day: value(row.day),
+          start: value(row.start),
+          end: value(row.end),
+          durationMin: value(row.duration_min),
+          sortOrder: value(row.sort_order),
+          itemOrder: value(row.item_order),
+          id: value(row.id),
+          parentId: value(row.parent_id),
+          rowType: value(row.row_type),
+          session: value(row.session),
+          sessionName: value(row.session_name),
+          title: value(row.title),
+          speaker: value(row.speaker),
+          affiliation: value(row.affiliation),
+          type: value(row.type),
+          room: value(row.room),
+          description: value(row.description)
+        };
+      }).filter(function (item) {
+        return item.id || item.date || item.title;
+      });
+    }
+
+    function getProgramConfig(items) {
+      const config = items.find(function (item) {
+        return item.rowType === "config";
+      });
+      const duration = Number(config && config.durationMin);
+
+      return {
+        defaultDurationMin: Number.isFinite(duration) && duration > 0 ? duration : 20
+      };
+    }
+
+    function getFirstProgramDate(items) {
+      const days = groupByDate(items);
+      return days[0] ? days[0].date : "";
+    }
+
+    function groupByDate(items) {
+      const groups = [];
+      const byDate = {};
+
+      items.forEach(function (item) {
+        if (item.rowType === "config" || item.parentId || !item.date) return;
+
+        if (!byDate[item.date]) {
+          byDate[item.date] = {
+            date: item.date,
+            day: item.day,
+            items: []
+          };
+          groups.push(byDate[item.date]);
+        }
+        byDate[item.date].items.push(item);
+      });
+
+      return groups.sort(function (a, b) {
+        return a.date.localeCompare(b.date);
+      });
+    }
+
+    function value(input) {
+      return String(input || "").trim();
+    }
+
+    function formatDate(dateString) {
+      if (!dateString) return "TBA";
+      const parts = dateString.split("-").map(Number);
+      if (parts.length !== 3 || parts.some(isNaN)) return dateString;
+      const date = new Date(Date.UTC(parts[0], parts[1] - 1, parts[2]));
+      return new Intl.DateTimeFormat("en-GB", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+        timeZone: "UTC"
+      }).format(date);
+    }
+
+    function parseCsv(csvText) {
+      const rows = [];
+      let row = [];
+      let field = "";
+      let insideQuotes = false;
+
+      for (let i = 0; i < csvText.length; i += 1) {
+        const char = csvText[i];
+        const next = csvText[i + 1];
+
+        if (char === '"' && insideQuotes && next === '"') {
+          field += '"';
+          i += 1;
+          continue;
+        }
+
+        if (char === '"') {
+          insideQuotes = !insideQuotes;
+          continue;
+        }
+
+        if (char === "," && !insideQuotes) {
+          row.push(field);
+          field = "";
+          continue;
+        }
+
+        if ((char === "\n" || char === "\r") && !insideQuotes) {
+          if (char === "\r" && next === "\n") i += 1;
+          row.push(field);
+          rows.push(row);
+          row = [];
+          field = "";
+          continue;
+        }
+
+        field += char;
+      }
+
+      if (field || row.length) {
+        row.push(field);
+        rows.push(row);
+      }
+
+      const headers = (rows.shift() || []).map(function (header) {
+        return header.trim();
+      });
+
+      return rows.filter(function (cells) {
+        return cells.some(function (cell) { return String(cell).trim(); });
+      }).map(function (cells) {
+        return headers.reduce(function (record, header, index) {
+          record[header] = cells[index] || "";
+          return record;
+        }, {});
+      });
+    }
+  </script>
+</body>
+
+</html>
