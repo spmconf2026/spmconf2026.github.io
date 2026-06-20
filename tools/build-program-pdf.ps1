@@ -1,4 +1,4 @@
-# Rebuilds the static conference-program PDF from ProgramDraft.html.
+# Rebuilds the static conference-program PDF from Program.html.
 # Run this whenever assets/data/conference-program.csv changes.
 #
 #   pwsh tools/build-program-pdf.ps1
@@ -63,7 +63,7 @@ $server = Start-Job -ScriptBlock {
 
 try {
   Start-Sleep -Milliseconds 800
-  $url = "$prefix" + "ProgramDraft.html?view=pdf"
+  $url = "$prefix" + "Program.html?view=pdf"
   $profile = Join-Path $env:TEMP "spm-pdf-profile"
 
   & $chrome --headless=new --disable-gpu --no-first-run --no-default-browser-check `
