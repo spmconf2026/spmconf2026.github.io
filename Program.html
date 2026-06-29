@@ -536,6 +536,16 @@
       --program-card-bg: #eef7fb;
     }
 
+
+    .program-type-commemoration {
+      --program-accent: #000000;
+      --program-accent-2: #949494;
+      --program-accent-soft: #858585;
+      --program-accent-text: #000000;
+      --program-accent-line: #c7d2fe;
+      --program-card-bg: #f1f1f1;
+    }
+
     .program-type-keynote {
       --program-accent: #6d28d9;
       --program-accent-2: #a78bfa;
@@ -669,6 +679,25 @@
       font-size: 12px;
       line-height: 1.4;
       text-align: right;
+    }
+
+    .program-card-chair {
+      align-items: center;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(96, 112, 120, 0.18);
+      border-radius: 999px;
+      color: #526269;
+      display: inline-flex;
+      flex: 0 1 auto;
+      font-size: 11px;
+      font-weight: 800;
+      justify-content: flex-end;
+      line-height: 1.4;
+      min-width: 0;
+      overflow-wrap: anywhere;
+      padding: 4px 9px;
+      text-align: right;
+      text-transform: none;
     }
 
     .program-session-heading {
@@ -1025,6 +1054,11 @@
       display: block;
     }
 
+    body.program-pdf-mode .program-card-chair {
+      font-size: 9.5px;
+      padding: 3px 7px;
+    }
+
     body.program-pdf-mode .program-session-details {
       padding: 9px 14px 10px;
     }
@@ -1239,6 +1273,11 @@
 
       .program-card-date {
         display: none;
+      }
+
+      .program-card-chair {
+        justify-content: flex-start;
+        text-align: left;
       }
 
       .program-type {
@@ -1855,8 +1894,10 @@
               sessionName: item.sessionName || item.description,
               type: item.type,
               room: item.room,
+              chair: item.chair,
               sortOrder: item.sortOrder,
               defaultDurationMin: numericValue(item.durationMin, state.defaultDurationMin),
+              allItems: children,
               items: visibleChildren
             }, item);
           }
@@ -1945,6 +1986,7 @@
         item.affiliation,
         item.room,
         item.description,
+        item.chair,
         item.type
       ].join(" ").toLowerCase().indexOf(searchTerm) !== -1;
     }
@@ -1976,6 +2018,8 @@
 
       const topLine = document.createElement("div");
       topLine.className = "program-card-topline";
+
+      appendChairToTopLine(topLine, item.chair);
 
       if (typeLabel) {
         const type = document.createElement("span");
@@ -2026,7 +2070,10 @@
     }
 
     function createSessionCard(session, showDate) {
-      const scheduledItems = scheduleSessionItems(session);
+      const scheduledItems = scheduleSessionItems(Object.assign({}, session, {
+        items: session.allItems || session.items
+      }));
+      const visibleItems = session.allItems ? filterScheduledSessionItems(scheduledItems, session.items) : scheduledItems;
       const card = document.createElement("section");
       card.className = "program-session-card " + getProgramTypeClass(session.type);
 
@@ -2052,6 +2099,8 @@
 
       const topLine = document.createElement("div");
       topLine.className = "program-card-topline";
+
+      appendChairToTopLine(topLine, session.chair);
 
       const type = document.createElement("span");
       type.className = "program-type";
@@ -2088,7 +2137,7 @@
       const talks = document.createElement("div");
       talks.className = "program-session-list";
 
-      scheduledItems.forEach(function (item) {
+      visibleItems.forEach(function (item) {
         talks.appendChild(createSessionItem(item));
       });
 
@@ -2149,9 +2198,17 @@
         }
 
         return Object.assign({}, item, {
+          sourceItem: item,
           computedStart: formatMinutes(start),
           computedEnd: formatMinutes(end)
         });
+      });
+    }
+
+    function filterScheduledSessionItems(scheduledItems, visibleItems) {
+      const visibleSet = new Set(visibleItems);
+      return scheduledItems.filter(function (item) {
+        return visibleSet.has(item.sourceItem || item);
       });
     }
 
@@ -2294,6 +2351,7 @@
         item.speaker ||
         item.affiliation ||
         item.room ||
+        item.chair ||
         shouldShowProgramDescription(item, typeLabel)
       );
 
@@ -2307,6 +2365,7 @@
         !item.speaker &&
         !item.affiliation &&
         !item.room &&
+        !item.chair &&
         !shouldShowProgramDescription(item, typeLabel)
       );
     }
@@ -2375,11 +2434,28 @@
           affiliation: value(row.affiliation),
           type: value(row.type),
           room: value(row.room),
-          description: value(row.description)
+          description: value(row.description),
+          chair: value(row.chair)
         };
       }).filter(function (item) {
         return item.id || item.date || item.title;
       });
+    }
+
+    function formatChair(chair) {
+      const cleaned = value(chair);
+      return cleaned ? "Chair: " + cleaned : "";
+    }
+
+    function appendChairToTopLine(container, chair) {
+      const label = formatChair(chair);
+      if (!label) return false;
+
+      const chairEl = document.createElement("span");
+      chairEl.className = "program-card-chair";
+      chairEl.textContent = label;
+      container.appendChild(chairEl);
+      return true;
     }
 
     function getProgramConfig(items) {
