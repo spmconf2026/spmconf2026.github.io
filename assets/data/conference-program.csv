@@ -1,16 +1,16 @@
 date,day,start,end,duration_min,sort_order,item_order,id,parent_id,row_type,session,session_name,title,speaker,affiliation,type,room,description,chair
 ,,,,20,,,,,config,,,Default Program Settings,,,Config,,Default talk duration in minutes
 2026-07-06,Day 01,11:00,12:00,,5,,,,session,1,Design and Manufacturing,,,,SPM,,,Tsz Ho Kwok
-2026-07-06,Day 01,13:30,14:50,,7,,,,session,2,Discrete Shape Modelling & Analysis,,,,SMI,,
+2026-07-06,Day 01,13:30,14:50,,7,,,,session,2,Discrete Shape Modelling & Analysis,,,,SMI,,,Michela Mortara
 2026-07-06,Day 01,15:30,16:50,,9,,,,session,3,Mesh Processing,,,,SPM,,,Zichun Zhong
 2026-07-06,Day 01,17:05,18:05,,10,,,,session,CAD SI,AI for Design and Manufacturing,,,,CAD SI,,,Ramanathan Muthuganapathy
 2026-07-07,Day 02,10:40,12:00,,3,,,,session,4,Volumes,,,,SMI,,,Mathieu Desbrun
 2026-07-07,Day 02,13:30,14:50,,5,,,,session,5,CAD and Geometric Modeling,,,,SPM,,,Charlie C.L. Wang
-2026-07-07,Day 02,15:30,16:50,,7,,,,session,6,Parametric Surfaces & Computational Design,,,,SMI,,
+2026-07-07,Day 02,15:30,16:50,,7,,,,session,6,Parametric Surfaces & Computational Design,,,,SMI,,,Stefanie Hahmann
 2026-07-08,Day 03,10:40,12:00,,3,,,,session,7,"Point Clouds, Registration, and Reconstruction",,,,SPM,,,Congyi Zhang
-2026-07-08,Day 03,13:30,14:50,,5,,,,session,8,Neural & Implicit Representations and Skeletons,,,,SMI,,
+2026-07-08,Day 03,13:30,14:50,,5,,,,session,8,Neural & Implicit Representations and Skeletons,,,,SMI,,,Brian Wyvill
 2026-07-08,Day 03,15:30,16:30,,7,,,,session,9,Simulation and Analysis,,,,SPM,,,Guoxin Fang
-2026-07-09,Day 04,10:40,12:00,,3,,,,session,10,"Animation, Interaction & Dynamic Scene Modelling",,,,SMI,,
+2026-07-09,Day 04,10:40,12:00,,3,,,,session,10,"Animation, Interaction & Dynamic Scene Modelling",,,,SMI,,,Ergun Akleman
 2026-07-09,Day 04,13:30,14:40,10,5,,,,session,11,Lightning talks (Fast-Track Papers),,,,SPM,,,Guoxin Fang
 2026-07-06,Day 01,08:00,09:00,,1,,,,event,,,Registration,,,Registration,,
 2026-07-06,Day 01,09:00,09:20,,2,,,,event,,,Opening,,,Opening,,
@@ -85,11 +85,11 @@ date,day,start,end,duration_min,sort_order,item_order,id,parent_id,row_type,sess
 ,,,,,,6,,,talk,11,,Efficient and Accurate Bernstein Polynomial Composition via Monomial-Basis Transformation,"Tong Shen, Shiqing Xin and Jieqing Feng",,,,
 ,,,,,,7,,,talk,11,,KDH-CAD: Knowledge–data hybrid CAD learning under data scarcity (Online),"Ziqing Gao, Zhijie Yang, Yaonaiming Zhao and Qiang Zou",,,,
 2026-07-09,Day 04,14:40,15:20,,6,,,,event,,,Coffee Break,,,Break,,
-2026-07-09,Day 04,15:20,16:00,,7,,,,event,,,"Symmetry, Steadiness, and other Revelations (Online)",Jarek Rossignac (Recipient of the 2026 Tosiyasu L. Kunii Award),,Invited Talk,,Invited Talk,Michela Mortara
+2026-07-09,Day 04,15:20,16:00,,7,,,,event,,,"Symmetry, Steadiness, and other Revelations (Online)",Jarek Rossignac (Recipient of the 2026 Tosiyasu L. Kunii Award),,Invited Talk,,Invited Talk,Georges-Pierre Bonneau
 2026-07-09,Day 04,16:00,16:15,,8,,,,event,,,Shape Modeling for Engineering Design and Manufacturing (Online),Qiang Zou (Recipient of the 2026 SMI Young Investigator Award),,Invited Talk,,Invited Talk,Zichun Zhong
 2026-07-09,Day 04,16:15,16:30,,9,,,,event,,,Toward Compact and Structured Representations of Detailed 3D Shapes,Congyi Zhang (Recipient of the 2026 SMI Young Investigator Award),,Invited Talk,,Invited Talk,Zichun Zhong
 2026-07-09,Day 04,16:30,16:50,,10,,,,event,,,Coffee Break,,,Break,,
 2026-07-09,Day 04,16:50,17:05,,11,,,,event,,,Shaping natural landscapes through simulation,Guillaume Cordonnier (Recipient of the 2025 SMI Young Investigator Award),,Invited Talk,,Invited Talk,Zichun Zhong
 2026-07-09,Day 04,17:05,17:20,,12,,,,event,,,Scribbles to Structures: The Geometry of Creative Intent,Amal Dev Parakkat (Recipient of the 2025 SMI Young Investigator Award),,Invited Talk,,Invited Talk,Zichun Zhong
 2026-07-09,Day 04,17:20,17:40,,12,,,,event,,,In Memory of Malcolm Sabin: A Celebration of His Life and Legacy,,,COMMEMORATION,,COMMEMORATION,Brian Wyvill
-2026-07-09,Day 04,17:40,18:10,,13,,,,event,,,SPM/SMI Best Paper Awards + Closing,,,SPM/SMI,,,Amal Dev Parakkat
+2026-07-09,Day 04,17:40,18:10,,13,,,,event,,,SPM/SMI Best Paper Awards + Closing,,,SPM/SMI,,,
