@@ -3,13 +3,13 @@ date,day,start,end,duration_min,sort_order,item_order,id,parent_id,row_type,sess
 2026-07-06,Day 01,11:00,12:00,,5,,,,session,1,Design and Manufacturing,,,,SPM,,,Tsz Ho Kwok
 2026-07-06,Day 01,13:30,14:50,,7,,,,session,2,Discrete Shape Modelling & Analysis,,,,SMI,,
 2026-07-06,Day 01,15:30,16:50,,9,,,,session,3,Mesh Processing,,,,SPM,,,Zichun Zhong
-2026-07-06,Day 01,17:05,18:05,,10,,,,session,CAD SI,AI for Design and Manufacturing,,,,CAD SI,,
-2026-07-07,Day 02,10:40,12:00,,3,,,,session,4,Volumes,,,,SMI,,
+2026-07-06,Day 01,17:05,18:05,,10,,,,session,CAD SI,AI for Design and Manufacturing,,,,CAD SI,,,Ramanathan Muthuganapathy
+2026-07-07,Day 02,10:40,12:00,,3,,,,session,4,Volumes,,,,SMI,,,Mathieu Desbrun
 2026-07-07,Day 02,13:30,14:50,,5,,,,session,5,CAD and Geometric Modeling,,,,SPM,,,Charlie C.L. Wang
 2026-07-07,Day 02,15:30,16:50,,7,,,,session,6,Parametric Surfaces & Computational Design,,,,SMI,,
 2026-07-08,Day 03,10:40,12:00,,3,,,,session,7,"Point Clouds, Registration, and Reconstruction",,,,SPM,,,Congyi Zhang
 2026-07-08,Day 03,13:30,14:50,,5,,,,session,8,Neural & Implicit Representations and Skeletons,,,,SMI,,
-2026-07-08,Day 03,15:30,16:30,,7,,,,session,9,Simulation and Analysis,,,,SPM,,,Qiang Zou
+2026-07-08,Day 03,15:30,16:30,,7,,,,session,9,Simulation and Analysis,,,,SPM,,,Guoxin Fang
 2026-07-09,Day 04,10:40,12:00,,3,,,,session,10,"Animation, Interaction & Dynamic Scene Modelling",,,,SMI,,
 2026-07-09,Day 04,13:30,14:40,10,5,,,,session,11,Lightning talks (Fast-Track Papers),,,,SPM,,,Guoxin Fang
 2026-07-06,Day 01,08:00,09:00,,1,,,,event,,,Registration,,,Registration,,
@@ -50,14 +50,14 @@ date,day,start,end,duration_min,sort_order,item_order,id,parent_id,row_type,sess
 ,,,,,,3,,,talk,6,,Primal-Dual Polycatenanes: Modular Design and Construction of Catenated 3D Graphs Using Primal and Dual of Labeled 3-Honeycombs,"Tolga Yildiz, Vinayak Krishnamurthy and Ergun Akleman",,,,
 ,,,,,,4,,,talk,6,,Geometry-Aware Upcycling of Architectural Tessellations,"Sultan Aljabri, Hassan Baharami, Raphael Falque and Nico Pietroni",,,,
 2026-07-07,Day 02,16:50,17:05,,8,,,,event,,,Coffee Break,,,Break,,
-2026-07-07,Day 02,17:05,18:00,,9,,,,event,,,SPM/SMI Award Ceremony,,,SPM/SMI,,
+2026-07-07,Day 02,17:05,18:00,,9,,,,event,,,SPM/SMI Award Ceremony,,,SPM/SMI,,,
 2026-07-07,Day 02,18:10,,,10,,,,event,,,Meeting at the entrance,,,Social,,
 2026-07-07,Day 02,18:30,22:30,,11,,,,event,,,Banquet at Ferryboat + Bosphorus Tour,,,Social,,
 2026-07-08,Day 03,09:00,10:00,,1,,,,event,,,Constructing and reconstructing surface geometries,Tamas Varady,,Keynote,,Keynote Talk,Michael Barton
 2026-07-08,Day 03,10:00,10:40,,2,,,,event,,,Coffee Break,,,Break,,
 ,,,,,,1,,,talk,7,,Sinkhorn-CPD: Robust Point Cloud Registration via Unbalanced Entropic Optimal Transport (Online),"Jin Zhang, Mingyang Zhao, Bing Liu and Xin Jiang",,,,
-,,,,,,2,,,talk,7,,PointInDI: Inversion by Direct Iteration for Point Cloud Denoising,"Zheng Liu, Zhenyu Huang, Chuchen Guo, Maodong Pan and Ying He",,,,
-,,,,,,3,,,talk,7,,PoseMerge: Joint Registration and Fusion of Pose-Wise Neural Implicit Surfaces for Multi-Pose 3D Reconstruction,"Guanli Hou, Yuanmu Xu, Tenglong Ren, Jiangbei Hu, Fei Hou, Peng Song and Ying He",,,,
+,,,,,,2,,,talk,7,,PointInDI: Inversion by Direct Iteration for high-fidelity point cloud denoising,"Zheng Liu, Zhenyu Huang, Chuchen Guo, Maodong Pan and Ying He",,,,
+,,,,,,3,,,talk,7,,PoseFusion: Fusing neural implicit surfaces for multi-view reconstruction from multi-pose captures,"Guanli Hou, Yuanmu Xu, Tenglong Ren, Jiangbei Hu, Fei Hou, Peng Song and Ying He",,,,
 ,,,,,,4,,,talk,7,,GSurf: Learning Signed Distance Fields from Splatting Opaque Gaussians for High-quality 3D Reconstruction,"Baixin Xu, Jiangbei Hu, Jiaze Li and Ying He",,,,
 2026-07-08,Day 03,12:00,13:30,,4,,,,event,,,Lunch,,,Lunch,,
 ,,,,,,1,,,talk,8,,BBSDF: Beyond the boundary generalizable neural SDF for unoriented planar pointsets and its application to medial axis extraction,Bincy Antony and Ramanathan Muthuganapathy,,,,
@@ -69,7 +69,7 @@ date,day,start,end,duration_min,sort_order,item_order,id,parent_id,row_type,sess
 ,,,,,,3,,,talk,9,,Simultaneous rh-adaptive IsoGeometric Analysis using Optimal Transport and THB-Splines for gradient-dominated problems,Mustapha Bahari and Angelos Mantzaflaris,,,,
 ,,,,,,4,,,talk,9,,Extended r-adaptive isogeometric analysis for weak-discontinuous problems,"Jingyi Cao, Ye Ji, Matthias Möller and Chungang Zhu",,,,
 2026-07-08,Day 03,16:30,16:45,,8,,,,event,,,Coffee Break,,,Break,,
-2026-07-08,Day 03,16:45,18:00,,9,,,,event,,,SPM and SMI Business Meeting,,,SPM/SMI,,
+2026-07-08,Day 03,16:45,~,,9,,,,event,,,SPM and SMI Business Meeting (Closed Meeting),,,SPM/SMI,,
 2026-07-09,Day 04,9:00,10:00,,1,,,,event,,,Implicit Modeling - From Dreams to Industry and Back to Dreams,Brian Wyvill (Recipient of the 2025 Tosiyasu L. Kunii Award),,Keynote,,Keynote Talk,Ergun Akleman
 2026-07-09,Day 04,10:00,10:40,,2,,,,event,,,Coffee Break,,,Break,,
 ,,,,,,1,,,talk,10,,Data-driven Inverse Kinematics using Laban Movement Analysis,"Mehmet Akif Şahin, Sinan Sonlu and Uğur Güdükbay",,,,
@@ -83,13 +83,13 @@ date,day,start,end,duration_min,sort_order,item_order,id,parent_id,row_type,sess
 ,,,,,,4,,,talk,11,,Boundaries and Creases for Spline Surfaces with Extraordinary Vertices,"Param Gupta, Kestutis Karciauskas and Jorg Peters",,,,
 ,,,,,,5,,,talk,11,,Holder–Minkowski Implicits: Associative and Truly Generalized Averaging Operators for Expanding the Design Space of Implicitly Represented Shapes,"Tolga Yildiz, Vinayak Krishnamurthy and Ergun Akleman",,,,
 ,,,,,,6,,,talk,11,,Efficient and Accurate Bernstein Polynomial Composition via Monomial-Basis Transformation,"Tong Shen, Shiqing Xin and Jieqing Feng",,,,
-,,,,,,7,,,talk,11,,KDH-CAD: Knowledge–data hybrid CAD learning under data scarcity,"Ziqing Gao, Zhijie Yang, Yaonaiming Zhao and Qiang Zou",,,,
+,,,,,,7,,,talk,11,,KDH-CAD: Knowledge–data hybrid CAD learning under data scarcity (Online),"Ziqing Gao, Zhijie Yang, Yaonaiming Zhao and Qiang Zou",,,,
 2026-07-09,Day 04,14:40,15:20,,6,,,,event,,,Coffee Break,,,Break,,
-2026-07-09,Day 04,15:20,16:00,,7,,,,event,,,"Symmetry, Steadiness, and other Revelations (Online)",Jarek Rossignac (Recipient of the 2026 Tosiyasu L. Kunii Award),,Invited Talk,,Invited Talk
-2026-07-09,Day 04,16:00,16:15,,8,,,,event,,,Shape Modeling for Engineering Design and Manufacturing,Qiang Zou (Recipient of the 2026 SMI Young Investigator Award),,Invited Talk,,Invited Talk
-2026-07-09,Day 04,16:15,16:30,,9,,,,event,,,Toward Compact and Structured Representations of Detailed 3D Shapes,Congyi Zhang (Recipient of the 2026 SMI Young Investigator Award),,Invited Talk,,Invited Talk
+2026-07-09,Day 04,15:20,16:00,,7,,,,event,,,"Symmetry, Steadiness, and other Revelations (Online)",Jarek Rossignac (Recipient of the 2026 Tosiyasu L. Kunii Award),,Invited Talk,,Invited Talk,Michela Mortara
+2026-07-09,Day 04,16:00,16:15,,8,,,,event,,,Shape Modeling for Engineering Design and Manufacturing (Online),Qiang Zou (Recipient of the 2026 SMI Young Investigator Award),,Invited Talk,,Invited Talk,Zichun Zhong
+2026-07-09,Day 04,16:15,16:30,,9,,,,event,,,Toward Compact and Structured Representations of Detailed 3D Shapes,Congyi Zhang (Recipient of the 2026 SMI Young Investigator Award),,Invited Talk,,Invited Talk,Zichun Zhong
 2026-07-09,Day 04,16:30,16:50,,10,,,,event,,,Coffee Break,,,Break,,
-2026-07-09,Day 04,16:50,17:05,,11,,,,event,,,Shaping natural landscapes through simulation,Guillaume Cordonnier (Recipient of the 2025 SMI Young Investigator Award),,Invited Talk,,Invited Talk
-2026-07-09,Day 04,17:05,17:20,,12,,,,event,,,Scribbles to Structures: The Geometry of Creative Intent,Amal Dev Parakkat (Recipient of the 2025 SMI Young Investigator Award),,Invited Talk,,Invited Talk
-2026-07-09,Day 04,17:20,17:40,,12,,,,event,,,In Memory of Malcom Sabin: A Celebration of His Life and Legacy,,,COMMEMORATION,,COMMEMORATION
-2026-07-09,Day 04,17:40,18:10,,13,,,,event,,,SPM/SMI Best Paper Awards + Closing,,,SPM/SMI,,
+2026-07-09,Day 04,16:50,17:05,,11,,,,event,,,Shaping natural landscapes through simulation,Guillaume Cordonnier (Recipient of the 2025 SMI Young Investigator Award),,Invited Talk,,Invited Talk,Zichun Zhong
+2026-07-09,Day 04,17:05,17:20,,12,,,,event,,,Scribbles to Structures: The Geometry of Creative Intent,Amal Dev Parakkat (Recipient of the 2025 SMI Young Investigator Award),,Invited Talk,,Invited Talk,Zichun Zhong
+2026-07-09,Day 04,17:20,17:40,,12,,,,event,,,In Memory of Malcolm Sabin: A Celebration of His Life and Legacy,,,COMMEMORATION,,COMMEMORATION,Brian Wyvill
+2026-07-09,Day 04,17:40,18:10,,13,,,,event,,,SPM/SMI Best Paper Awards + Closing,,,SPM/SMI,,,Amal Dev Parakkat

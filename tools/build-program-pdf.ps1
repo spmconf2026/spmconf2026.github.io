@@ -12,6 +12,12 @@ $ErrorActionPreference = "Stop"
 
 $root = Split-Path -Parent $PSScriptRoot
 $out  = Join-Path $root "assets\pdf\SPM2026-conference-program.pdf"
+$legacyOutputs = @(
+  (Join-Path $root "SPM2026-program.pdf"),
+  (Join-Path $root "SPM2026-program-4pages.pdf"),
+  (Join-Path $root "Program-pdf-tight.html"),
+  (Join-Path $root "SPM2026-program-4pages-page1.png")
+)
 
 $chromeCandidates = @(
   "$env:ProgramFiles\Microsoft\Edge\Application\msedge.exe",
@@ -26,9 +32,20 @@ if (-not $chrome) { throw "No Chrome/Edge found. Install Google Chrome or Micros
 $pdfDir = Split-Path -Parent $out
 if (-not (Test-Path $pdfDir)) { New-Item -ItemType Directory -Force $pdfDir | Out-Null }
 if (Test-Path $out) { Remove-Item $out -Force }
+foreach ($legacyOutput in $legacyOutputs) {
+  Remove-Item $legacyOutput -Force -ErrorAction SilentlyContinue
+}
 
 $port = 8771
 $prefix = "http://127.0.0.1:$port/"
+
+do {
+  $includeChairsAnswer = (Read-Host "Include session chairs in the PDF? [Y/n]").Trim().ToLowerInvariant()
+} until ($includeChairsAnswer -in @("", "y", "yes", "n", "no"))
+
+$includeChairs = $includeChairsAnswer -notin @("n", "no")
+$chairsQueryValue = if ($includeChairs) { "1" } else { "0" }
+$programPdfUrl = "$prefix" + "Program.html?view=pdf&chairs=$chairsQueryValue"
 
 $serverScript = Join-Path $env:TEMP "spm-program-pdf-server.js"
 $serverOut = Join-Path $env:TEMP "spm-program-pdf-server.out.log"
@@ -121,7 +138,7 @@ try {
   for ($i = 0; $i -lt 40; $i++) {
     if ($server.HasExited) { break }
     try {
-      $response = Invoke-WebRequest -Uri ($prefix + "Program.html?view=pdf") -UseBasicParsing -TimeoutSec 2
+      $response = Invoke-WebRequest -Uri $programPdfUrl -UseBasicParsing -TimeoutSec 2
       if ($response.StatusCode -eq 200) {
         $ready = $true
         break
@@ -135,9 +152,9 @@ try {
     throw "Temporary PDF server did not start. $nodeError"
   }
 
-  $url = "$prefix" + "Program.html?view=pdf"
+  $url = $programPdfUrl
   $profile = Join-Path $env:TEMP ("spm-pdf-profile-" + [guid]::NewGuid().ToString("N"))
-  $debugPort = 9223
+  $debugPort = Get-Random -Minimum 30000 -Maximum 45000
 
   $chromeArgs = @(
     "--headless=new",
@@ -193,7 +210,8 @@ try {
   }
 
   Invoke-Cdp "Page.enable" | Out-Null
-  $readyExpression = "document.querySelectorAll('.program-pdf-day').length >= 4 && document.querySelector('.program-sponsors') && getComputedStyle(document.querySelector('.program-sponsors')).display === 'none'"
+  Invoke-Cdp "Page.navigate" @{ url = $url } | Out-Null
+  $readyExpression = "(() => { const sponsors = document.querySelector('.program-sponsors'); return document.readyState === 'complete' && document.body.classList.contains('program-pdf-mode') && document.querySelectorAll('.program-pdf-day').length >= 4 && (!sponsors || getComputedStyle(sponsors).display === 'none'); })()"
   $isReady = $false
   for ($i = 0; $i -lt 80; $i++) {
     $result = Invoke-Cdp "Runtime.evaluate" @{ expression = $readyExpression; returnByValue = $true }
@@ -204,8 +222,54 @@ try {
     Start-Sleep -Milliseconds 250
   }
   if (-not $isReady) {
-    throw "Program page did not finish rendering for PDF."
+    $diagnosticExpression = "(() => { const sponsors = document.querySelector('.program-sponsors'); const status = document.querySelector('#program-status'); return JSON.stringify({ url: location.href, readyState: document.readyState, bodyClass: document.body.className, pdfDays: document.querySelectorAll('.program-pdf-day').length, sponsorsDisplay: sponsors ? getComputedStyle(sponsors).display : null, status: status ? status.textContent.trim() : null, cards: document.querySelectorAll('.program-card,.program-session-card').length }); })()"
+    $diagnostic = Invoke-Cdp "Runtime.evaluate" @{ expression = $diagnosticExpression; returnByValue = $true }
+    throw "Program page did not finish rendering for PDF. State: $($diagnostic.result.value)"
   }
+
+  $tightPrintCss = @"
+@media print {
+  @page { size: A4; margin: 8mm; }
+  html, body { width: 210mm !important; min-height: auto !important; }
+  body.program-pdf-mode { zoom: 0.88; }
+  body.program-pdf-mode .program-pdf-day {
+    min-height: auto !important;
+    height: auto !important;
+    break-before: page;
+    page-break-before: always;
+    padding-bottom: 0 !important;
+  }
+  body.program-pdf-mode .program-pdf-day:first-child {
+    break-before: auto;
+    page-break-before: auto;
+  }
+  body.program-pdf-mode .program-pdf-day-body {
+    display: block !important;
+  }
+  body.program-pdf-mode .program-card,
+  body.program-pdf-mode .program-session-card {
+    margin-bottom: 6px !important;
+  }
+  body.program-pdf-mode .program-pdf-day-header {
+    margin-bottom: 7px !important;
+    padding-bottom: 6px !important;
+  }
+  body.program-pdf-mode .program-details,
+  body.program-pdf-mode .program-session-details {
+    padding-top: 7px !important;
+    padding-bottom: 7px !important;
+  }
+  body.program-pdf-mode .program-time {
+    padding-top: 7px !important;
+    padding-bottom: 7px !important;
+  }
+}
+"@
+  $tightPrintCssJson = $tightPrintCss | ConvertTo-Json -Compress
+  Invoke-Cdp "Runtime.evaluate" @{
+    expression = "(() => { const id = 'program-pdf-tight-print'; const old = document.getElementById(id); if (old) old.remove(); const style = document.createElement('style'); style.id = id; style.textContent = $tightPrintCssJson; document.head.appendChild(style); return true; })()"
+    returnByValue = $true
+  } | Out-Null
 
   $pdf = Invoke-Cdp "Page.printToPDF" @{
     printBackground = $true
@@ -231,6 +295,9 @@ try {
   Remove-Item $serverScript -Force -ErrorAction SilentlyContinue
   Remove-Item $serverOut -Force -ErrorAction SilentlyContinue
   Remove-Item $serverErr -Force -ErrorAction SilentlyContinue
+  foreach ($legacyOutput in $legacyOutputs) {
+    Remove-Item $legacyOutput -Force -ErrorAction SilentlyContinue
+  }
   if ($profile) {
     Remove-Item $profile -Recurse -Force -ErrorAction SilentlyContinue
   }
@@ -240,6 +307,17 @@ if (Test-Path $out) {
   $pdfSize = (Get-Item $out).Length
   if ($pdfSize -lt 100000) {
     throw "PDF generation produced an unexpectedly small file ($pdfSize bytes)."
+  }
+  $pdfInfo = Get-Command pdfinfo -ErrorAction SilentlyContinue
+  if (-not $pdfInfo) {
+    $pdfInfo = Get-Command "C:\texlive\2026\bin\windows\pdfinfo.exe" -ErrorAction SilentlyContinue
+  }
+  if ($pdfInfo) {
+    $infoText = & $pdfInfo.Source $out
+    $pagesLine = $infoText | Select-String -Pattern '^Pages:\s+(\d+)'
+    if ($pagesLine -and [int]$pagesLine.Matches[0].Groups[1].Value -ne 4) {
+      throw "PDF generation produced $($pagesLine.Matches[0].Groups[1].Value) pages; expected 4."
+    }
   }
   Write-Host ("PDF written: {0} ({1:N0} bytes)" -f $out, $pdfSize)
 } else {
