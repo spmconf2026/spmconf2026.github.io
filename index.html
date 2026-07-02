@@ -250,6 +250,158 @@
       text-align: center;
     }
 
+    .commemoration-panel {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(26, 43, 55, 0.10);
+      border-radius: 6px;
+      background: #fcfcfb;
+      box-shadow: 0 10px 40px rgba(26, 43, 55, 0.07);
+      color: #2a343a;
+    }
+
+    .commemoration-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      height: 3px;
+      background: rgba(26, 43, 55, 0.20);
+    }
+
+    .commemoration-eyebrow {
+      display: inline-block;
+      margin-bottom: 20px;
+      color: #7c8790;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+    }
+
+    .commemoration-title {
+      margin: 0 0 10px;
+      color: #1c272e;
+      font-size: clamp(30px, 3.6vw, 46px);
+      font-weight: 700;
+      line-height: 1.14;
+      letter-spacing: 0.01em;
+    }
+
+    .commemoration-online {
+      display: inline-block;
+      color: #8a939a;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .commemoration-subtitle {
+      max-width: 700px;
+      margin: 0 auto;
+      color: #566169;
+      font-size: 17px;
+      font-style: italic;
+      line-height: 1.7;
+    }
+
+    .commemoration-layout {
+      align-items: center;
+      margin-top: 42px;
+      text-align: left;
+    }
+
+    .commemoration-photo-card {
+      max-width: 340px;
+      margin: 0 auto;
+      padding: 12px;
+      border: 1px solid rgba(26, 43, 55, 0.12);
+      border-radius: 3px;
+      background: #fff;
+      box-shadow: 0 12px 30px rgba(26, 43, 55, 0.10);
+    }
+
+    .commemoration-photo {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 3 / 4;
+      background: #eef1f2;
+    }
+
+    .commemoration-photo img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      filter: saturate(0.92) contrast(1.02);
+    }
+
+    .commemoration-photo-fallback {
+      position: absolute;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 34px;
+      color: rgba(20, 33, 42, 0.55);
+      font-size: 40px;
+      font-weight: 700;
+      line-height: 1.05;
+      text-align: center;
+    }
+
+    .commemoration-photo.is-missing .commemoration-photo-fallback {
+      display: flex;
+    }
+
+    .commemoration-caption {
+      margin: 16px 6px 4px;
+      color: #7c8790;
+      font-size: 13px;
+      font-style: italic;
+      line-height: 1.55;
+      text-align: center;
+    }
+
+    .commemoration-content {
+      padding: 4px 0 0 30px;
+    }
+
+    .commemoration-award {
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(26, 43, 55, 0.10);
+      color: #5f4a22;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .commemoration-award span {
+      display: block;
+    }
+
+    .commemoration-award-zoom {
+      margin-top: 8px;
+    }
+
+    .commemoration-text {
+      color: #3a454c;
+      font-size: 16px;
+      line-height: 1.8;
+      text-align: justify;
+      -webkit-hyphens: auto;
+      hyphens: auto;
+    }
+
+    .commemoration-text p {
+      margin-bottom: 20px;
+    }
+
+    .commemoration-text p:last-child {
+      margin-bottom: 0;
+    }
+
     @media (max-width: 767.98px) {
       .work-mosaic {
         flex-direction: column;
@@ -289,6 +441,24 @@
         border-radius: 16px;
         margin-top: 22px;
         padding: 12px 16px;
+      }
+
+      .commemoration-title {
+        font-size: 28px;
+      }
+
+      .commemoration-subtitle {
+        font-size: 16px;
+        line-height: 1.6;
+      }
+
+      .commemoration-photo-card {
+        max-width: 280px;
+        margin-bottom: 8px;
+      }
+
+      .commemoration-content {
+        padding: 30px 0 0;
       }
     }
 
@@ -1615,6 +1785,66 @@
     </div>
   </section>
   <!-- Invited Speakers Section End -->
+
+  <!-- Commemoration Section Start -->
+  <section id="Commemoration" class="section-padding text-center pt-4">
+    <div class="container">
+      <div class="commemoration-panel p-4 p-lg-5">
+        <div class="section-title-header text-center">
+          <div class="commemoration-eyebrow">Commemorative Session</div>
+          <h2 class="commemoration-title">
+            In Memory of Malcolm Sabin: A Celebration of His Life and Legacy <span class="commemoration-online">(Online)</span>
+          </h2>
+          <p class="commemoration-subtitle">
+            Recipient of the 2026 Tosiyasu L. Kunii Award (Posthumously)
+          </p>
+        </div>
+
+        <div class="row commemoration-layout">
+          <div class="col-lg-5">
+            <div class="commemoration-photo-card">
+              <div class="commemoration-photo">
+                <img src="assets/img/malcolmsabin.webp" alt="Professor Malcolm Sabin"
+                  onerror="this.parentNode.classList.add('is-missing'); this.remove();">
+                <div class="commemoration-photo-fallback">Malcolm<br>Sabin</div>
+              </div>
+              <p class="commemoration-caption">
+                Professor Malcolm Sabin
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-7">
+            <div class="commemoration-content">
+              <div class="commemoration-award">
+                <span class="commemoration-award-time">05:20 PM &ndash; 05:40 PM &middot; 9 July 2026</span>
+                <span class="commemoration-award-zoom">Zoom link: TBA</span>
+              </div>
+
+              <div class="commemoration-text">
+                <p>
+                  The shape modeling community lost Professor Malcolm Sabin on June 14, 2026, just weeks before SMI
+                  2026. Malcolm was one of the pioneers of geometric modeling, whose research profoundly influenced
+                  subdivision surfaces, computer-aided geometric design, and shape modeling. Beyond his scientific
+                  achievements, he was a generous mentor, collaborator, and friend whose influence extended across
+                  generations of researchers.
+                </p>
+
+                <p>
+                  This special commemorative session honors Malcolm's life and contributions through the posthumous
+                  presentation of the 2026 Tosiyasu L. Kunii Award. The session will begin with a brief eulogy
+                  celebrating his scientific legacy, followed by personal memories and reflections shared by colleagues,
+                  collaborators, former students, and friends. Together, we celebrate not only Malcolm's remarkable
+                  achievements, but also the kindness, generosity, and inspiration he brought to our community.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Commemoration Section End -->
 
   <section id="committee" class="section-padding text-center">
     <div class="container">
