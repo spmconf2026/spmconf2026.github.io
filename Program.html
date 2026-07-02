@@ -755,6 +755,17 @@
       line-height: 1.35;
     }
 
+    .program-title-link {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .program-title-link:hover,
+    .program-title-link:focus {
+      color: var(--program-accent-text);
+      text-decoration: underline;
+    }
+
     .program-online-icon {
       color: #d32f2f;
       display: inline-flex;
@@ -827,6 +838,65 @@
     .program-meta i {
       color: #ff4a67;
       margin-right: 5px;
+    }
+
+    .program-sponsors {
+      margin: 10px 0 40px;
+    }
+
+    .program-sponsors-title {
+      color: #2d3748;
+      font-size: 24px;
+      font-weight: 500;
+      letter-spacing: 0.4px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .program-sponsors .sponsors-logo {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 22px 36px;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+
+    .program-sponsors .sponsor-logo {
+      align-items: center;
+      display: inline-flex;
+      justify-content: center;
+      min-width: 90px;
+    }
+
+    .program-sponsors .sponsor-logo img {
+      display: block;
+      height: auto;
+      max-height: 72px;
+      max-width: 100%;
+      object-fit: contain;
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .program-sponsors .sponsor-logo-itu img {
+      width: 150px;
+    }
+
+    .program-sponsors .sponsor-logo-polyspline img {
+      width: 118px;
+    }
+
+    .program-sponsors .sponsor-logo-plasticity img {
+      width: 82px;
+    }
+
+    .program-sponsors .sponsor-logo-visit {
+      flex-basis: 300px;
+    }
+
+    .program-sponsors .sponsor-logo-visit img {
+      width: 300px;
     }
 
     .program-empty,
@@ -1322,6 +1392,31 @@
         grid-template-columns: 1fr;
         gap: 4px;
       }
+
+      .program-sponsors {
+        margin-bottom: 30px;
+      }
+
+      .program-sponsors-title {
+        font-size: 20px;
+      }
+
+      .program-sponsors .sponsors-logo {
+        gap: 18px 24px;
+      }
+
+      .program-sponsors .sponsor-logo {
+        flex: 1 1 100%;
+        min-width: 0;
+      }
+
+      .program-sponsors .sponsor-logo-visit {
+        flex-basis: 100%;
+      }
+
+      .program-sponsors .sponsor-logo-visit img {
+        width: min(210px, 56vw);
+      }
     }
   </style>
 </head>
@@ -1358,19 +1453,15 @@
         <span>Use your browser&rsquo;s print dialog and choose &ldquo;Save as PDF&rdquo; (A4) as the destination.</span>
       </div>
 
-      <div class="row mb-30 text-center wow program-sponsors" style="margin-top: 10px; margin-bottom: 40px;">
+      <div class="row mb-30 text-center program-sponsors">
         <div class="col-lg-12">
-          <h3 class="text-center mb-4" style="font-weight: 500; color: #2d3748; font-size: 24px; letter-spacing: 0.4px; margin-bottom: 20px;">Thanks to our sponsors</h3>
+          <h3 class="program-sponsors-title">Thanks to our sponsors</h3>
 
-          <div class="sponsors-logo text-center" style="margin-bottom: 12px;">
-            <a href="https://itu.edu.tr/en/homepage"><img src="assets/img/sponsors/ITU_logo.png" alt="ITU Logo"
-                style="width: 165px; height: auto; margin-right: 40px;"></a>
-            <a href="https://polysplines.com/"><img src="assets/img/sponsors/PolySpline_Logo.png" alt="PolySpline Logo"
-                style="width: 110px; height: auto; margin-right: 40px;""></a>
-            <a href="https://www.plasticity.xyz/"><img src="assets/img/sponsors/Plasticity.png" alt="Plasticity Logo"
-                style="width: 110px; height: auto; margin-right: 40px;""></a>
-            <a href="https://visit.istanbul/"><img src="assets/img/sponsors/visitist_logoteslim.svg" alt="Visit Istanbul Logo"
-                style="width: 300px; height: auto;"></a>
+          <div class="sponsors-logo text-center">
+            <a class="sponsor-logo sponsor-logo-itu" href="https://itu.edu.tr/en/homepage"><img src="assets/img/sponsors/ITU_logo.png" alt="ITU Logo"></a>
+            <a class="sponsor-logo sponsor-logo-polyspline" href="https://polysplines.com/"><img src="assets/img/sponsors/PolySpline_Logo.png" alt="PolySpline Logo"></a>
+            <a class="sponsor-logo sponsor-logo-plasticity" href="https://www.plasticity.xyz/"><img src="assets/img/sponsors/Plasticity.png" alt="Plasticity Logo"></a>
+            <a class="sponsor-logo sponsor-logo-visit" href="https://visit.istanbul/"><img src="assets/img/sponsors/visitist_logoteslim.svg" alt="Visit Istanbul Logo"></a>
           </div>
         </div>
       </div>
@@ -1995,6 +2086,7 @@
         item.room,
         item.description,
         item.chair,
+        item.publicationUrl,
         item.type
       ].join(" ").toLowerCase().indexOf(searchTerm) !== -1;
     }
@@ -2050,7 +2142,7 @@
       const displayTitle = getProgramDisplayTitle(item, typeLabel);
       if (displayTitle) {
         const title = document.createElement("h3");
-        appendProgramTitle(title, displayTitle);
+        appendProgramTitle(title, displayTitle, item.publicationUrl);
         details.appendChild(title);
       }
 
@@ -2170,7 +2262,7 @@
       const content = document.createElement("div");
 
       const title = document.createElement("h4");
-      appendProgramTitle(title, item.title || "TBA");
+      appendProgramTitle(title, item.title || "TBA", item.publicationUrl);
       content.appendChild(title);
 
       if (item.speaker || item.affiliation) {
@@ -2283,8 +2375,10 @@
       return item.type || item.rowType || "";
     }
 
-    function appendProgramTitle(container, titleText) {
+    function appendProgramTitle(container, titleText, publicationUrl) {
       const online = parseOnlineTitle(titleText);
+      const titleTarget = normalizePublicationUrl(publicationUrl);
+      let textContainer = container;
 
       if (online.isOnline) {
         const icon = document.createElement("span");
@@ -2294,7 +2388,16 @@
         container.appendChild(icon);
       }
 
-      container.appendChild(document.createTextNode(online.title || "TBA"));
+      if (titleTarget) {
+        textContainer = document.createElement("a");
+        textContainer.className = "program-title-link";
+        textContainer.href = titleTarget;
+        textContainer.target = "_blank";
+        textContainer.rel = "noopener";
+        container.appendChild(textContainer);
+      }
+
+      textContainer.appendChild(document.createTextNode(online.title || "TBA"));
 
       if (online.isOnline) {
         const label = document.createElement("span");
@@ -2302,6 +2405,15 @@
         label.textContent = "Online";
         container.appendChild(label);
       }
+    }
+
+    function normalizePublicationUrl(input) {
+      const raw = value(input);
+      if (!raw) return "";
+      if (/^https?:\/\//i.test(raw)) return raw;
+      if (/^doi:/i.test(raw)) return "https://doi.org/" + encodeURI(raw.replace(/^doi:\s*/i, "").trim());
+      if (/^10\.\S+\/\S+$/i.test(raw)) return "https://doi.org/" + encodeURI(raw);
+      return "";
     }
 
     function parseOnlineTitle(titleText) {
@@ -2447,7 +2559,8 @@
           type: value(row.type),
           room: value(row.room),
           description: value(row.description),
-          chair: value(row.chair)
+          chair: value(row.chair),
+          publicationUrl: value(row.publication_url || row.publicationUrl || row.doi_url || row.doi || row.url)
         };
       }).filter(function (item) {
         return item.id || item.date || item.title;

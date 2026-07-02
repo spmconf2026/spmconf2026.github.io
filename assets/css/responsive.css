@@ -61,8 +61,8 @@
   #pricing .price-block-wrapper .pricing-list {
     padding: 10px 35px 10px 45px;
   }
-  #sponsors .spnsors-logo img {
-    width: 80%;
+  #sponsors .sponsors-logo {
+    gap: 22px 32px;
   }
   /* Previous Conferences nowrap on tablets */
   .nav-link-nowrap {
@@ -118,8 +118,8 @@
   #pricing .price-block-wrapper .pricing-list {
     padding: 10px 60px 10px 45px;
   }
-  #sponsors .spnsors-logo {
-    padding: 30px;
+  #sponsors .sponsors-logo {
+    padding: 0 20px;
   }
   #event-up .event-item {
     margin-bottom: 20px;
@@ -254,7 +254,8 @@
   #pricing .price-block-wrapper .pricing-list {
     padding: 10px 30px 10px 40px;
   }
-  #sponsors .spnsors-logo {
+  #sponsors .sponsors-logo {
+    gap: 18px 24px;
     margin-bottom: 15px;
   }
   .blog-item .descr h3 a {
@@ -266,8 +267,15 @@
   .contact-item {
     margin-bottom: 40px;
   }
-  #sponsors .spnsors-logo img {
-    width: 80%;
+  #sponsors .sponsor-logo {
+    flex: 1 1 100%;
+    min-width: 0;
+  }
+  #sponsors .sponsor-logo-visit {
+    flex-basis: 100%;
+  }
+  #sponsors .sponsor-logo-visit img {
+    width: min(230px, 62vw);
   }
   #contact-text ul {
     text-align: left;
