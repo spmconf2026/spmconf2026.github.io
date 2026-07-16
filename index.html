@@ -99,6 +99,247 @@
       text-decoration: underline;
     }
 
+    /* Highlights Gallery */
+    #highlights {
+      --gallery-height: 70vh;
+      /* ↑ Galerinin yüksekliği. Kötü duruyorsa / taşıyorsa sadece bu satırı
+         değiştirin: 50vh, 40vh, 420px... Her şey buna göre ölçeklenir. */
+      --gallery-gap: 24px;
+      /* ↑ Hero ile galeri arasındaki boşluk. */
+      padding-top: var(--gallery-gap);
+      background: #f7f9fa;
+    }
+
+    .gallery-stage {
+      position: relative;
+      height: var(--gallery-height);
+      overflow: hidden;
+      background: #eef2f4;
+    }
+
+    .gallery-track {
+      position: relative;
+      height: 100%;
+    }
+
+    /* Her slayt sahneyi tam kaplar ve resmi ortalar; komşular yanlara ötelenir.
+       Slayt tam genişlik olmalı: left:50% + shrink-to-fit kullanılırsa slaytın
+       genişliği sahnenin yarısıyla sınırlanır ve resim gereksiz yere küçülür. */
+    .gallery-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.45s ease, opacity 0.45s ease, filter 0.45s ease;
+      will-change: transform, opacity;
+    }
+
+    .gallery-slide img {
+      max-height: 100%;
+      max-width: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    /* Ortadaki: net, önde, tıklanınca büyür */
+    .gallery-slide.is-active {
+      z-index: 3;
+      opacity: 1;
+      filter: none;
+      cursor: zoom-in;
+      transform: none;
+    }
+
+    .gallery-slide.is-active img {
+      max-width: 68%;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+      border-radius: 6px;
+    }
+
+    /* Komşular: buzlu cam altındaymış gibi bulanık ve soluk */
+    .gallery-slide.is-prev,
+    .gallery-slide.is-next {
+      z-index: 2;
+      opacity: 0.7;
+      filter: blur(7px) saturate(110%) brightness(0.78);
+      cursor: pointer;
+    }
+
+    .gallery-slide.is-prev img,
+    .gallery-slide.is-next img {
+      max-width: 40%;
+    }
+
+    /* Kenarlara itilirler; ortada yalnızca aktif resim kalsın diye sahnenin
+       sadece ~%20'lik uçlarında görünürler. */
+    .gallery-slide.is-prev {
+      transform: translateX(-46%) scale(0.8);
+    }
+
+    .gallery-slide.is-next {
+      transform: translateX(46%) scale(0.8);
+    }
+
+    /* Görüş alanı dışındakiler. Ortada değil, ait oldukları kenarda park
+       ederler; yoksa yeni resim ortadan büyüyerek gelir ve galeri sadece üç
+       resim arasında dönüyormuş gibi görünür. */
+    .gallery-slide.is-far-left,
+    .gallery-slide.is-far-right {
+      opacity: 0;
+      pointer-events: none;
+      z-index: 1;
+      filter: blur(6px) brightness(0.8);
+    }
+
+    .gallery-slide.is-far-left {
+      transform: translateX(-78%) scale(0.7);
+    }
+
+    .gallery-slide.is-far-right {
+      transform: translateX(78%) scale(0.7);
+    }
+
+    /* Komşuların üstündeki buzlu cam tabakası */
+    .gallery-veil {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 20%;
+      z-index: 2;
+      pointer-events: none;
+      backdrop-filter: blur(3px) saturate(115%);
+      -webkit-backdrop-filter: blur(3px) saturate(115%);
+      background: rgba(255, 255, 255, 0.10);
+    }
+
+    .gallery-veil-left {
+      left: 0;
+      border-right: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .gallery-veil-right {
+      right: 0;
+      border-left: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    /* Buzlu cam okları (Travel.html'deki galeriyle aynı görünüm) */
+    .gallery-nav {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 9%;
+      z-index: 5;
+      border: 0;
+      padding: 0;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .gallery-nav-prev {
+      left: 0;
+    }
+
+    .gallery-nav-next {
+      right: 0;
+    }
+
+    .gallery-arrow-bg {
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(8px) saturate(120%);
+      -webkit-backdrop-filter: blur(8px) saturate(120%);
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      border-radius: 12px;
+      width: 38px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .gallery-nav:hover .gallery-arrow-bg {
+      background: rgba(255, 255, 255, 0.55);
+      transform: scale(1.1);
+    }
+
+    /* Saf CSS ok işareti (BS4'te .carousel-control-*-icon arka plan resmine bağlı) */
+    .gallery-arrow {
+      width: 10px;
+      height: 10px;
+      border-top: 2px solid #10323d;
+      border-right: 2px solid #10323d;
+    }
+
+    .gallery-arrow-left {
+      transform: rotate(-135deg);
+      margin-left: 3px;
+    }
+
+    .gallery-arrow-right {
+      transform: rotate(45deg);
+      margin-right: 3px;
+    }
+
+    /* Lightbox içinde zoom */
+    .nivo-lightbox-image img {
+      transition: transform 0.15s ease-out;
+      cursor: zoom-in;
+    }
+
+    .nivo-lightbox-image img.is-zoomed {
+      cursor: grab;
+    }
+
+    .nivo-lightbox-image img.is-panning {
+      cursor: grabbing;
+      transition: none;
+    }
+
+    .gallery-zoom-hint {
+      position: fixed;
+      bottom: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100000;
+      background: rgba(0, 0, 0, 0.55);
+      color: #fff;
+      font-size: 12px;
+      letter-spacing: 0.3px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      pointer-events: none;
+    }
+
+    @media (max-width: 768px) {
+      #highlights {
+        --gallery-height: 42vh;
+      }
+
+      /* Dar ekranda komşular yer bırakmıyor; sadece ortadaki gösterilir. */
+      .gallery-slide.is-active {
+        max-width: 96%;
+      }
+
+      .gallery-slide.is-prev,
+      .gallery-slide.is-next {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .gallery-veil {
+        display: none;
+      }
+    }
+
     /* Keynote Detail Styles */
     .keynote-details-box {
       background: #ffffff;
@@ -560,7 +801,7 @@
   <!-- Header Area wrapper End -->
 
   <!-- Count Bar Start -->
-  <section id="count">
+  <!-- <section id="count">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-10">
@@ -572,8 +813,23 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
   <!-- Count Bar End -->
+
+  <!-- Highlights Gallery Start -->
+  <section id="highlights">
+    <div class="gallery-stage" id="highlightsStage">
+      <div class="gallery-track" id="highlightsInner"></div>
+
+      <button class="gallery-nav gallery-nav-prev" type="button" id="highlightsPrev" aria-label="Previous image">
+        <span class="gallery-arrow-bg"><span class="gallery-arrow gallery-arrow-left"></span></span>
+      </button>
+      <button class="gallery-nav gallery-nav-next" type="button" id="highlightsNext" aria-label="Next image">
+        <span class="gallery-arrow-bg"><span class="gallery-arrow gallery-arrow-right"></span></span>
+      </button>
+    </div>
+  </section>
+  <!-- Highlights Gallery End -->
 
   <!-- About Section Start -->
   <section id="about" class="section-padding">
@@ -2279,6 +2535,240 @@
   <script src="assets/js/nivo-lightbox.js"></script>
   <script src="assets/js/video.js"></script>
   <script src="assets/js/main.js"></script>
+
+  <!-- Highlights gallery: gallery-list.js is generated by tools/build-gallery.ps1 -->
+  <script src="assets/js/gallery-list.js"></script>
+  <script>
+    // Runs synchronously, before jQuery's ready handlers fire, so the slides
+    // exist by the time main.js binds .lightbox on them.
+    (function () {
+      var section = document.getElementById('highlights');
+      var track = document.getElementById('highlightsInner');
+      var stage = document.getElementById('highlightsStage');
+      if (!section || !track || !stage) return;
+
+      if (typeof galleryList === 'undefined' || !galleryList.length) {
+        section.style.display = 'none';
+        return;
+      }
+
+      var hasFull = typeof galleryFull !== 'undefined' ? galleryFull : [];
+
+      var slides = galleryList.map(function (name) {
+        var src = galleryFolder + encodeURIComponent(name);
+        // The carousel shows the small copy; the lightbox links the full-res one
+        // where there is one, so the big file only downloads if it gets opened.
+        var large = hasFull.indexOf(name) !== -1
+          ? galleryFolder + 'full/' + encodeURIComponent(name)
+          : src;
+
+        var link = document.createElement('a');
+        link.className = 'gallery-slide lightbox';
+        link.href = large;
+        link.setAttribute('data-lightbox-gallery', 'highlights-gallery');
+
+        var img = document.createElement('img');
+        // src is assigned on demand: every slide sits inside the stage (the far
+        // ones are only transparent, not hidden), so loading="lazy" would not
+        // stop the browser fetching all of them at once.
+        img.setAttribute('data-src', src);
+        img.alt = '';
+
+        link.appendChild(img);
+        track.appendChild(link);
+        return link;
+      });
+
+      var count = slides.length;
+      var current = 0;
+      var wrap = function (i) { return (i % count + count) % count; };
+
+      // Load the visible slide plus its immediate neighbours, so a click or an
+      // autoplay step never lands on an empty frame.
+      function preload(centre) {
+        for (var d = -1; d <= 1; d++) {
+          var img = slides[wrap(centre + d)].firstChild;
+          var src = img.getAttribute('data-src');
+          if (src && !img.src) img.src = src;
+        }
+      }
+
+      function render() {
+        slides.forEach(function (el, i) {
+          var state;
+          // rel: how many steps forward from current, wrapped. Anything past the
+          // halfway point is nearer going backwards, so it parks on the left.
+          var rel = wrap(i - current);
+          if (i === current) state = 'is-active';
+          else if (count > 1 && rel === count - 1) state = 'is-prev';
+          else if (count > 2 && rel === 1) state = 'is-next';
+          else state = rel <= count / 2 ? 'is-far-right' : 'is-far-left';
+          el.className = 'gallery-slide lightbox ' + state;
+        });
+      }
+
+      function goTo(i) { current = wrap(i); render(); preload(current); }
+
+      // Autoplay: advances on its own, but never fights the user.
+      var AUTOPLAY_MS = 3000;
+      var timer = null;
+
+      function paused() {
+        return stage.matches(':hover') ||
+          !!document.querySelector('.nivo-lightbox-overlay.nivo-lightbox-open') ||
+          document.hidden;
+      }
+
+      function startAuto() {
+        if (timer || count < 2) return;
+        timer = setInterval(function () {
+          if (!paused()) goTo(current + 1);
+        }, AUTOPLAY_MS);
+      }
+
+      // Restart the countdown after a manual move, so the slide the user chose
+      // gets a full interval before it slides away.
+      function nudge(i) {
+        goTo(i);
+        if (timer) { clearInterval(timer); timer = null; }
+        startAuto();
+      }
+
+      document.getElementById('highlightsPrev').addEventListener('click', function () { nudge(current - 1); });
+      document.getElementById('highlightsNext').addEventListener('click', function () { nudge(current + 1); });
+
+      // A neighbour click navigates instead of opening the lightbox. This listener
+      // is registered before nivoLightbox binds, so stopImmediatePropagation wins.
+      slides.forEach(function (el, i) {
+        el.addEventListener('click', function (e) {
+          if (i === current) return;
+          e.preventDefault();
+          e.stopImmediatePropagation();
+          nudge(i);
+        });
+      });
+
+      // Frosted panes over the neighbours
+      ['gallery-veil-left', 'gallery-veil-right'].forEach(function (side) {
+        var veil = document.createElement('div');
+        veil.className = 'gallery-veil ' + side;
+        stage.appendChild(veil);
+      });
+
+      // Keyboard support when the gallery is on screen
+      document.addEventListener('keydown', function (e) {
+        if (document.querySelector('.nivo-lightbox-overlay.nivo-lightbox-open')) return;
+        var r = stage.getBoundingClientRect();
+        if (r.bottom < 0 || r.top > window.innerHeight) return;
+        if (e.key === 'ArrowLeft') nudge(current - 1);
+        else if (e.key === 'ArrowRight') nudge(current + 1);
+      });
+
+      render();
+      preload(current);
+      startAuto();
+    })();
+  </script>
+
+  <script>
+    // Zoom + pan inside the Nivo lightbox (Nivo has no zoom of its own).
+    (function () {
+      var MAX = 6, MIN = 1;
+      var scale = 1, tx = 0, ty = 0;
+      var img = null, hint = null;
+      var panning = false, startX = 0, startY = 0;
+
+      function apply() {
+        if (!img) return;
+        img.style.transform = 'translate(' + tx + 'px,' + ty + 'px) scale(' + scale + ')';
+        img.classList.toggle('is-zoomed', scale > 1);
+      }
+
+      function reset() {
+        scale = 1; tx = 0; ty = 0;
+        if (img) { img.style.transform = ''; img.classList.remove('is-zoomed', 'is-panning'); }
+      }
+
+      function showHint() {
+        if (hint) return;
+        hint = document.createElement('div');
+        hint.className = 'gallery-zoom-hint';
+        hint.textContent = 'Scroll or double-click to zoom · drag to pan';
+        document.body.appendChild(hint);
+      }
+
+      function removeHint() {
+        if (hint && hint.parentNode) hint.parentNode.removeChild(hint);
+        hint = null;
+      }
+
+      function zoomAt(factor, clientX, clientY) {
+        var rect = img.getBoundingClientRect();
+        var cx = rect.left + rect.width / 2;
+        var cy = rect.top + rect.height / 2;
+        var next = Math.min(MAX, Math.max(MIN, scale * factor));
+        if (next === scale) return;
+        // Keep the point under the cursor fixed while scaling.
+        var ratio = next / scale;
+        tx = clientX - cx - (clientX - cx - tx) * ratio;
+        ty = clientY - cy - (clientY - cy - ty) * ratio;
+        scale = next;
+        if (scale === MIN) { tx = 0; ty = 0; }
+        apply();
+      }
+
+      function bind(el) {
+        img = el;
+        reset();
+        showHint();
+
+        el.addEventListener('wheel', function (e) {
+          e.preventDefault();
+          zoomAt(e.deltaY < 0 ? 1.18 : 1 / 1.18, e.clientX, e.clientY);
+        }, { passive: false });
+
+        el.addEventListener('dblclick', function (e) {
+          e.preventDefault();
+          if (scale > 1) reset(); else zoomAt(2.5, e.clientX, e.clientY);
+        });
+
+        el.addEventListener('mousedown', function (e) {
+          if (scale <= 1) return;
+          e.preventDefault();
+          panning = true;
+          startX = e.clientX - tx;
+          startY = e.clientY - ty;
+          el.classList.add('is-panning');
+        });
+
+        window.addEventListener('mousemove', function (e) {
+          if (!panning) return;
+          tx = e.clientX - startX;
+          ty = e.clientY - startY;
+          apply();
+        });
+
+        window.addEventListener('mouseup', function () {
+          panning = false;
+          if (img) img.classList.remove('is-panning');
+        });
+
+        // Stop a zoomed drag from reaching Nivo's click-overlay-to-close.
+        el.addEventListener('click', function (e) {
+          if (scale > 1) e.stopImmediatePropagation();
+        });
+      }
+
+      // Nivo builds its image after opening, so watch for it.
+      var mo = new MutationObserver(function () {
+        var open = document.querySelector('.nivo-lightbox-overlay.nivo-lightbox-open');
+        if (!open) { img = null; removeHint(); return; }
+        var el = open.querySelector('.nivo-lightbox-image img');
+        if (el && el !== img) bind(el);
+      });
+      mo.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['class'] });
+    })();
+  </script>
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
