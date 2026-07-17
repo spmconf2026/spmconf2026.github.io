@@ -162,7 +162,7 @@
                   <i class="lni-star-filled mr-1" style="color: #ffca28;"></i>
                   <strong>Early-bird registration extended!</strong> Early-bird pricing is now valid until June 15, 2026.
                 </span>
-                <a href="registration.html" class="btn-banner">Register Now</a>
+                <a href="https://www.youtube.com/@SPMSMI2026-Istanbul-Turkey" target="_blank" rel="noopener" class="btn-banner">Watch on YouTube</a>
                 <button class="banner-close" onclick="dismissBanner()" title="Dismiss">
                   <i class="lni-close"></i>
                 </button>
